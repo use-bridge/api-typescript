@@ -47,59 +47,15 @@ jobs:
       - name: Build
         run: yarn build
 
-      # - name: Publish to npm
-      #   run: |
-      #     npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-      #     if [[ ${GITHUB_REF} == *alpha* ]]; then
-      #       npm publish --access public --tag alpha
-      #     elif [[ ${GITHUB_REF} == *beta* ]]; then
-      #       npm publish --access public --tag beta
-      #     else
-      #       npm publish --access public
-      #     fi
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish to npm (branch-aware)
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          BRANCH_NAME: ${{ github.ref_name }}
+      - name: Publish to npm
         run: |
-          set -euo pipefail
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
-
-          # Read current version & base (strip any -pre bits)
-          CURR=$(node -p "require('./package.json').version")
-          BASE=$(node -p "require('./package.json').version.split('-')[0]")
-
-          PREID=""
-          NPM_TAG="latest"
-
-          case "${BRANCH_NAME}" in
-            alpha)
-              PREID="alpha"
-              NPM_TAG="alpha"
-              ;;
-            beta)
-              PREID="beta"
-              NPM_TAG="beta"
-              ;;
-            deprecated)
-              PREID="deprecated"
-              NPM_TAG="deprecated"
-              ;;
-            *)
-              # main / production / anything else → publish as latest with unchanged version
-              ;;
-          esac
-
-          if [ -n "$PREID" ]; then
-            # Force version to x.y.z-PREID.0 (no git tag, no commit)
-            NEW_VER="${BASE}-${PREID}.0"
-            echo "Setting prerelease version: ${CURR} -> ${NEW_VER}"
-            npm version --no-git-tag-version "${NEW_VER}"
-            npm publish --access public --tag "${NPM_TAG}"
+          if [[ ${GITHUB_REF} == *alpha* ]]; then
+            npm publish --access public --tag alpha
+          elif [[ ${GITHUB_REF} == *beta* ]]; then
+            npm publish --access public --tag beta
           else
-            echo "Publishing ${CURR} to dist-tag 'latest'"
             npm publish --access public
           fi
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
