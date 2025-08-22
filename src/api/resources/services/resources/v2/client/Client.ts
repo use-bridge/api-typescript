@@ -15,8 +15,6 @@ export declare namespace V2 {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -28,8 +26,6 @@ export declare namespace V2 {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -102,10 +98,7 @@ export class V2 {
 
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -165,20 +158,10 @@ export class V2 {
      *         patientId: "patientId",
      *         dateOfService: "2024-01-15T09:30:00Z",
      *         serviceTypeId: "serviceTypeId",
-     *         externalId: undefined,
      *         location: {
-     *             line1: undefined,
-     *             line2: undefined,
-     *             city: undefined,
-     *             state: "AL",
-     *             postalCode: undefined,
-     *             country: undefined
+     *             state: "AL"
      *         },
-     *         providerId: "providerId",
-     *         serviceEligibility: undefined,
-     *         priorAuthorizationNumber: undefined,
-     *         metadata: undefined,
-     *         responsibleParty: undefined
+     *         providerId: "providerId"
      *     })
      */
     public createService(
@@ -194,10 +177,7 @@ export class V2 {
     ): Promise<core.WithRawResponse<BridgeApi.services.ServiceCreateV2Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

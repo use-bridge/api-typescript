@@ -8,13 +8,12 @@ import { BridgeApiClient } from "../../../src/Client";
 describe("V2", () => {
     test("createServiceEligibility", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             serviceTypeId: "serviceTypeId",
             dateOfService: "2024-01-15T09:30:00Z",
             policyIds: ["policyIds", "policyIds"],
             state: "AL",
-            clinicalInfo: undefined,
         };
         const rawResponseBody = {
             id: "id",
@@ -123,7 +122,6 @@ describe("V2", () => {
             dateOfService: "2024-01-15T09:30:00Z",
             policyIds: ["policyIds", "policyIds"],
             state: "AL",
-            clinicalInfo: undefined,
         });
         expect(response).toEqual({
             id: "id",

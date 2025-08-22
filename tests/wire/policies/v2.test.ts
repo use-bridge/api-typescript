@@ -8,18 +8,11 @@ import { BridgeApiClient } from "../../../src/Client";
 describe("V2", () => {
     test("createPolicy", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
-            person: {
-                firstName: "firstName",
-                middleName: undefined,
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
+            person: { firstName: "firstName", lastName: "lastName", dateOfBirth: "2024-01-15T09:30:00Z" },
             state: "AL",
             payerId: "payerId",
-            memberId: undefined,
-            dateOfService: undefined,
         };
         const rawResponseBody = {
             id: "id",
@@ -67,14 +60,11 @@ describe("V2", () => {
         const response = await client.policies.v2.createPolicy({
             person: {
                 firstName: "firstName",
-                middleName: undefined,
                 lastName: "lastName",
                 dateOfBirth: "2024-01-15T09:30:00Z",
             },
             state: "AL",
             payerId: "payerId",
-            memberId: undefined,
-            dateOfService: undefined,
         });
         expect(response).toEqual({
             id: "id",

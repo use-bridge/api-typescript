@@ -15,8 +15,6 @@ export declare namespace Patients {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -28,8 +26,6 @@ export declare namespace Patients {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -79,10 +75,7 @@ export class Patients {
 
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -129,249 +122,6 @@ export class Patients {
     }
 
     /**
-     * Deprecated, see [the V2 endpoint](/api/api-reference/patients/v-2/create-patient).
-     *
-     * @param {BridgeApi.PatientCreateV1Request} request
-     * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.patients.createPatient({
-     *         externalId: undefined,
-     *         firstName: "firstName",
-     *         lastName: "lastName",
-     *         email: "email",
-     *         dateOfBirth: "2024-01-15T09:30:00Z",
-     *         phone: undefined,
-     *         address: undefined,
-     *         coverage: undefined,
-     *         metadata: undefined
-     *     })
-     */
-    public createPatient(
-        request: BridgeApi.PatientCreateV1Request,
-        requestOptions?: Patients.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.PatientCreateV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__createPatient(request, requestOptions));
-    }
-
-    private async __createPatient(
-        request: BridgeApi.PatientCreateV1Request,
-        requestOptions?: Patients.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.PatientCreateV1Response>> {
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                "/api/patients",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as BridgeApi.PatientCreateV1Response, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/patients.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
-     * Deprecated, see [the V2 endpoint](/api/api-reference/patients/v-2/get-patient).
-     *
-     * @param {string} id
-     * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.patients.getPatient("id")
-     */
-    public getPatient(
-        id: string,
-        requestOptions?: Patients.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.PatientGetV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__getPatient(id, requestOptions));
-    }
-
-    private async __getPatient(
-        id: string,
-        requestOptions?: Patients.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.PatientGetV1Response>> {
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                `/api/patients/${encodeURIComponent(id)}`,
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: requestOptions?.queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as BridgeApi.PatientGetV1Response, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling GET /api/patients/{id}.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
-     * Deprecated, see [the V2 endpoint](/api/api-reference/patients/v-2/update-patient).
-     *
-     * @param {string} id
-     * @param {BridgeApi.PatientUpdateV1Request} request
-     * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.patients.updatePatient("id", {
-     *         patientToken: undefined,
-     *         externalId: undefined,
-     *         coverage: undefined,
-     *         firstName: undefined,
-     *         lastName: undefined,
-     *         email: undefined,
-     *         dateOfBirth: undefined,
-     *         phone: undefined,
-     *         address: undefined,
-     *         metadata: undefined
-     *     })
-     */
-    public updatePatient(
-        id: string,
-        request: BridgeApi.PatientUpdateV1Request,
-        requestOptions?: Patients.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.PatientUpdateV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__updatePatient(id, request, requestOptions));
-    }
-
-    private async __updatePatient(
-        id: string,
-        request: BridgeApi.PatientUpdateV1Request,
-        requestOptions?: Patients.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.PatientUpdateV1Response>> {
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                `/api/patients/${encodeURIComponent(id)}`,
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as BridgeApi.PatientUpdateV1Response, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/patients/{id}.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
      * @param {string} id
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -388,10 +138,7 @@ export class Patients {
     ): Promise<core.WithRawResponse<void>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

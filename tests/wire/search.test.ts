@@ -8,7 +8,7 @@ import { BridgeApiClient } from "../../src/Client";
 describe("Search", () => {
     test("payerSearch", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { query: "query", limit: 1 };
         const rawResponseBody = {
             items: [

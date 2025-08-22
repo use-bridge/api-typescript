@@ -14,8 +14,6 @@ export declare namespace Notes {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -27,8 +25,6 @@ export declare namespace Notes {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -50,28 +46,7 @@ export class Notes {
      * @example
      *     await client.notes.createNote({
      *         serviceId: "serviceId",
-     *         externalId: undefined,
-     *         data: {
-     *             PATIENT_NAME: undefined,
-     *             ICD10: undefined,
-     *             SUBJECTIVE: undefined,
-     *             OBJECTIVE: undefined,
-     *             ASSESSMENT: undefined,
-     *             TEXT: undefined,
-     *             PLAN: undefined,
-     *             DIAGNOSIS: undefined,
-     *             INTERVENTION: undefined,
-     *             MONITORING_AND_EVALUATION: undefined,
-     *             TELEHEALTH_DISCLAIMER: undefined,
-     *             TOTAL_TIME_SPENT: undefined,
-     *             TIME_SPENT_MINUTES: undefined,
-     *             THERAPY_TIME_SPENT_MINUTES: undefined,
-     *             PRESCRIPTION_WRITTEN: undefined,
-     *             MEDICATION_MANAGED: undefined,
-     *             DATE_RANGE_START: undefined,
-     *             DATE_RANGE_END: undefined,
-     *             MONITORING_DATA: undefined
-     *         },
+     *         data: {},
      *         signature: {
      *             timestamp: "2024-01-15T09:30:00Z",
      *             providerId: "providerId"
@@ -91,10 +66,7 @@ export class Notes {
     ): Promise<core.WithRawResponse<BridgeApi.NoteCreateV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -163,10 +135,7 @@ export class Notes {
     ): Promise<core.WithRawResponse<BridgeApi.NoteGetV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -253,10 +222,7 @@ export class Notes {
 
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -309,28 +275,7 @@ export class Notes {
      *
      * @example
      *     await client.notes.createNoteAddendum("id", {
-     *         externalId: undefined,
-     *         data: {
-     *             PATIENT_NAME: undefined,
-     *             ICD10: undefined,
-     *             SUBJECTIVE: undefined,
-     *             OBJECTIVE: undefined,
-     *             ASSESSMENT: undefined,
-     *             TEXT: undefined,
-     *             PLAN: undefined,
-     *             DIAGNOSIS: undefined,
-     *             INTERVENTION: undefined,
-     *             MONITORING_AND_EVALUATION: undefined,
-     *             TELEHEALTH_DISCLAIMER: undefined,
-     *             TOTAL_TIME_SPENT: undefined,
-     *             TIME_SPENT_MINUTES: undefined,
-     *             THERAPY_TIME_SPENT_MINUTES: undefined,
-     *             PRESCRIPTION_WRITTEN: undefined,
-     *             MEDICATION_MANAGED: undefined,
-     *             DATE_RANGE_START: undefined,
-     *             DATE_RANGE_END: undefined,
-     *             MONITORING_DATA: undefined
-     *         },
+     *         data: {},
      *         signature: {
      *             timestamp: "2024-01-15T09:30:00Z",
      *             providerId: "providerId"
@@ -352,10 +297,7 @@ export class Notes {
     ): Promise<core.WithRawResponse<BridgeApi.NoteAddendumCreateV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

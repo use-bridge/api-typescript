@@ -8,7 +8,7 @@ import { BridgeApiClient } from "../../../src/Client";
 describe("V2", () => {
     test("listServices", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -419,25 +419,13 @@ describe("V2", () => {
 
     test("createService", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             patientId: "patientId",
             dateOfService: "2024-01-15T09:30:00Z",
             serviceTypeId: "serviceTypeId",
-            externalId: undefined,
-            location: {
-                line1: undefined,
-                line2: undefined,
-                city: undefined,
-                state: "AL",
-                postalCode: undefined,
-                country: undefined,
-            },
+            location: { state: "AL" },
             providerId: "providerId",
-            serviceEligibility: undefined,
-            priorAuthorizationNumber: undefined,
-            metadata: undefined,
-            responsibleParty: undefined,
         };
         const rawResponseBody = {
             id: "id",
@@ -640,20 +628,10 @@ describe("V2", () => {
             patientId: "patientId",
             dateOfService: "2024-01-15T09:30:00Z",
             serviceTypeId: "serviceTypeId",
-            externalId: undefined,
             location: {
-                line1: undefined,
-                line2: undefined,
-                city: undefined,
                 state: "AL",
-                postalCode: undefined,
-                country: undefined,
             },
             providerId: "providerId",
-            serviceEligibility: undefined,
-            priorAuthorizationNumber: undefined,
-            metadata: undefined,
-            responsibleParty: undefined,
         });
         expect(response).toEqual({
             id: "id",

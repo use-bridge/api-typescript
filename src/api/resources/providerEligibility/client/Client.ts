@@ -14,8 +14,6 @@ export declare namespace ProviderEligibility {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -27,8 +25,6 @@ export declare namespace ProviderEligibility {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -52,12 +48,7 @@ export class ProviderEligibility {
      *         dateOfService: "2024-01-15T09:30:00Z",
      *         serviceTypeId: "serviceTypeId",
      *         location: {
-     *             line1: undefined,
-     *             line2: undefined,
-     *             city: undefined,
-     *             state: "AL",
-     *             postalCode: undefined,
-     *             country: undefined
+     *             state: "AL"
      *         },
      *         payerId: "payerId"
      *     })
@@ -75,10 +66,7 @@ export class ProviderEligibility {
     ): Promise<core.WithRawResponse<BridgeApi.ProviderEligibilityCreateV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -150,10 +138,7 @@ export class ProviderEligibility {
     ): Promise<core.WithRawResponse<BridgeApi.ProviderEligibilityGetV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

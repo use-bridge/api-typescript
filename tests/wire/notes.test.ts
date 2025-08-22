@@ -8,31 +8,10 @@ import { BridgeApiClient } from "../../src/Client";
 describe("Notes", () => {
     test("createNote", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             serviceId: "serviceId",
-            externalId: undefined,
-            data: {
-                PATIENT_NAME: undefined,
-                ICD10: undefined,
-                SUBJECTIVE: undefined,
-                OBJECTIVE: undefined,
-                ASSESSMENT: undefined,
-                TEXT: undefined,
-                PLAN: undefined,
-                DIAGNOSIS: undefined,
-                INTERVENTION: undefined,
-                MONITORING_AND_EVALUATION: undefined,
-                TELEHEALTH_DISCLAIMER: undefined,
-                TOTAL_TIME_SPENT: undefined,
-                TIME_SPENT_MINUTES: undefined,
-                THERAPY_TIME_SPENT_MINUTES: undefined,
-                PRESCRIPTION_WRITTEN: undefined,
-                MEDICATION_MANAGED: undefined,
-                DATE_RANGE_START: undefined,
-                DATE_RANGE_END: undefined,
-                MONITORING_DATA: undefined,
-            },
+            data: {},
             signature: { timestamp: "2024-01-15T09:30:00Z", providerId: "providerId" },
         };
         const rawResponseBody = {
@@ -172,28 +151,7 @@ describe("Notes", () => {
 
         const response = await client.notes.createNote({
             serviceId: "serviceId",
-            externalId: undefined,
-            data: {
-                PATIENT_NAME: undefined,
-                ICD10: undefined,
-                SUBJECTIVE: undefined,
-                OBJECTIVE: undefined,
-                ASSESSMENT: undefined,
-                TEXT: undefined,
-                PLAN: undefined,
-                DIAGNOSIS: undefined,
-                INTERVENTION: undefined,
-                MONITORING_AND_EVALUATION: undefined,
-                TELEHEALTH_DISCLAIMER: undefined,
-                TOTAL_TIME_SPENT: undefined,
-                TIME_SPENT_MINUTES: undefined,
-                THERAPY_TIME_SPENT_MINUTES: undefined,
-                PRESCRIPTION_WRITTEN: undefined,
-                MEDICATION_MANAGED: undefined,
-                DATE_RANGE_START: undefined,
-                DATE_RANGE_END: undefined,
-                MONITORING_DATA: undefined,
-            },
+            data: {},
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
                 providerId: "providerId",
@@ -347,7 +305,7 @@ describe("Notes", () => {
 
     test("getNote", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -626,7 +584,7 @@ describe("Notes", () => {
 
     test("listNoteAddenda", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -729,32 +687,8 @@ describe("Notes", () => {
 
     test("createNoteAddendum", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            externalId: undefined,
-            data: {
-                PATIENT_NAME: undefined,
-                ICD10: undefined,
-                SUBJECTIVE: undefined,
-                OBJECTIVE: undefined,
-                ASSESSMENT: undefined,
-                TEXT: undefined,
-                PLAN: undefined,
-                DIAGNOSIS: undefined,
-                INTERVENTION: undefined,
-                MONITORING_AND_EVALUATION: undefined,
-                TELEHEALTH_DISCLAIMER: undefined,
-                TOTAL_TIME_SPENT: undefined,
-                TIME_SPENT_MINUTES: undefined,
-                THERAPY_TIME_SPENT_MINUTES: undefined,
-                PRESCRIPTION_WRITTEN: undefined,
-                MEDICATION_MANAGED: undefined,
-                DATE_RANGE_START: undefined,
-                DATE_RANGE_END: undefined,
-                MONITORING_DATA: undefined,
-            },
-            signature: { timestamp: "2024-01-15T09:30:00Z", providerId: "providerId" },
-        };
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = { data: {}, signature: { timestamp: "2024-01-15T09:30:00Z", providerId: "providerId" } };
         const rawResponseBody = {
             id: "id",
             createdAt: "2024-01-15T09:30:00Z",
@@ -806,28 +740,7 @@ describe("Notes", () => {
             .build();
 
         const response = await client.notes.createNoteAddendum("id", {
-            externalId: undefined,
-            data: {
-                PATIENT_NAME: undefined,
-                ICD10: undefined,
-                SUBJECTIVE: undefined,
-                OBJECTIVE: undefined,
-                ASSESSMENT: undefined,
-                TEXT: undefined,
-                PLAN: undefined,
-                DIAGNOSIS: undefined,
-                INTERVENTION: undefined,
-                MONITORING_AND_EVALUATION: undefined,
-                TELEHEALTH_DISCLAIMER: undefined,
-                TOTAL_TIME_SPENT: undefined,
-                TIME_SPENT_MINUTES: undefined,
-                THERAPY_TIME_SPENT_MINUTES: undefined,
-                PRESCRIPTION_WRITTEN: undefined,
-                MEDICATION_MANAGED: undefined,
-                DATE_RANGE_START: undefined,
-                DATE_RANGE_END: undefined,
-                MONITORING_DATA: undefined,
-            },
+            data: {},
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
                 providerId: "providerId",

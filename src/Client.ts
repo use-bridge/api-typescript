@@ -27,8 +27,6 @@ export declare namespace BridgeApiClient {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -40,8 +38,6 @@ export declare namespace BridgeApiClient {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -72,11 +68,10 @@ export class BridgeApiClient {
             ..._options,
             headers: mergeHeaders(
                 {
-                    "X-Request-ID": _options?.xRequestId,
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@usebridge/api",
-                    "X-Fern-SDK-Version": "0.0.21",
-                    "User-Agent": "@usebridge/api/0.0.21",
+                    "X-Fern-SDK-Version": "0.0.24",
+                    "User-Agent": "@usebridge/api/0.0.24",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },

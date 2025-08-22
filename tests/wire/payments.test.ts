@@ -8,7 +8,7 @@ import { BridgeApiClient } from "../../src/Client";
 describe("Payments", () => {
     test("listServicePayments", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -45,7 +45,7 @@ describe("Payments", () => {
 
     test("listPayments", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -76,15 +76,13 @@ describe("Payments", () => {
 
     test("createPayment", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             serviceId: "serviceId",
             paidAt: "2024-01-15T09:30:00Z",
             transactionId: "transactionId",
             type: "PATIENT",
             amount: 1,
-            externalId: undefined,
-            memo: undefined,
         };
         const rawResponseBody = {
             id: "id",
@@ -112,8 +110,6 @@ describe("Payments", () => {
             transactionId: "transactionId",
             type: "PATIENT",
             amount: 1,
-            externalId: undefined,
-            memo: undefined,
         });
         expect(response).toEqual({
             id: "id",
@@ -130,7 +126,7 @@ describe("Payments", () => {
 
     test("getPayment", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",

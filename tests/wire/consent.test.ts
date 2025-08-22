@@ -8,7 +8,7 @@ import { BridgeApiClient } from "../../src/Client";
 describe("Consent", () => {
     test("listPatientConsents", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -41,7 +41,7 @@ describe("Consent", () => {
 
     test("createPatientConsent", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             type: "ASSIGNMENT_OF_BENEFITS",
             version: "version",

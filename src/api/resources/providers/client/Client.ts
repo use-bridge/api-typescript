@@ -14,8 +14,6 @@ export declare namespace Providers {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -27,8 +25,6 @@ export declare namespace Providers {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -77,10 +73,7 @@ export class Providers {
 
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -146,10 +139,7 @@ export class Providers {
     ): Promise<core.WithRawResponse<BridgeApi.ProviderGetV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -201,11 +191,7 @@ export class Providers {
      * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.providers.updateProvider("id", {
-     *         externalId: undefined,
-     *         providerEligibilityEnabled: undefined,
-     *         serviceEligibilityEnabled: undefined
-     *     })
+     *     await client.providers.updateProvider("id", {})
      */
     public updateProvider(
         id: string,
@@ -222,10 +208,7 @@ export class Providers {
     ): Promise<core.WithRawResponse<BridgeApi.ProviderUpdateV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

@@ -6,127 +6,9 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../src/Client";
 
 describe("Policies", () => {
-    test("createPolicy", async () => {
-        const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            person: {
-                firstName: "firstName",
-                middleName: undefined,
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
-            state: "AL",
-            payerId: "payerId",
-            memberId: undefined,
-            dateOfService: undefined,
-        };
-        const rawResponseBody = {
-            id: "id",
-            payerId: "payerId",
-            planName: "planName",
-            payer: { id: "id", code: "code", name: "name", memberId: true, hint: "hint" },
-            person: {
-                firstName: "firstName",
-                middleName: "middleName",
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
-            status: "PENDING",
-            errors: [
-                { code: "code", message: "message" },
-                { code: "code", message: "message" },
-            ],
-            memberId: "memberId",
-            policyHolder: {
-                firstName: "firstName",
-                middleName: "middleName",
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
-            relationship: "SELF",
-            state: "AL",
-            patientId: "patientId",
-            latest: {
-                id: "id",
-                plan: "plan",
-                validatedAt: "2024-01-15T09:30:00Z",
-                effectiveFrom: "2024-01-15T09:30:00Z",
-                effectiveTo: "2024-01-15T09:30:00Z",
-            },
-        };
-        server
-            .mockEndpoint()
-            .post("/api/policies")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.policies.createPolicy({
-            person: {
-                firstName: "firstName",
-                middleName: undefined,
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
-            state: "AL",
-            payerId: "payerId",
-            memberId: undefined,
-            dateOfService: undefined,
-        });
-        expect(response).toEqual({
-            id: "id",
-            payerId: "payerId",
-            planName: "planName",
-            payer: {
-                id: "id",
-                code: "code",
-                name: "name",
-                memberId: true,
-                hint: "hint",
-            },
-            person: {
-                firstName: "firstName",
-                middleName: "middleName",
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
-            status: "PENDING",
-            errors: [
-                {
-                    code: "code",
-                    message: "message",
-                },
-                {
-                    code: "code",
-                    message: "message",
-                },
-            ],
-            memberId: "memberId",
-            policyHolder: {
-                firstName: "firstName",
-                middleName: "middleName",
-                lastName: "lastName",
-                dateOfBirth: "2024-01-15T09:30:00Z",
-            },
-            relationship: "SELF",
-            state: "AL",
-            patientId: "patientId",
-            latest: {
-                id: "id",
-                plan: "plan",
-                validatedAt: "2024-01-15T09:30:00Z",
-                effectiveFrom: "2024-01-15T09:30:00Z",
-                effectiveTo: "2024-01-15T09:30:00Z",
-            },
-        });
-    });
-
     test("getPolicy", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -215,7 +97,7 @@ describe("Policies", () => {
 
     test("revalidatePolicy", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         server.mockEndpoint().post("/api/policies/id/revalidate").respondWith().statusCode(200).build();
 

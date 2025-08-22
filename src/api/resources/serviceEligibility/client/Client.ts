@@ -15,8 +15,6 @@ export declare namespace ServiceEligibility {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -28,8 +26,6 @@ export declare namespace ServiceEligibility {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -47,89 +43,6 @@ export class ServiceEligibility {
 
     public get v2(): V2 {
         return (this._v2 ??= new V2(this._options));
-    }
-
-    /**
-     * Runs a synchronous "Hard Eligibility" check, returning when complete. Deprecated in favor of async V2 API
-     *
-     * @param {BridgeApi.ServiceEligibilityCreateV1Request} request
-     * @param {ServiceEligibility.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.serviceEligibility.createServiceEligibility({
-     *         serviceTypeId: "serviceTypeId",
-     *         dateOfService: "2024-01-15T09:30:00Z",
-     *         policyIds: ["policyIds", "policyIds"],
-     *         state: "AL",
-     *         clinicalInfo: undefined
-     *     })
-     */
-    public createServiceEligibility(
-        request: BridgeApi.ServiceEligibilityCreateV1Request,
-        requestOptions?: ServiceEligibility.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.ServiceEligibilityCreateV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__createServiceEligibility(request, requestOptions));
-    }
-
-    private async __createServiceEligibility(
-        request: BridgeApi.ServiceEligibilityCreateV1Request,
-        requestOptions?: ServiceEligibility.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.ServiceEligibilityCreateV1Response>> {
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                "/api/service-eligibility",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as BridgeApi.ServiceEligibilityCreateV1Response,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/service-eligibility.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**
@@ -152,10 +65,7 @@ export class ServiceEligibility {
     ): Promise<core.WithRawResponse<BridgeApi.ServiceEligibilityGetV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

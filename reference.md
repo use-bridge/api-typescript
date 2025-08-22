@@ -283,28 +283,7 @@ await client.events.getEvent("id");
 ```typescript
 await client.notes.createNote({
     serviceId: "serviceId",
-    externalId: undefined,
-    data: {
-        PATIENT_NAME: undefined,
-        ICD10: undefined,
-        SUBJECTIVE: undefined,
-        OBJECTIVE: undefined,
-        ASSESSMENT: undefined,
-        TEXT: undefined,
-        PLAN: undefined,
-        DIAGNOSIS: undefined,
-        INTERVENTION: undefined,
-        MONITORING_AND_EVALUATION: undefined,
-        TELEHEALTH_DISCLAIMER: undefined,
-        TOTAL_TIME_SPENT: undefined,
-        TIME_SPENT_MINUTES: undefined,
-        THERAPY_TIME_SPENT_MINUTES: undefined,
-        PRESCRIPTION_WRITTEN: undefined,
-        MEDICATION_MANAGED: undefined,
-        DATE_RANGE_START: undefined,
-        DATE_RANGE_END: undefined,
-        MONITORING_DATA: undefined,
-    },
+    data: {},
     signature: {
         timestamp: "2024-01-15T09:30:00Z",
         providerId: "providerId",
@@ -462,28 +441,7 @@ await client.notes.listNoteAddenda("id");
 
 ```typescript
 await client.notes.createNoteAddendum("id", {
-    externalId: undefined,
-    data: {
-        PATIENT_NAME: undefined,
-        ICD10: undefined,
-        SUBJECTIVE: undefined,
-        OBJECTIVE: undefined,
-        ASSESSMENT: undefined,
-        TEXT: undefined,
-        PLAN: undefined,
-        DIAGNOSIS: undefined,
-        INTERVENTION: undefined,
-        MONITORING_AND_EVALUATION: undefined,
-        TELEHEALTH_DISCLAIMER: undefined,
-        TOTAL_TIME_SPENT: undefined,
-        TIME_SPENT_MINUTES: undefined,
-        THERAPY_TIME_SPENT_MINUTES: undefined,
-        PRESCRIPTION_WRITTEN: undefined,
-        MEDICATION_MANAGED: undefined,
-        DATE_RANGE_START: undefined,
-        DATE_RANGE_END: undefined,
-        MONITORING_DATA: undefined,
-    },
+    data: {},
     signature: {
         timestamp: "2024-01-15T09:30:00Z",
         providerId: "providerId",
@@ -633,224 +591,6 @@ await client.patients.listPatients();
 </dl>
 </details>
 
-<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">createPatient</a>({ ...params }) -> BridgeApi.PatientCreateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deprecated, see [the V2 endpoint](/api/api-reference/patients/v-2/create-patient).
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.patients.createPatient({
-    externalId: undefined,
-    firstName: "firstName",
-    lastName: "lastName",
-    email: "email",
-    dateOfBirth: "2024-01-15T09:30:00Z",
-    phone: undefined,
-    address: undefined,
-    coverage: undefined,
-    metadata: undefined,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PatientCreateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Patients.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">getPatient</a>(id) -> BridgeApi.PatientGetV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deprecated, see [the V2 endpoint](/api/api-reference/patients/v-2/get-patient).
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.patients.getPatient("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Patients.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">updatePatient</a>(id, { ...params }) -> BridgeApi.PatientUpdateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Deprecated, see [the V2 endpoint](/api/api-reference/patients/v-2/update-patient).
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.patients.updatePatient("id", {
-    patientToken: undefined,
-    externalId: undefined,
-    coverage: undefined,
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    dateOfBirth: undefined,
-    phone: undefined,
-    address: undefined,
-    metadata: undefined,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PatientUpdateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Patients.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">revalidatePatient</a>(id) -> void</code></summary>
 <dl>
 <dd>
@@ -915,15 +655,10 @@ await client.patients.revalidatePatient("id");
 
 ```typescript
 await client.patients.v2.createPatient({
-    externalId: undefined,
     firstName: "firstName",
     lastName: "lastName",
     email: "email",
     dateOfBirth: "2024-01-15T09:30:00Z",
-    phone: undefined,
-    address: undefined,
-    coverage: undefined,
-    metadata: undefined,
 });
 ```
 
@@ -1035,18 +770,7 @@ await client.patients.v2.getPatient("id");
 <dd>
 
 ```typescript
-await client.patients.v2.updatePatient("id", {
-    patientToken: undefined,
-    externalId: undefined,
-    coverage: undefined,
-    firstName: undefined,
-    lastName: undefined,
-    email: undefined,
-    dateOfBirth: undefined,
-    phone: undefined,
-    address: undefined,
-    metadata: undefined,
-});
+await client.patients.v2.updatePatient("id", {});
 ```
 
 </dd>
@@ -1090,69 +814,6 @@ await client.patients.v2.updatePatient("id", {
 </details>
 
 ## Payers
-
-<details><summary><code>client.payers.<a href="/src/api/resources/payers/client/Client.ts">listPayers</a>({ ...params }) -> BridgeApi.PayersListV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-This is deprecated in favor of [Payer Search](/api/api-reference/search/payer-search), it is highly recommended not to integrate with this API.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.payers.listPayers();
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PayersListV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Payers.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
 
 <details><summary><code>client.payers.<a href="/src/api/resources/payers/client/Client.ts">getPayer</a>(id) -> BridgeApi.PayerGetV1Response</code></summary>
 <dl>
@@ -1327,8 +988,6 @@ await client.payments.createPayment({
     transactionId: "transactionId",
     type: "PATIENT",
     amount: 1,
-    externalId: undefined,
-    memo: undefined,
 });
 ```
 
@@ -1413,80 +1072,6 @@ await client.payments.getPayment("id");
 </details>
 
 ## Policies
-
-<details><summary><code>client.policies.<a href="/src/api/resources/policies/client/Client.ts">createPolicy</a>({ ...params }) -> BridgeApi.PolicyCreateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a Policy, waits synchronously until the Payer resolves initial eligibility. Never returns the `PENDING` status. Request may timeout after 60 seconds. This has been deprecated infavor of async flows (see [the V2 endpoint](/api/api-reference/policies/v-2/create-policy)).
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.policies.createPolicy({
-    person: {
-        firstName: "firstName",
-        middleName: undefined,
-        lastName: "lastName",
-        dateOfBirth: "2024-01-15T09:30:00Z",
-    },
-    state: "AL",
-    payerId: "payerId",
-    memberId: undefined,
-    dateOfService: undefined,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PolicyCreateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Policies.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
 
 <details><summary><code>client.policies.<a href="/src/api/resources/policies/client/Client.ts">getPolicy</a>(id) -> BridgeApi.PolicyGetV1Response</code></summary>
 <dl>
@@ -1617,14 +1202,11 @@ Creates a Policy, returning immediately with status of `PENDING`. Use the Get Po
 await client.policies.v2.createPolicy({
     person: {
         firstName: "firstName",
-        middleName: undefined,
         lastName: "lastName",
         dateOfBirth: "2024-01-15T09:30:00Z",
     },
     state: "AL",
     payerId: "payerId",
-    memberId: undefined,
-    dateOfService: undefined,
 });
 ```
 
@@ -1679,12 +1261,7 @@ await client.providerEligibility.createProviderEligibility({
     dateOfService: "2024-01-15T09:30:00Z",
     serviceTypeId: "serviceTypeId",
     location: {
-        line1: undefined,
-        line2: undefined,
-        city: undefined,
         state: "AL",
-        postalCode: undefined,
-        country: undefined,
     },
     payerId: "payerId",
 });
@@ -1881,11 +1458,7 @@ await client.providers.getProvider("id");
 <dd>
 
 ```typescript
-await client.providers.updateProvider("id", {
-    externalId: undefined,
-    providerEligibilityEnabled: undefined,
-    serviceEligibilityEnabled: undefined,
-});
+await client.providers.updateProvider("id", {});
 ```
 
 </dd>
@@ -1983,75 +1556,6 @@ await client.search.payerSearch({
 
 ## ServiceEligibility
 
-<details><summary><code>client.serviceEligibility.<a href="/src/api/resources/serviceEligibility/client/Client.ts">createServiceEligibility</a>({ ...params }) -> BridgeApi.ServiceEligibilityCreateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Runs a synchronous "Hard Eligibility" check, returning when complete. Deprecated in favor of async V2 API
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.serviceEligibility.createServiceEligibility({
-    serviceTypeId: "serviceTypeId",
-    dateOfService: "2024-01-15T09:30:00Z",
-    policyIds: ["policyIds", "policyIds"],
-    state: "AL",
-    clinicalInfo: undefined,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.ServiceEligibilityCreateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `ServiceEligibility.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.serviceEligibility.<a href="/src/api/resources/serviceEligibility/client/Client.ts">getServiceEligibility</a>(id) -> BridgeApi.ServiceEligibilityGetV1Response</code></summary>
 <dl>
 <dd>
@@ -2135,7 +1639,6 @@ await client.serviceEligibility.v2.createServiceEligibility({
     dateOfService: "2024-01-15T09:30:00Z",
     policyIds: ["policyIds", "policyIds"],
     state: "AL",
-    clinicalInfo: undefined,
 });
 ```
 
@@ -2271,135 +1774,6 @@ await client.serviceTypes.getServiceType("id");
 
 ## Services
 
-<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">listServices</a>({ ...params }) -> BridgeApi.ServicesListV1Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.services.listServices();
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.ServicesListV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Services.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">createService</a>({ ...params }) -> BridgeApi.ServiceCreateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Creates a new `Service`, waits for the `ServiceEligibility` to resolve synchronously. Request may timeout after 60 seconds, deprecated in favor of async API.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.services.createService({
-    patientId: "patientId",
-    dateOfService: "2024-01-15T09:30:00Z",
-    serviceTypeId: "serviceTypeId",
-    externalId: undefined,
-    location: {
-        line1: undefined,
-        line2: undefined,
-        city: undefined,
-        state: "AL",
-        postalCode: undefined,
-        country: undefined,
-    },
-    providerId: "providerId",
-    serviceEligibility: undefined,
-    priorAuthorizationNumber: undefined,
-    metadata: undefined,
-    responsibleParty: undefined,
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.ServiceCreateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Services.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">getService</a>(id) -> BridgeApi.ServiceGetV1Response</code></summary>
 <dl>
 <dd>
@@ -2476,17 +1850,7 @@ await client.services.getService("id");
 <dd>
 
 ```typescript
-await client.services.updateService("id", {
-    patientToken: undefined,
-    dateOfService: undefined,
-    serviceTypeId: undefined,
-    location: undefined,
-    externalId: undefined,
-    providerId: undefined,
-    priorAuthorizationNumber: undefined,
-    responsibleParty: undefined,
-    metadata: undefined,
-});
+await client.services.updateService("id", {});
 ```
 
 </dd>
@@ -2851,20 +2215,10 @@ await client.services.v2.createService({
     patientId: "patientId",
     dateOfService: "2024-01-15T09:30:00Z",
     serviceTypeId: "serviceTypeId",
-    externalId: undefined,
     location: {
-        line1: undefined,
-        line2: undefined,
-        city: undefined,
         state: "AL",
-        postalCode: undefined,
-        country: undefined,
     },
     providerId: "providerId",
-    serviceEligibility: undefined,
-    priorAuthorizationNumber: undefined,
-    metadata: undefined,
-    responsibleParty: undefined,
 });
 ```
 

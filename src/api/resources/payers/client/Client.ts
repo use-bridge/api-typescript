@@ -14,8 +14,6 @@ export declare namespace Payers {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -27,8 +25,6 @@ export declare namespace Payers {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -41,87 +37,6 @@ export class Payers {
 
     constructor(_options: Payers.Options = {}) {
         this._options = _options;
-    }
-
-    /**
-     * This is deprecated in favor of [Payer Search](/api/api-reference/search/payer-search), it is highly recommended not to integrate with this API.
-     *
-     * @param {BridgeApi.PayersListV1Request} request
-     * @param {Payers.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.payers.listPayers()
-     */
-    public listPayers(
-        request: BridgeApi.PayersListV1Request = {},
-        requestOptions?: Payers.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.PayersListV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__listPayers(request, requestOptions));
-    }
-
-    private async __listPayers(
-        request: BridgeApi.PayersListV1Request = {},
-        requestOptions?: Payers.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.PayersListV1Response>> {
-        const { page, limit } = request;
-        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (page != null) {
-            _queryParams["page"] = page.toString();
-        }
-
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                "/api/payers",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as BridgeApi.PayersListV1Response, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling GET /api/payers.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**
@@ -144,10 +59,7 @@ export class Payers {
     ): Promise<core.WithRawResponse<BridgeApi.PayerGetV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

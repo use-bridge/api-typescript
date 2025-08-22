@@ -8,7 +8,7 @@ import { BridgeApiClient } from "../../src/Client";
 describe("Events", () => {
     test("listEvents", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             apiVersion: "apiVersion",
@@ -41,7 +41,7 @@ describe("Events", () => {
 
     test("getEvent", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             apiVersion: "apiVersion",

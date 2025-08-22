@@ -33,8 +33,6 @@ export * from "./consent/client/requests/index.js";
 export * from "./events/client/requests/index.js";
 export * from "./notes/client/requests/index.js";
 export * from "./patients/client/requests/index.js";
-export * from "./payers/client/requests/index.js";
 export * from "./payments/client/requests/index.js";
 export * from "./providers/client/requests/index.js";
 export * from "./serviceTypes/client/requests/index.js";
-export * from "./services/client/requests/index.js";

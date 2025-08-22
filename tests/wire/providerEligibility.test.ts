@@ -8,18 +8,11 @@ import { BridgeApiClient } from "../../src/Client";
 describe("ProviderEligibility", () => {
     test("createProviderEligibility", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
             dateOfService: "2024-01-15T09:30:00Z",
             serviceTypeId: "serviceTypeId",
-            location: {
-                line1: undefined,
-                line2: undefined,
-                city: undefined,
-                state: "AL",
-                postalCode: undefined,
-                country: undefined,
-            },
+            location: { state: "AL" },
             payerId: "payerId",
         };
         const rawResponseBody = {
@@ -71,12 +64,7 @@ describe("ProviderEligibility", () => {
             dateOfService: "2024-01-15T09:30:00Z",
             serviceTypeId: "serviceTypeId",
             location: {
-                line1: undefined,
-                line2: undefined,
-                city: undefined,
                 state: "AL",
-                postalCode: undefined,
-                country: undefined,
             },
             payerId: "payerId",
         });
@@ -120,7 +108,7 @@ describe("ProviderEligibility", () => {
 
     test("getProviderEligibility", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",

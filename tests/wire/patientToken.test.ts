@@ -8,7 +8,7 @@ import { BridgeApiClient } from "../../src/Client";
 describe("PatientToken", () => {
     test("createPatientToken", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { patientId: "patientId" };
         const rawResponseBody = { patientId: "patientId", token: "token", expiresAt: "2024-01-15T09:30:00Z" };
         server

@@ -4,21 +4,17 @@
 
 import { mockServerPool } from "../../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../../src/Client";
+import * as BridgeApi from "../../../src/api/index";
 
 describe("V2", () => {
     test("createPatient", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
-            externalId: undefined,
             firstName: "firstName",
             lastName: "lastName",
             email: "email",
             dateOfBirth: "2024-01-15T09:30:00Z",
-            phone: undefined,
-            address: undefined,
-            coverage: undefined,
-            metadata: undefined,
         };
         const rawResponseBody = {
             id: "id",
@@ -56,15 +52,10 @@ describe("V2", () => {
             .build();
 
         const response = await client.patients.v2.createPatient({
-            externalId: undefined,
             firstName: "firstName",
             lastName: "lastName",
             email: "email",
             dateOfBirth: "2024-01-15T09:30:00Z",
-            phone: undefined,
-            address: undefined,
-            coverage: undefined,
-            metadata: undefined,
         });
         expect(response).toEqual({
             id: "id",
@@ -109,7 +100,7 @@ describe("V2", () => {
 
     test("getPatient", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -189,19 +180,8 @@ describe("V2", () => {
 
     test("updatePatient", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            patientToken: undefined,
-            externalId: undefined,
-            coverage: undefined,
-            firstName: undefined,
-            lastName: undefined,
-            email: undefined,
-            dateOfBirth: undefined,
-            phone: undefined,
-            address: undefined,
-            metadata: undefined,
-        };
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
         const rawResponseBody = {
             id: "id",
             patientToken: "patientToken",
@@ -237,18 +217,7 @@ describe("V2", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.patients.v2.updatePatient("id", {
-            patientToken: undefined,
-            externalId: undefined,
-            coverage: undefined,
-            firstName: undefined,
-            lastName: undefined,
-            email: undefined,
-            dateOfBirth: undefined,
-            phone: undefined,
-            address: undefined,
-            metadata: undefined,
-        });
+        const response = await client.patients.v2.updatePatient("id", {});
         expect(response).toEqual({
             id: "id",
             patientToken: "patientToken",

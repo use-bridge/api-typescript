@@ -6,26 +6,9 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../src/Client";
 
 describe("Payers", () => {
-    test("listPayers", async () => {
-        const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
-
-        const rawResponseBody = { id: "id", code: "code", name: "name", memberId: true, hint: "hint" };
-        server.mockEndpoint().get("/api/payers").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
-
-        const response = await client.payers.listPayers();
-        expect(response).toEqual({
-            id: "id",
-            code: "code",
-            name: "name",
-            memberId: true,
-            hint: "hint",
-        });
-    });
-
     test("getPayer", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = { id: "id", code: "code", name: "name", memberId: true, hint: "hint" };
         server.mockEndpoint().get("/api/payers/id").respondWith().statusCode(200).jsonBody(rawResponseBody).build();

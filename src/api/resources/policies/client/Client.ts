@@ -15,8 +15,6 @@ export declare namespace Policies {
         /** Specify a custom URL to connect the client to. */
         baseUrl?: core.Supplier<string>;
         apiKey?: core.Supplier<string>;
-        /** Override the X-Request-ID header */
-        xRequestId?: core.Supplier<string | undefined>;
         /** Additional headers to include in requests. */
         headers?: Record<string, string | core.Supplier<string | undefined> | undefined>;
     }
@@ -28,8 +26,6 @@ export declare namespace Policies {
         maxRetries?: number;
         /** A hook to abort the request. */
         abortSignal?: AbortSignal;
-        /** Override the X-Request-ID header */
-        xRequestId?: string | undefined;
         /** Additional query string parameters to include in the request. */
         queryParams?: Record<string, unknown>;
         /** Additional headers to include in the request. */
@@ -47,91 +43,6 @@ export class Policies {
 
     public get v2(): V2 {
         return (this._v2 ??= new V2(this._options));
-    }
-
-    /**
-     * Creates a Policy, waits synchronously until the Payer resolves initial eligibility. Never returns the `PENDING` status. Request may timeout after 60 seconds. This has been deprecated infavor of async flows (see [the V2 endpoint](/api/api-reference/policies/v-2/create-policy)).
-     *
-     * @param {BridgeApi.PolicyCreateV1Request} request
-     * @param {Policies.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.policies.createPolicy({
-     *         person: {
-     *             firstName: "firstName",
-     *             middleName: undefined,
-     *             lastName: "lastName",
-     *             dateOfBirth: "2024-01-15T09:30:00Z"
-     *         },
-     *         state: "AL",
-     *         payerId: "payerId",
-     *         memberId: undefined,
-     *         dateOfService: undefined
-     *     })
-     */
-    public createPolicy(
-        request: BridgeApi.PolicyCreateV1Request,
-        requestOptions?: Policies.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.PolicyCreateV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__createPolicy(request, requestOptions));
-    }
-
-    private async __createPolicy(
-        request: BridgeApi.PolicyCreateV1Request,
-        requestOptions?: Policies.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.PolicyCreateV1Response>> {
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                "/api/policies",
-            ),
-            method: "POST",
-            headers: _headers,
-            contentType: "application/json",
-            queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as BridgeApi.PolicyCreateV1Response, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/policies.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**
@@ -154,10 +65,7 @@ export class Policies {
     ): Promise<core.WithRawResponse<BridgeApi.PolicyGetV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({
@@ -220,10 +128,7 @@ export class Policies {
     ): Promise<core.WithRawResponse<void>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
-            mergeOnlyDefinedHeaders({
-                "X-Request-ID": requestOptions?.xRequestId,
-                ...(await this._getCustomAuthorizationHeaders()),
-            }),
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
             requestOptions?.headers,
         );
         const _response = await core.fetcher({

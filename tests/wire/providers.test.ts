@@ -4,11 +4,12 @@
 
 import { mockServerPool } from "../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../src/Client";
+import * as BridgeApi from "../../src/api/index";
 
 describe("Providers", () => {
     test("listProviders", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -35,7 +36,7 @@ describe("Providers", () => {
 
     test("getProvider", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
             id: "id",
@@ -62,12 +63,8 @@ describe("Providers", () => {
 
     test("updateProvider", async () => {
         const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", xRequestId: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            externalId: undefined,
-            providerEligibilityEnabled: undefined,
-            serviceEligibilityEnabled: undefined,
-        };
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {};
         const rawResponseBody = {
             id: "id",
             name: "name",
@@ -86,11 +83,7 @@ describe("Providers", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.providers.updateProvider("id", {
-            externalId: undefined,
-            providerEligibilityEnabled: undefined,
-            serviceEligibilityEnabled: undefined,
-        });
+        const response = await client.providers.updateProvider("id", {});
         expect(response).toEqual({
             id: "id",
             name: "name",
