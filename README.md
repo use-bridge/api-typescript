@@ -22,7 +22,7 @@ Instantiate and use the client with the following:
 ```typescript
 import { BridgeApiClient } from "@usebridge/api";
 
-const client = new BridgeApiClient({ apiKey: "YOUR_API_KEY", xRequestId: "YOUR_X_REQUEST_ID" });
+const client = new BridgeApiClient({ apiKey: "YOUR_API_KEY" });
 await client.consent.createPatientConsent("id", {
     type: "ASSIGNMENT_OF_BENEFITS",
     version: "version",
