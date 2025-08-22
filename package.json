@@ -2,7 +2,7 @@
     "name": "@usebridge/api",
     "version": "0.1.0",
     "private": false,
-    "repository": "github:use-bridge/api",
+    "repository": "github:use-bridge/api-typescript",
     "type": "commonjs",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.mjs",
