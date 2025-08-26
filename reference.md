@@ -591,6 +591,62 @@ await client.patients.listPatients();
 </dl>
 </details>
 
+<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">updatePatient</a>(id, { ...params }) -> BridgeApi.PatientUpdateV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.patients.updatePatient("id", {});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.PatientUpdateV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Patients.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">revalidatePatient</a>(id) -> void</code></summary>
 <dl>
 <dd>
@@ -739,62 +795,6 @@ await client.patients.v2.getPatient("id");
 <dd>
 
 **id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V2.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.patients.v2.<a href="/src/api/resources/patients/resources/v2/client/Client.ts">updatePatient</a>(id, { ...params }) -> BridgeApi.PatientUpdateV2Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.patients.v2.updatePatient("id", {});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PatientUpdateV2Request`
 
 </dd>
 </dl>
@@ -1774,6 +1774,110 @@ await client.serviceTypes.getServiceType("id");
 
 ## Services
 
+<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">listServices</a>({ ...params }) -> BridgeApi.ServicesListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.services.listServices();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.ServicesListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Services.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">createService</a>({ ...params }) -> BridgeApi.ServiceCreateV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.services.createService({
+    patientId: "patientId",
+    dateOfService: "2024-01-15T09:30:00Z",
+    serviceTypeId: "serviceTypeId",
+    location: {
+        state: "AL",
+    },
+    providerId: "providerId",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.ServiceCreateV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Services.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">getService</a>(id) -> BridgeApi.ServiceGetV1Response</code></summary>
 <dl>
 <dd>
@@ -2134,54 +2238,6 @@ await client.services.deleteServiceNote("id");
 </details>
 
 ## Services V2
-
-<details><summary><code>client.services.v2.<a href="/src/api/resources/services/resources/v2/client/Client.ts">listServices</a>({ ...params }) -> BridgeApi.ServicesListV2Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.services.v2.listServices();
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.services.ServicesListV2Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `V2.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
 
 <details><summary><code>client.services.v2.<a href="/src/api/resources/services/resources/v2/client/Client.ts">createService</a>({ ...params }) -> BridgeApi.ServiceCreateV2Response</code></summary>
 <dl>

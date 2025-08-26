@@ -5,7 +5,6 @@
 import * as environments from "../../../../../../environments.js";
 import * as core from "../../../../../../core/index.js";
 import * as BridgeApi from "../../../../../index.js";
-import { toJson } from "../../../../../../core/json.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import * as errors from "../../../../../../errors/index.js";
 
@@ -38,113 +37,6 @@ export class V2 {
 
     constructor(_options: V2.Options = {}) {
         this._options = _options;
-    }
-
-    /**
-     * @param {BridgeApi.services.ServicesListV2Request} request
-     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.services.v2.listServices()
-     */
-    public listServices(
-        request: BridgeApi.services.ServicesListV2Request = {},
-        requestOptions?: V2.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.services.ServicesListV2Response> {
-        return core.HttpResponsePromise.fromPromise(this.__listServices(request, requestOptions));
-    }
-
-    private async __listServices(
-        request: BridgeApi.services.ServicesListV2Request = {},
-        requestOptions?: V2.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.services.ServicesListV2Response>> {
-        const {
-            "filter.serviceTypeId": filterServiceTypeId,
-            "filter.patientId": filterPatientId,
-            "filter.status": filterStatus,
-            "filter.providerId": filterProviderId,
-            "order.createdAt": orderCreatedAt,
-            page,
-            limit,
-        } = request;
-        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (filterServiceTypeId != null) {
-            _queryParams["filter.serviceTypeId"] = filterServiceTypeId;
-        }
-
-        if (filterPatientId != null) {
-            _queryParams["filter.patientId"] = filterPatientId;
-        }
-
-        if (filterStatus != null) {
-            _queryParams["filter.status"] = toJson(filterStatus);
-        }
-
-        if (filterProviderId != null) {
-            _queryParams["filter.providerId"] = toJson(filterProviderId);
-        }
-
-        if (orderCreatedAt != null) {
-            _queryParams["order.createdAt"] = orderCreatedAt;
-        }
-
-        if (page != null) {
-            _queryParams["page"] = page.toString();
-        }
-
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                "/api/services/v2",
-            ),
-            method: "GET",
-            headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return {
-                data: _response.body as BridgeApi.services.ServicesListV2Response,
-                rawResponse: _response.rawResponse,
-            };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling GET /api/services/v2.");
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
     }
 
     /**

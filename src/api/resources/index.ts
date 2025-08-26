@@ -36,3 +36,4 @@ export * from "./patients/client/requests/index.js";
 export * from "./payments/client/requests/index.js";
 export * from "./providers/client/requests/index.js";
 export * from "./serviceTypes/client/requests/index.js";
+export * from "./services/client/requests/index.js";

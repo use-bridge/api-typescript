@@ -123,6 +123,78 @@ export class Patients {
 
     /**
      * @param {string} id
+     * @param {BridgeApi.PatientUpdateV1Request} request
+     * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.patients.updatePatient("id", {})
+     */
+    public updatePatient(
+        id: string,
+        request: BridgeApi.PatientUpdateV1Request,
+        requestOptions?: Patients.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.PatientUpdateV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__updatePatient(id, request, requestOptions));
+    }
+
+    private async __updatePatient(
+        id: string,
+        request: BridgeApi.PatientUpdateV1Request,
+        requestOptions?: Patients.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.PatientUpdateV1Response>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/patients/${encodeURIComponent(id)}`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return { data: _response.body as BridgeApi.PatientUpdateV1Response, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/patients/{id}.");
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * @param {string} id
      * @param {Patients.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example

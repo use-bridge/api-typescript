@@ -4,7 +4,6 @@
 
 import { mockServerPool } from "../../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../../src/Client";
-import * as BridgeApi from "../../../src/api/index";
 
 describe("V2", () => {
     test("createPatient", async () => {
@@ -137,87 +136,6 @@ describe("V2", () => {
             .build();
 
         const response = await client.patients.v2.getPatient("id");
-        expect(response).toEqual({
-            id: "id",
-            patientToken: "patientToken",
-            createdAt: "2024-01-15T09:30:00Z",
-            externalId: "externalId",
-            coverage: [
-                {
-                    id: "id",
-                    rank: 1,
-                    policyId: "policyId",
-                },
-                {
-                    id: "id",
-                    rank: 1,
-                    policyId: "policyId",
-                },
-            ],
-            firstName: "firstName",
-            lastName: "lastName",
-            dateOfBirth: "2024-01-15T09:30:00Z",
-            email: "email",
-            phone: "phone",
-            address: {
-                line1: "line1",
-                line2: "line2",
-                city: "city",
-                state: "AL",
-                postalCode: "postalCode",
-                country: "US",
-            },
-            metadata: {
-                exampleKey: "exampleKey",
-            },
-            account: {
-                status: "CURRENT",
-                balance: 1,
-            },
-            stripeId: "stripeId",
-        });
-    });
-
-    test("updatePatient", async () => {
-        const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = {};
-        const rawResponseBody = {
-            id: "id",
-            patientToken: "patientToken",
-            createdAt: "2024-01-15T09:30:00Z",
-            externalId: "externalId",
-            coverage: [
-                { id: "id", rank: 1, policyId: "policyId" },
-                { id: "id", rank: 1, policyId: "policyId" },
-            ],
-            firstName: "firstName",
-            lastName: "lastName",
-            dateOfBirth: "2024-01-15T09:30:00Z",
-            email: "email",
-            phone: "phone",
-            address: {
-                line1: "line1",
-                line2: "line2",
-                city: "city",
-                state: "AL",
-                postalCode: "postalCode",
-                country: "US",
-            },
-            metadata: { exampleKey: "exampleKey" },
-            account: { status: "CURRENT", balance: 1 },
-            stripeId: "stripeId",
-        };
-        server
-            .mockEndpoint()
-            .post("/api/patients/v2/id")
-            .jsonBody(rawRequestBody)
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.patients.v2.updatePatient("id", {});
         expect(response).toEqual({
             id: "id",
             patientToken: "patientToken",
