@@ -16,6 +16,7 @@ export interface NoteCreateV1RequestData {
     INTERVENTION?: string;
     MONITORING_AND_EVALUATION?: string;
     TELEHEALTH_DISCLAIMER?: string;
+    /** Written description of time spent. Example: '10min spent preparing, 20min spent in visit, 5min spent documenting' */
     TOTAL_TIME_SPENT?: string;
     TIME_SPENT_MINUTES?: number;
     THERAPY_TIME_SPENT_MINUTES?: number;

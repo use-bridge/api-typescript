@@ -5,9 +5,9 @@
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
 import * as BridgeApi from "../../../index.js";
-import { toJson } from "../../../../core/json.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as errors from "../../../../errors/index.js";
+import { toJson } from "../../../../core/json.js";
 import { V2 } from "../resources/v2/client/Client.js";
 
 export declare namespace Services {
@@ -44,6 +44,77 @@ export class Services {
 
     public get v2(): V2 {
         return (this._v2 ??= new V2(this._options));
+    }
+
+    public streamService(
+        id: string,
+        requestOptions?: Services.RequestOptions,
+    ): core.HttpResponsePromise<core.Stream<BridgeApi.ServiceStreamV1Response>> {
+        return core.HttpResponsePromise.fromPromise(this.__streamService(id, requestOptions));
+    }
+
+    private async __streamService(
+        id: string,
+        requestOptions?: Services.RequestOptions,
+    ): Promise<core.WithRawResponse<core.Stream<BridgeApi.ServiceStreamV1Response>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher<ReadableStream>({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/services/${encodeURIComponent(id)}/stream`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            responseType: "sse",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: new core.Stream({
+                    stream: _response.body,
+                    parse: (data) => data as any,
+                    signal: requestOptions?.abortSignal,
+                    eventShape: {
+                        type: "sse",
+                        streamTerminator: "[DONE]",
+                    },
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling GET /api/services/{id}/stream.");
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
     }
 
     /**
@@ -424,72 +495,6 @@ export class Services {
                 throw new errors.BridgeApiTimeoutError(
                     "Timeout exceeded when calling POST /api/services/{id}/revalidate.",
                 );
-            case "unknown":
-                throw new errors.BridgeApiError({
-                    message: _response.error.errorMessage,
-                    rawResponse: _response.rawResponse,
-                });
-        }
-    }
-
-    /**
-     * @param {string} id
-     * @param {Services.RequestOptions} requestOptions - Request-specific configuration.
-     *
-     * @example
-     *     await client.services.cancelService("id")
-     */
-    public cancelService(
-        id: string,
-        requestOptions?: Services.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.ServiceCancelV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__cancelService(id, requestOptions));
-    }
-
-    private async __cancelService(
-        id: string,
-        requestOptions?: Services.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.ServiceCancelV1Response>> {
-        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
-            this._options?.headers,
-            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
-            requestOptions?.headers,
-        );
-        const _response = await core.fetcher({
-            url: core.url.join(
-                (await core.Supplier.get(this._options.baseUrl)) ??
-                    (await core.Supplier.get(this._options.environment)) ??
-                    environments.BridgeApiEnvironment.Production,
-                `/api/services/${encodeURIComponent(id)}/cancel`,
-            ),
-            method: "POST",
-            headers: _headers,
-            queryParameters: requestOptions?.queryParams,
-            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
-            maxRetries: requestOptions?.maxRetries,
-            abortSignal: requestOptions?.abortSignal,
-        });
-        if (_response.ok) {
-            return { data: _response.body as BridgeApi.ServiceCancelV1Response, rawResponse: _response.rawResponse };
-        }
-
-        if (_response.error.reason === "status-code") {
-            throw new errors.BridgeApiError({
-                statusCode: _response.error.statusCode,
-                body: _response.error.body,
-                rawResponse: _response.rawResponse,
-            });
-        }
-
-        switch (_response.error.reason) {
-            case "non-json":
-                throw new errors.BridgeApiError({
-                    statusCode: _response.error.statusCode,
-                    body: _response.error.rawBody,
-                    rawResponse: _response.rawResponse,
-                });
-            case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/services/{id}/cancel.");
             case "unknown":
                 throw new errors.BridgeApiError({
                     message: _response.error.errorMessage,

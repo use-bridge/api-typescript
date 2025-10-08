@@ -45,6 +45,79 @@ export class ServiceEligibility {
         return (this._v2 ??= new V2(this._options));
     }
 
+    public streamServiceEligibility(
+        id: string,
+        requestOptions?: ServiceEligibility.RequestOptions,
+    ): core.HttpResponsePromise<core.Stream<BridgeApi.ServiceEligibilityStreamV1Response>> {
+        return core.HttpResponsePromise.fromPromise(this.__streamServiceEligibility(id, requestOptions));
+    }
+
+    private async __streamServiceEligibility(
+        id: string,
+        requestOptions?: ServiceEligibility.RequestOptions,
+    ): Promise<core.WithRawResponse<core.Stream<BridgeApi.ServiceEligibilityStreamV1Response>>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher<ReadableStream>({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/service-eligibility/${encodeURIComponent(id)}/stream`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            responseType: "sse",
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: new core.Stream({
+                    stream: _response.body,
+                    parse: (data) => data as any,
+                    signal: requestOptions?.abortSignal,
+                    eventShape: {
+                        type: "sse",
+                        streamTerminator: "[DONE]",
+                    },
+                }),
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError(
+                    "Timeout exceeded when calling GET /api/service-eligibility/{id}/stream.",
+                );
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
     /**
      * @param {string} id
      * @param {ServiceEligibility.RequestOptions} requestOptions - Request-specific configuration.

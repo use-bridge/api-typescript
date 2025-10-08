@@ -47,6 +47,7 @@ describe("V2", () => {
                 effectiveFrom: "2024-01-15T09:30:00Z",
                 effectiveTo: "2024-01-15T09:30:00Z",
             },
+            _token: "_token",
         };
         server
             .mockEndpoint()
@@ -111,6 +112,7 @@ describe("V2", () => {
                 effectiveFrom: "2024-01-15T09:30:00Z",
                 effectiveTo: "2024-01-15T09:30:00Z",
             },
+            _token: "_token",
         });
     });
 });

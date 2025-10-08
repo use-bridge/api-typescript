@@ -19,4 +19,6 @@ export interface ServiceEligibilityCreateV2Response {
     messages?: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2ResponseMessage[];
     clinicalInfo?: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2ResponseClinicalInfo;
     conditionalPatientResponsibilities?: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2ResponseConditionalPatientResponsibility[];
+    /** Temporary access token to retrieve this ServiceEligibility */
+    _token: string;
 }

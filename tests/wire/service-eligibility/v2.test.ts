@@ -107,6 +107,7 @@ describe("V2", () => {
                     },
                 },
             ],
+            _token: "_token",
         };
         server
             .mockEndpoint()
@@ -239,6 +240,7 @@ describe("V2", () => {
                     },
                 },
             ],
+            _token: "_token",
         });
     });
 });

@@ -121,6 +121,83 @@ export class V2 {
         }
     }
 
+    /**
+     * @param {string} id
+     * @param {BridgeApi.services.ServiceCancelV2Request} request
+     * @param {V2.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.services.v2.cancelService("id", {})
+     */
+    public cancelService(
+        id: string,
+        request: BridgeApi.services.ServiceCancelV2Request,
+        requestOptions?: V2.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.services.ServiceCancelV2Response> {
+        return core.HttpResponsePromise.fromPromise(this.__cancelService(id, request, requestOptions));
+    }
+
+    private async __cancelService(
+        id: string,
+        request: BridgeApi.services.ServiceCancelV2Request,
+        requestOptions?: V2.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.services.ServiceCancelV2Response>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/services/v2/${encodeURIComponent(id)}/cancel`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: requestOptions?.timeoutInSeconds != null ? requestOptions.timeoutInSeconds * 1000 : 60000,
+            maxRetries: requestOptions?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as BridgeApi.services.ServiceCancelV2Response,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError(
+                    "Timeout exceeded when calling POST /api/services/v2/{id}/cancel.",
+                );
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
     protected async _getCustomAuthorizationHeaders() {
         const apiKeyValue = (await core.Supplier.get(this._options.apiKey)) ?? process?.env["BRIDGE_API_KEY"];
         return { "X-API-Key": apiKeyValue };

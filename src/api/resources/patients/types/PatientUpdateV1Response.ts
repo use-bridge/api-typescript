@@ -19,5 +19,4 @@ export interface PatientUpdateV1Response {
     /** Customizable object of string to string key-value data */
     metadata?: BridgeApi.PatientUpdateV1ResponseMetadata;
     account?: BridgeApi.PatientUpdateV1ResponseAccount;
-    stripeId?: string;
 }

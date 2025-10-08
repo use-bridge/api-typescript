@@ -543,6 +543,57 @@ await client.patientToken.createPatientToken({
 
 ## Patients
 
+<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">streamPatient</a>(id) -> core.Stream<BridgeApi.PatientStreamV1Response></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.patients.streamPatient("id");
+for await (const item of response) {
+    console.log(item);
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Patients.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">listPatients</a>({ ...params }) -> BridgeApi.PatientsListV1Response</code></summary>
 <dl>
 <dd>
@@ -1169,6 +1220,57 @@ await client.policies.revalidatePolicy("id");
 </dl>
 </details>
 
+<details><summary><code>client.policies.<a href="/src/api/resources/policies/client/Client.ts">streamPolicy</a>(id) -> core.Stream<BridgeApi.PolicyStreamV1Response></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.policies.streamPolicy("id");
+for await (const item of response) {
+    console.log(item);
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Policies.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Policies V2
 
 <details><summary><code>client.policies.v2.<a href="/src/api/resources/policies/resources/v2/client/Client.ts">createPolicy</a>({ ...params }) -> BridgeApi.PolicyCreateV2Response</code></summary>
@@ -1556,6 +1658,57 @@ await client.search.payerSearch({
 
 ## ServiceEligibility
 
+<details><summary><code>client.serviceEligibility.<a href="/src/api/resources/serviceEligibility/client/Client.ts">streamServiceEligibility</a>(id) -> core.Stream<BridgeApi.ServiceEligibilityStreamV1Response></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.serviceEligibility.streamServiceEligibility("id");
+for await (const item of response) {
+    console.log(item);
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `ServiceEligibility.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.serviceEligibility.<a href="/src/api/resources/serviceEligibility/client/Client.ts">getServiceEligibility</a>(id) -> BridgeApi.ServiceEligibilityGetV1Response</code></summary>
 <dl>
 <dd>
@@ -1773,6 +1926,57 @@ await client.serviceTypes.getServiceType("id");
 </details>
 
 ## Services
+
+<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">streamService</a>(id) -> core.Stream<BridgeApi.ServiceStreamV1Response></code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+const response = await client.services.streamService("id");
+for await (const item of response) {
+    console.log(item);
+}
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Services.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
 
 <details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">listServices</a>({ ...params }) -> BridgeApi.ServicesListV1Response</code></summary>
 <dl>
@@ -2045,54 +2249,6 @@ await client.services.revalidateService("id");
 </dl>
 </details>
 
-<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">cancelService</a>(id) -> BridgeApi.ServiceCancelV1Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.services.cancelService("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Services.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">billService</a>(id) -> void</code></summary>
 <dl>
 <dd>
@@ -2292,6 +2448,62 @@ await client.services.v2.createService({
 <dd>
 
 **request:** `BridgeApi.ServiceCreateV2Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.services.v2.<a href="/src/api/resources/services/resources/v2/client/Client.ts">cancelService</a>(id, { ...params }) -> BridgeApi.ServiceCancelV2Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.services.v2.cancelService("id", {});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.ServiceCancelV2Request`
 
 </dd>
 </dl>

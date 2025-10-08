@@ -18,4 +18,6 @@ export interface PolicyCreateV2Response {
     state: BridgeApi.policies.PolicyCreateV2ResponseState;
     patientId?: string;
     latest?: BridgeApi.policies.PolicyCreateV2ResponseLatest;
+    /** Temporary access token to retrieve this Policy */
+    _token: string;
 }

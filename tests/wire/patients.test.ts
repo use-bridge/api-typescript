@@ -35,7 +35,6 @@ describe("Patients", () => {
             },
             metadata: { exampleKey: "exampleKey" },
             account: { status: "CURRENT", balance: 1 },
-            stripeId: "stripeId",
         };
         server.mockEndpoint().get("/api/patients").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
@@ -77,7 +76,6 @@ describe("Patients", () => {
                 status: "CURRENT",
                 balance: 1,
             },
-            stripeId: "stripeId",
         });
     });
 
@@ -109,7 +107,6 @@ describe("Patients", () => {
             },
             metadata: { exampleKey: "exampleKey" },
             account: { status: "CURRENT", balance: 1 },
-            stripeId: "stripeId",
         };
         server
             .mockEndpoint()
@@ -158,7 +155,6 @@ describe("Patients", () => {
                 status: "CURRENT",
                 balance: 1,
             },
-            stripeId: "stripeId",
         });
     });
 

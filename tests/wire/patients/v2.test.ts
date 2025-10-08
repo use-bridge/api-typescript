@@ -39,7 +39,6 @@ describe("V2", () => {
             },
             metadata: { exampleKey: "exampleKey" },
             account: { status: "CURRENT", balance: 1 },
-            stripeId: "stripeId",
         };
         server
             .mockEndpoint()
@@ -93,7 +92,6 @@ describe("V2", () => {
                 status: "CURRENT",
                 balance: 1,
             },
-            stripeId: "stripeId",
         });
     });
 
@@ -125,7 +123,6 @@ describe("V2", () => {
             },
             metadata: { exampleKey: "exampleKey" },
             account: { status: "CURRENT", balance: 1 },
-            stripeId: "stripeId",
         };
         server
             .mockEndpoint()
@@ -173,7 +170,6 @@ describe("V2", () => {
                 status: "CURRENT",
                 balance: 1,
             },
-            stripeId: "stripeId",
         });
     });
 });
