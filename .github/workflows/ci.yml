@@ -26,12 +26,12 @@ jobs:
       - name: Set up node
         uses: actions/setup-node@v3
 
-      # - name: Compile
-      #   run: yarn && yarn test    
+      - name: Compile
+        run: yarn && yarn test    
 
   publish:
     needs: [ compile, test ]
-    # if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
