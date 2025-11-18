@@ -1,5 +1,5 @@
 # Specify files that shouldn't be modified by Fern
 README.md
 .github/workflows/ci.yml
-src/WrappedClient.ts
+src/BridgeApiClient.ts
 src/index.ts
