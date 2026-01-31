@@ -14,6 +14,7 @@ export const NoteCreateV1ResponseAddendaElementSignatureFieldProviderFieldType =
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type NoteCreateV1ResponseAddendaElementSignatureFieldProviderFieldType =
     (typeof NoteCreateV1ResponseAddendaElementSignatureFieldProviderFieldType)[keyof typeof NoteCreateV1ResponseAddendaElementSignatureFieldProviderFieldType];

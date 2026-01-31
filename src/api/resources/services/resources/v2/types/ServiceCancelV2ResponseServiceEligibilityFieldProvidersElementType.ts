@@ -14,6 +14,7 @@ export const ServiceCancelV2ResponseServiceEligibilityFieldProvidersElementType 
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceCancelV2ResponseServiceEligibilityFieldProvidersElementType =
     (typeof ServiceCancelV2ResponseServiceEligibilityFieldProvidersElementType)[keyof typeof ServiceCancelV2ResponseServiceEligibilityFieldProvidersElementType];

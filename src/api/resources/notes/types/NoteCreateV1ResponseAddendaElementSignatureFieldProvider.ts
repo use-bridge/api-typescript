@@ -7,7 +7,7 @@ export interface NoteCreateV1ResponseAddendaElementSignatureFieldProvider {
     name: string;
     externalId?: string;
     type: BridgeApi.NoteCreateV1ResponseAddendaElementSignatureFieldProviderFieldType;
-    providerEligibilityEnabled: boolean;
-    serviceEligibilityEnabled: boolean;
+    providerEligibilityEnabled?: boolean;
+    serviceEligibilityEnabled?: boolean;
     npi: string;
 }

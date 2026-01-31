@@ -6,6 +6,7 @@ import * as BridgeApi from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as errors from "../../../../errors/index.js";
 import { toJson } from "../../../../core/json.js";
+import { Payments } from "../resources/payments/client/Client.js";
 import { V2 } from "../resources/v2/client/Client.js";
 
 export declare namespace Services {
@@ -38,10 +39,15 @@ export declare namespace Services {
 
 export class Services {
     protected readonly _options: Services.Options;
+    protected _payments: Payments | undefined;
     protected _v2: V2 | undefined;
 
     constructor(_options: Services.Options = {}) {
         this._options = _options;
+    }
+
+    public get payments(): Payments {
+        return (this._payments ??= new Payments(this._options));
     }
 
     public get v2(): V2 {

@@ -3,15 +3,25 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface ServiceGetV1ResponseServiceEligibilityFieldConditionalPatientResponsibilitiesElementPatientResponsibility {
+    /** The total amount owed by the Patient (sum of contributions and OOP-waived amounts), value is in USD cents ($15 = 1500) */
     total: number;
+    /** The fallback amount */
     fallback: number;
+    /** The deductible contribution */
     deductible: number;
     deductibleType?: BridgeApi.ServiceGetV1ResponseServiceEligibilityFieldConditionalPatientResponsibilitiesElementPatientResponsibilityFieldDeductibleType;
+    /** The coinsurance contribution */
     coinsurance: number;
+    /** The coinsurance contribution as a percentage (15% = 0.15) */
     coinsurancePercent: number;
+    /** The copayment contribution */
     copayment: number;
+    /** Amount of fallback waived due to OOP limits */
     oopFallback: number;
+    /** Amount of copayment waived due to OOP limits */
     oopCopayment: number;
+    /** Amount of coinsurance waived due to OOP limits */
     oopCoinsurance: number;
+    /** Amount of deductible waived due to OOP limits */
     oopDeductible: number;
 }

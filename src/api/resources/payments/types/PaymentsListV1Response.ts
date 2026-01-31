@@ -3,13 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface PaymentsListV1Response {
-    id: string;
-    createdAt: string;
-    serviceId: string;
-    paidAt: string;
-    transactionId: string;
-    type: BridgeApi.PaymentsListV1ResponseType;
-    amount: number;
-    externalId?: string;
-    memo?: string;
+    /** List results */
+    items: BridgeApi.PaymentsListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

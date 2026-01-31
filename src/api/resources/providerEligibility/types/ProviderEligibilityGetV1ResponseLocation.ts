@@ -6,6 +6,7 @@ export interface ProviderEligibilityGetV1ResponseLocation {
     line1?: string;
     line2?: string;
     city?: string;
+    /** 2 letter US state code */
     state: BridgeApi.ProviderEligibilityGetV1ResponseLocationFieldState;
     postalCode?: string;
     country?: BridgeApi.ProviderEligibilityGetV1ResponseLocationFieldCountry;

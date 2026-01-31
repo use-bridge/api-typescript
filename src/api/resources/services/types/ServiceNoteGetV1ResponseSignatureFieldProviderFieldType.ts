@@ -14,6 +14,7 @@ export const ServiceNoteGetV1ResponseSignatureFieldProviderFieldType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceNoteGetV1ResponseSignatureFieldProviderFieldType =
     (typeof ServiceNoteGetV1ResponseSignatureFieldProviderFieldType)[keyof typeof ServiceNoteGetV1ResponseSignatureFieldProviderFieldType];

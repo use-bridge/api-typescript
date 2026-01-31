@@ -13,6 +13,7 @@ export interface PolicyStreamV1Response {
     memberId?: string;
     policyHolder?: BridgeApi.PolicyStreamV1ResponsePolicyHolder;
     relationship?: BridgeApi.PolicyStreamV1ResponseRelationship;
+    /** 2 letter US state code */
     state: BridgeApi.PolicyStreamV1ResponseState;
     patientId?: string;
     latest?: BridgeApi.PolicyStreamV1ResponseLatest;

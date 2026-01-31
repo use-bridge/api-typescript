@@ -14,5 +14,6 @@ export const ProviderGetV1ResponseType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ProviderGetV1ResponseType = (typeof ProviderGetV1ResponseType)[keyof typeof ProviderGetV1ResponseType];

@@ -16,6 +16,7 @@ export const ServiceCancelV2ResponseTasksElementType = {
     ProviderNotEnrolled: "PROVIDER_NOT_ENROLLED",
     TherapyDuration: "THERAPY_DURATION",
     MinimumDuration: "MINIMUM_DURATION",
+    MissingInitiatingVisit: "MISSING_INITIATING_VISIT",
     MissingTimeSpentMinutes: "MISSING_TIME_SPENT_MINUTES",
     PatientConsentExpired: "PATIENT_CONSENT_EXPIRED",
     InvalidDateRange: "INVALID_DATE_RANGE",

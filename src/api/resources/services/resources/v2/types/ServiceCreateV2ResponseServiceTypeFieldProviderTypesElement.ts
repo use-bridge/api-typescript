@@ -14,6 +14,7 @@ export const ServiceCreateV2ResponseServiceTypeFieldProviderTypesElement = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceCreateV2ResponseServiceTypeFieldProviderTypesElement =
     (typeof ServiceCreateV2ResponseServiceTypeFieldProviderTypesElement)[keyof typeof ServiceCreateV2ResponseServiceTypeFieldProviderTypesElement];

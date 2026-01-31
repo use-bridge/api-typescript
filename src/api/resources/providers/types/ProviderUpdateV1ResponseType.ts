@@ -14,6 +14,7 @@ export const ProviderUpdateV1ResponseType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ProviderUpdateV1ResponseType =
     (typeof ProviderUpdateV1ResponseType)[keyof typeof ProviderUpdateV1ResponseType];

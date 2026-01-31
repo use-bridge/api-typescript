@@ -8,7 +8,13 @@ describe("ConsentVersions", () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
-        const rawResponseBody = { type: "ASSIGNMENT_OF_BENEFITS", version: "version" };
+        const rawResponseBody = {
+            items: [
+                { type: "ASSIGNMENT_OF_BENEFITS", version: "version" },
+                { type: "ASSIGNMENT_OF_BENEFITS", version: "version" },
+            ],
+            count: 1,
+        };
         server
             .mockEndpoint()
             .get("/api/consent-versions")
@@ -19,8 +25,17 @@ describe("ConsentVersions", () => {
 
         const response = await client.consentVersions.listConsentVersions();
         expect(response).toEqual({
-            type: "ASSIGNMENT_OF_BENEFITS",
-            version: "version",
+            items: [
+                {
+                    type: "ASSIGNMENT_OF_BENEFITS",
+                    version: "version",
+                },
+                {
+                    type: "ASSIGNMENT_OF_BENEFITS",
+                    version: "version",
+                },
+            ],
+            count: 1,
         });
     });
 });

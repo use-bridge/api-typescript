@@ -9,31 +9,65 @@ describe("Events", () => {
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            apiVersion: "apiVersion",
-            eventId: "eventId",
-            createdAt: "2024-01-15T09:30:00Z",
-            eventType: "patient.created",
-            objectType: "objectType",
-            objectId: "objectId",
-            data: { key: "value" },
-            previous: { key: "value" },
+            items: [
+                {
+                    apiVersion: "apiVersion",
+                    eventId: "eventId",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    eventType: "patient.created",
+                    objectType: "objectType",
+                    objectId: "objectId",
+                    data: { key: "value" },
+                    previous: { key: "value" },
+                },
+                {
+                    apiVersion: "apiVersion",
+                    eventId: "eventId",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    eventType: "patient.created",
+                    objectType: "objectType",
+                    objectId: "objectId",
+                    data: { key: "value" },
+                    previous: { key: "value" },
+                },
+            ],
+            count: 1,
         };
         server.mockEndpoint().get("/api/events").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.events.listEvents();
         expect(response).toEqual({
-            apiVersion: "apiVersion",
-            eventId: "eventId",
-            createdAt: "2024-01-15T09:30:00Z",
-            eventType: "patient.created",
-            objectType: "objectType",
-            objectId: "objectId",
-            data: {
-                key: "value",
-            },
-            previous: {
-                key: "value",
-            },
+            items: [
+                {
+                    apiVersion: "apiVersion",
+                    eventId: "eventId",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    eventType: "patient.created",
+                    objectType: "objectType",
+                    objectId: "objectId",
+                    data: {
+                        key: "value",
+                    },
+                    previous: {
+                        key: "value",
+                    },
+                },
+                {
+                    apiVersion: "apiVersion",
+                    eventId: "eventId",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    eventType: "patient.created",
+                    objectType: "objectType",
+                    objectId: "objectId",
+                    data: {
+                        key: "value",
+                    },
+                    previous: {
+                        key: "value",
+                    },
+                },
+            ],
+            count: 1,
         });
     });
 

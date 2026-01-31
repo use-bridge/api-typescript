@@ -12,6 +12,15 @@ export const EventGetV1ResponseEventType = {
     NoteUpdated: "note.updated",
     ServiceEligibilityCreated: "service_eligibility.created",
     ServiceEligibilityUpdated: "service_eligibility.updated",
+    ProviderEnrollmentStatusUpdated: "provider.enrollment_status.updated",
+    EstimateChargeCreated: "estimate_charge.created",
+    EstimateChargeUpdated: "estimate_charge.updated",
+    ServiceInvoiceCreated: "service_invoice.created",
+    ServiceInvoiceUpdated: "service_invoice.updated",
+    FeeCreated: "fee.created",
+    FeeUpdated: "fee.updated",
+    PayerGroupHealthUpdated: "payer_group.health.updated",
+    PayerGroupHealthEventCreated: "payer_group.health_event.created",
 } as const;
 export type EventGetV1ResponseEventType =
     (typeof EventGetV1ResponseEventType)[keyof typeof EventGetV1ResponseEventType];

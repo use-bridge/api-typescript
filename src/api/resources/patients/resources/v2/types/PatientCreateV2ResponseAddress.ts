@@ -6,6 +6,7 @@ export interface PatientCreateV2ResponseAddress {
     line1?: string;
     line2?: string;
     city?: string;
+    /** 2 letter US state code */
     state: BridgeApi.patients.PatientCreateV2ResponseAddressFieldState;
     postalCode?: string;
     country?: BridgeApi.patients.PatientCreateV2ResponseAddressFieldCountry;

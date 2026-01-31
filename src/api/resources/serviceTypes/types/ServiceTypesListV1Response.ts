@@ -3,15 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface ServiceTypesListV1Response {
-    id: string;
-    name: string;
-    placeOfService: BridgeApi.ServiceTypesListV1ResponsePlaceOfService;
-    /** [DEPRECATED] The first supported ProviderType, see new 'providerType' array */
-    providerType: BridgeApi.ServiceTypesListV1ResponseProviderType;
-    /** All supported ProviderTypes */
-    providerTypes: BridgeApi.ServiceTypesListV1ResponseProviderType[];
-    cost: number;
-    noteFields: BridgeApi.ServiceTypesListV1ResponseNoteField[];
-    conditionalPatientResponsibility: boolean;
-    selfPayCost?: number;
+    /** List results */
+    items: BridgeApi.ServiceTypesListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

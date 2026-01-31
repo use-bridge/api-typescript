@@ -14,6 +14,7 @@ export const ServiceCancelV2ResponseProviderFieldType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceCancelV2ResponseProviderFieldType =
     (typeof ServiceCancelV2ResponseProviderFieldType)[keyof typeof ServiceCancelV2ResponseProviderFieldType];

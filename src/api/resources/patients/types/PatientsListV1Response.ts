@@ -3,18 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface PatientsListV1Response {
-    id: string;
-    patientToken?: string;
-    createdAt: string;
-    externalId?: string;
-    coverage: BridgeApi.PatientsListV1ResponseCoverage[];
-    firstName: string;
-    lastName: string;
-    dateOfBirth: string;
-    email: string;
-    phone?: string;
-    address?: BridgeApi.PatientsListV1ResponseAddress;
-    /** Customizable object of string to string key-value data */
-    metadata?: BridgeApi.PatientsListV1ResponseMetadata;
-    account?: BridgeApi.PatientsListV1ResponseAccount;
+    /** List results */
+    items: BridgeApi.PatientsListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

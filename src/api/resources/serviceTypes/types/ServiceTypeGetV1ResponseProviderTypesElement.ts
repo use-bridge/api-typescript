@@ -14,6 +14,7 @@ export const ServiceTypeGetV1ResponseProviderTypesElement = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceTypeGetV1ResponseProviderTypesElement =
     (typeof ServiceTypeGetV1ResponseProviderTypesElement)[keyof typeof ServiceTypeGetV1ResponseProviderTypesElement];

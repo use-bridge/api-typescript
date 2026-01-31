@@ -14,6 +14,7 @@ export const ServiceCreateV1ResponseServiceEligibilityFieldProvidersElementType 
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceCreateV1ResponseServiceEligibilityFieldProvidersElementType =
     (typeof ServiceCreateV1ResponseServiceEligibilityFieldProvidersElementType)[keyof typeof ServiceCreateV1ResponseServiceEligibilityFieldProvidersElementType];

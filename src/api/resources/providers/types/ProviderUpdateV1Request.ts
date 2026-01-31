@@ -2,6 +2,4 @@
 
 export interface ProviderUpdateV1Request {
     externalId?: string;
-    providerEligibilityEnabled?: boolean;
-    serviceEligibilityEnabled?: boolean;
 }

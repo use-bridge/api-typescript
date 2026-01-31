@@ -4,71 +4,66 @@ import { mockServerPool } from "../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../src/Client";
 
 describe("Payments", () => {
-    test("listServicePayments", async () => {
-        const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
-
-        const rawResponseBody = {
-            id: "id",
-            createdAt: "2024-01-15T09:30:00Z",
-            serviceId: "serviceId",
-            paidAt: "2024-01-15T09:30:00Z",
-            transactionId: "transactionId",
-            type: "PATIENT",
-            amount: 1,
-            externalId: "externalId",
-            memo: "memo",
-        };
-        server
-            .mockEndpoint()
-            .get("/api/payments/id/payments")
-            .respondWith()
-            .statusCode(200)
-            .jsonBody(rawResponseBody)
-            .build();
-
-        const response = await client.payments.listServicePayments("id");
-        expect(response).toEqual({
-            id: "id",
-            createdAt: "2024-01-15T09:30:00Z",
-            serviceId: "serviceId",
-            paidAt: "2024-01-15T09:30:00Z",
-            transactionId: "transactionId",
-            type: "PATIENT",
-            amount: 1,
-            externalId: "externalId",
-            memo: "memo",
-        });
-    });
-
     test("listPayments", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "id",
-            createdAt: "2024-01-15T09:30:00Z",
-            serviceId: "serviceId",
-            paidAt: "2024-01-15T09:30:00Z",
-            transactionId: "transactionId",
-            type: "PATIENT",
-            amount: 1,
-            externalId: "externalId",
-            memo: "memo",
+            items: [
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    serviceId: "serviceId",
+                    paidAt: "2024-01-15T09:30:00Z",
+                    transactionId: "transactionId",
+                    type: "PATIENT",
+                    amount: 1,
+                    externalId: "externalId",
+                    memo: "memo",
+                },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    serviceId: "serviceId",
+                    paidAt: "2024-01-15T09:30:00Z",
+                    transactionId: "transactionId",
+                    type: "PATIENT",
+                    amount: 1,
+                    externalId: "externalId",
+                    memo: "memo",
+                },
+            ],
+            count: 1,
         };
         server.mockEndpoint().get("/api/payments").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.payments.listPayments();
         expect(response).toEqual({
-            id: "id",
-            createdAt: "2024-01-15T09:30:00Z",
-            serviceId: "serviceId",
-            paidAt: "2024-01-15T09:30:00Z",
-            transactionId: "transactionId",
-            type: "PATIENT",
-            amount: 1,
-            externalId: "externalId",
-            memo: "memo",
+            items: [
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    serviceId: "serviceId",
+                    paidAt: "2024-01-15T09:30:00Z",
+                    transactionId: "transactionId",
+                    type: "PATIENT",
+                    amount: 1,
+                    externalId: "externalId",
+                    memo: "memo",
+                },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    serviceId: "serviceId",
+                    paidAt: "2024-01-15T09:30:00Z",
+                    transactionId: "transactionId",
+                    type: "PATIENT",
+                    amount: 1,
+                    externalId: "externalId",
+                    memo: "memo",
+                },
+            ],
+            count: 1,
         });
     });
 

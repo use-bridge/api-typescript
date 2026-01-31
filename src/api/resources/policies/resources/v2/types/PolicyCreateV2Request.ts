@@ -4,6 +4,7 @@ import * as BridgeApi from "../../../../../index.js";
 
 export interface PolicyCreateV2Request {
     person: BridgeApi.policies.PolicyCreateV2RequestPerson;
+    /** 2 letter US state code */
     state: BridgeApi.policies.PolicyCreateV2RequestState;
     payerId: string;
     memberId?: string;

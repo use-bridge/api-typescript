@@ -9,29 +9,61 @@ describe("ServiceTypes", () => {
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "id",
-            name: "name",
-            placeOfService: "TELEHEALTH_HOME",
-            providerType: "MD",
-            providerTypes: ["MD", "MD"],
-            cost: 1,
-            noteFields: ["noteFields", "noteFields"],
-            conditionalPatientResponsibility: true,
-            selfPayCost: 1,
+            items: [
+                {
+                    id: "id",
+                    name: "name",
+                    placeOfService: "TELEHEALTH_HOME",
+                    providerType: "MD",
+                    providerTypes: ["MD", "MD"],
+                    cost: 1,
+                    noteFields: ["noteFields", "noteFields"],
+                    conditionalPatientResponsibility: true,
+                    selfPayCost: 1,
+                },
+                {
+                    id: "id",
+                    name: "name",
+                    placeOfService: "TELEHEALTH_HOME",
+                    providerType: "MD",
+                    providerTypes: ["MD", "MD"],
+                    cost: 1,
+                    noteFields: ["noteFields", "noteFields"],
+                    conditionalPatientResponsibility: true,
+                    selfPayCost: 1,
+                },
+            ],
+            count: 1,
         };
         server.mockEndpoint().get("/api/service-types").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.serviceTypes.listServiceTypes();
         expect(response).toEqual({
-            id: "id",
-            name: "name",
-            placeOfService: "TELEHEALTH_HOME",
-            providerType: "MD",
-            providerTypes: ["MD", "MD"],
-            cost: 1,
-            noteFields: ["noteFields", "noteFields"],
-            conditionalPatientResponsibility: true,
-            selfPayCost: 1,
+            items: [
+                {
+                    id: "id",
+                    name: "name",
+                    placeOfService: "TELEHEALTH_HOME",
+                    providerType: "MD",
+                    providerTypes: ["MD", "MD"],
+                    cost: 1,
+                    noteFields: ["noteFields", "noteFields"],
+                    conditionalPatientResponsibility: true,
+                    selfPayCost: 1,
+                },
+                {
+                    id: "id",
+                    name: "name",
+                    placeOfService: "TELEHEALTH_HOME",
+                    providerType: "MD",
+                    providerTypes: ["MD", "MD"],
+                    cost: 1,
+                    noteFields: ["noteFields", "noteFields"],
+                    conditionalPatientResponsibility: true,
+                    selfPayCost: 1,
+                },
+            ],
+            count: 1,
         });
     });
 

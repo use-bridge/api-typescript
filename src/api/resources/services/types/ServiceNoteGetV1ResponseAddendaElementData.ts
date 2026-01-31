@@ -23,4 +23,5 @@ export interface ServiceNoteGetV1ResponseAddendaElementData {
     DATE_RANGE_START?: string;
     DATE_RANGE_END?: string;
     MONITORING_DATA?: BridgeApi.ServiceNoteGetV1ResponseAddendaElementDataFieldMonitoringDatum[];
+    INITIATING_VISIT_DATE?: string;
 }

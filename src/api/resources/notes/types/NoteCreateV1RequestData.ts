@@ -23,4 +23,5 @@ export interface NoteCreateV1RequestData {
     DATE_RANGE_START?: string;
     DATE_RANGE_END?: string;
     MONITORING_DATA?: BridgeApi.NoteCreateV1RequestDataFieldMonitoringDatum[];
+    INITIATING_VISIT_DATE?: string;
 }

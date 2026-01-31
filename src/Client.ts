@@ -4,11 +4,11 @@ import * as environments from "./environments.js";
 import * as core from "./core/index.js";
 import { mergeHeaders } from "./core/headers.js";
 import { ConsentVersions } from "./api/resources/consentVersions/client/Client.js";
-import { Consent } from "./api/resources/consent/client/Client.js";
 import { Events } from "./api/resources/events/client/Client.js";
 import { Notes } from "./api/resources/notes/client/Client.js";
 import { PatientToken } from "./api/resources/patientToken/client/Client.js";
 import { Patients } from "./api/resources/patients/client/Client.js";
+import { PayerGroups } from "./api/resources/payerGroups/client/Client.js";
 import { Payers } from "./api/resources/payers/client/Client.js";
 import { Payments } from "./api/resources/payments/client/Client.js";
 import { Policies } from "./api/resources/policies/client/Client.js";
@@ -50,11 +50,11 @@ export declare namespace BridgeApiClient {
 export class BridgeApiClient {
     protected readonly _options: BridgeApiClient.Options;
     protected _consentVersions: ConsentVersions | undefined;
-    protected _consent: Consent | undefined;
     protected _events: Events | undefined;
     protected _notes: Notes | undefined;
     protected _patientToken: PatientToken | undefined;
     protected _patients: Patients | undefined;
+    protected _payerGroups: PayerGroups | undefined;
     protected _payers: Payers | undefined;
     protected _payments: Payments | undefined;
     protected _policies: Policies | undefined;
@@ -72,8 +72,8 @@ export class BridgeApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@usebridge/api",
-                    "X-Fern-SDK-Version": "0.2.3",
-                    "User-Agent": "@usebridge/api/0.2.3",
+                    "X-Fern-SDK-Version": "0.3.0",
+                    "User-Agent": "@usebridge/api/0.3.0",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -84,10 +84,6 @@ export class BridgeApiClient {
 
     public get consentVersions(): ConsentVersions {
         return (this._consentVersions ??= new ConsentVersions(this._options));
-    }
-
-    public get consent(): Consent {
-        return (this._consent ??= new Consent(this._options));
     }
 
     public get events(): Events {
@@ -104,6 +100,10 @@ export class BridgeApiClient {
 
     public get patients(): Patients {
         return (this._patients ??= new Patients(this._options));
+    }
+
+    public get payerGroups(): PayerGroups {
+        return (this._payerGroups ??= new PayerGroups(this._options));
     }
 
     public get payers(): Payers {

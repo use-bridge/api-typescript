@@ -5,6 +5,7 @@ import * as core from "../../../../core/index.js";
 import * as BridgeApi from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as errors from "../../../../errors/index.js";
+import { Enrollment } from "../resources/enrollment/client/Client.js";
 
 export declare namespace Providers {
     export interface Options {
@@ -36,9 +37,14 @@ export declare namespace Providers {
 
 export class Providers {
     protected readonly _options: Providers.Options;
+    protected _enrollment: Enrollment | undefined;
 
     constructor(_options: Providers.Options = {}) {
         this._options = _options;
+    }
+
+    public get enrollment(): Enrollment {
+        return (this._enrollment ??= new Enrollment(this._options));
     }
 
     /**

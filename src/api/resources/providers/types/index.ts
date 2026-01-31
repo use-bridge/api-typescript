@@ -1,4 +1,5 @@
-export * from "./ProvidersListV1ResponseType.js";
+export * from "./ProvidersListV1ResponseItemType.js";
+export * from "./ProvidersListV1ResponseItem.js";
 export * from "./ProvidersListV1Response.js";
 export * from "./ProviderGetV1ResponseType.js";
 export * from "./ProviderGetV1Response.js";

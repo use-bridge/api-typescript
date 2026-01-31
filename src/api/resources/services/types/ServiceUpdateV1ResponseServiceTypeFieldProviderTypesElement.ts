@@ -14,6 +14,7 @@ export const ServiceUpdateV1ResponseServiceTypeFieldProviderTypesElement = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceUpdateV1ResponseServiceTypeFieldProviderTypesElement =
     (typeof ServiceUpdateV1ResponseServiceTypeFieldProviderTypesElement)[keyof typeof ServiceUpdateV1ResponseServiceTypeFieldProviderTypesElement];

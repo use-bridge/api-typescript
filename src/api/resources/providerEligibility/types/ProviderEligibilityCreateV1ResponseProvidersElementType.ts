@@ -14,6 +14,7 @@ export const ProviderEligibilityCreateV1ResponseProvidersElementType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ProviderEligibilityCreateV1ResponseProvidersElementType =
     (typeof ProviderEligibilityCreateV1ResponseProvidersElementType)[keyof typeof ProviderEligibilityCreateV1ResponseProvidersElementType];

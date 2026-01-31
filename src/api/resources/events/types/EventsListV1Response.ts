@@ -3,12 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface EventsListV1Response {
-    apiVersion: string;
-    eventId: string;
-    createdAt: string;
-    eventType: BridgeApi.EventsListV1ResponseEventType;
-    objectType: string;
-    objectId: string;
-    data?: unknown;
-    previous?: unknown;
+    /** List results */
+    items: BridgeApi.EventsListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

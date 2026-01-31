@@ -3,9 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface NoteAddendaListV1Response {
-    id: string;
-    createdAt: string;
-    externalId?: string;
-    data: BridgeApi.NoteAddendaListV1ResponseData;
-    signature: BridgeApi.NoteAddendaListV1ResponseSignature;
+    /** List results */
+    items: BridgeApi.NoteAddendaListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

@@ -14,6 +14,7 @@ export const ServiceStreamV1ResponseProviderFieldType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceStreamV1ResponseProviderFieldType =
     (typeof ServiceStreamV1ResponseProviderFieldType)[keyof typeof ServiceStreamV1ResponseProviderFieldType];

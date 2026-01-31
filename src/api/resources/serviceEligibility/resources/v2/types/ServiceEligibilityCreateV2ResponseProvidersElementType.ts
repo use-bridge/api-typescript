@@ -14,6 +14,7 @@ export const ServiceEligibilityCreateV2ResponseProvidersElementType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceEligibilityCreateV2ResponseProvidersElementType =
     (typeof ServiceEligibilityCreateV2ResponseProvidersElementType)[keyof typeof ServiceEligibilityCreateV2ResponseProvidersElementType];

@@ -6,6 +6,7 @@ export interface ServiceCancelV2ResponseLocation {
     line1?: string;
     line2?: string;
     city?: string;
+    /** 2 letter US state code */
     state: BridgeApi.services.ServiceCancelV2ResponseLocationFieldState;
     postalCode?: string;
     country?: BridgeApi.services.ServiceCancelV2ResponseLocationFieldCountry;

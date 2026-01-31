@@ -13,6 +13,7 @@ export interface PolicyCreateV2Response {
     memberId?: string;
     policyHolder?: BridgeApi.policies.PolicyCreateV2ResponsePolicyHolder;
     relationship?: BridgeApi.policies.PolicyCreateV2ResponseRelationship;
+    /** 2 letter US state code */
     state: BridgeApi.policies.PolicyCreateV2ResponseState;
     patientId?: string;
     latest?: BridgeApi.policies.PolicyCreateV2ResponseLatest;

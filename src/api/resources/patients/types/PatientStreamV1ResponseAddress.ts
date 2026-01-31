@@ -6,6 +6,7 @@ export interface PatientStreamV1ResponseAddress {
     line1?: string;
     line2?: string;
     city?: string;
+    /** 2 letter US state code */
     state: BridgeApi.PatientStreamV1ResponseAddressFieldState;
     postalCode?: string;
     country?: BridgeApi.PatientStreamV1ResponseAddressFieldCountry;

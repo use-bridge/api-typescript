@@ -23,4 +23,5 @@ export interface NoteGetV1ResponseData {
     DATE_RANGE_START?: string;
     DATE_RANGE_END?: string;
     MONITORING_DATA?: BridgeApi.NoteGetV1ResponseDataFieldMonitoringDatum[];
+    INITIATING_VISIT_DATE?: string;
 }

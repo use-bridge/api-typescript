@@ -7,7 +7,7 @@ export interface ServiceCancelV2ResponseServiceEligibilityFieldProvider {
     name: string;
     externalId?: string;
     type: BridgeApi.services.ServiceCancelV2ResponseServiceEligibilityFieldProvidersElementType;
-    providerEligibilityEnabled: boolean;
-    serviceEligibilityEnabled: boolean;
+    providerEligibilityEnabled?: boolean;
+    serviceEligibilityEnabled?: boolean;
     npi: string;
 }

@@ -10,25 +10,53 @@ describe("Providers", () => {
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "id",
-            name: "name",
-            externalId: "externalId",
-            type: "MD",
-            providerEligibilityEnabled: true,
-            serviceEligibilityEnabled: true,
-            npi: "npi",
+            items: [
+                {
+                    id: "id",
+                    name: "name",
+                    externalId: "externalId",
+                    type: "MD",
+                    providerEligibilityEnabled: true,
+                    serviceEligibilityEnabled: true,
+                    npi: "npi",
+                },
+                {
+                    id: "id",
+                    name: "name",
+                    externalId: "externalId",
+                    type: "MD",
+                    providerEligibilityEnabled: true,
+                    serviceEligibilityEnabled: true,
+                    npi: "npi",
+                },
+            ],
+            count: 1,
         };
         server.mockEndpoint().get("/api/providers").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
 
         const response = await client.providers.listProviders();
         expect(response).toEqual({
-            id: "id",
-            name: "name",
-            externalId: "externalId",
-            type: "MD",
-            providerEligibilityEnabled: true,
-            serviceEligibilityEnabled: true,
-            npi: "npi",
+            items: [
+                {
+                    id: "id",
+                    name: "name",
+                    externalId: "externalId",
+                    type: "MD",
+                    providerEligibilityEnabled: true,
+                    serviceEligibilityEnabled: true,
+                    npi: "npi",
+                },
+                {
+                    id: "id",
+                    name: "name",
+                    externalId: "externalId",
+                    type: "MD",
+                    providerEligibilityEnabled: true,
+                    serviceEligibilityEnabled: true,
+                    npi: "npi",
+                },
+            ],
+            count: 1,
         });
     });
 

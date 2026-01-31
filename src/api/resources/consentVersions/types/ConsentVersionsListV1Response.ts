@@ -3,6 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface ConsentVersionsListV1Response {
-    type: BridgeApi.ConsentVersionsListV1ResponseType;
-    version: string;
+    /** List results */
+    items: BridgeApi.ConsentVersionsListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

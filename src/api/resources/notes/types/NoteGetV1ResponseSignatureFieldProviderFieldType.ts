@@ -14,6 +14,7 @@ export const NoteGetV1ResponseSignatureFieldProviderFieldType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type NoteGetV1ResponseSignatureFieldProviderFieldType =
     (typeof NoteGetV1ResponseSignatureFieldProviderFieldType)[keyof typeof NoteGetV1ResponseSignatureFieldProviderFieldType];

@@ -14,6 +14,7 @@ export const ServiceNoteGetV1ResponseAddendaElementSignatureFieldProviderFieldTy
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceNoteGetV1ResponseAddendaElementSignatureFieldProviderFieldType =
     (typeof ServiceNoteGetV1ResponseAddendaElementSignatureFieldProviderFieldType)[keyof typeof ServiceNoteGetV1ResponseAddendaElementSignatureFieldProviderFieldType];

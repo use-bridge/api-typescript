@@ -6,6 +6,7 @@ export interface ServiceUpdateV1RequestLocation {
     line1?: string;
     line2?: string;
     city?: string;
+    /** 2 letter US state code */
     state: BridgeApi.ServiceUpdateV1RequestLocationFieldState;
     postalCode?: string;
     country?: BridgeApi.ServiceUpdateV1RequestLocationFieldCountry;

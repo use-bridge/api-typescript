@@ -50,124 +50,6 @@ await client.consentVersions.listConsentVersions();
 </dl>
 </details>
 
-## Consent
-
-<details><summary><code>client.consent.<a href="/src/api/resources/consent/client/Client.ts">listPatientConsents</a>(id, { ...params }) -> BridgeApi.PatientConsentsListV1Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.consent.listPatientConsents("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PatientConsentsListV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Consent.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
-<details><summary><code>client.consent.<a href="/src/api/resources/consent/client/Client.ts">createPatientConsent</a>(id, { ...params }) -> BridgeApi.PatientConsentCreateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.consent.createPatientConsent("id", {
-    type: "ASSIGNMENT_OF_BENEFITS",
-    version: "version",
-    consentedAt: "2024-01-15T09:30:00Z",
-});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.PatientConsentCreateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Consent.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## Events
 
 <details><summary><code>client.events.<a href="/src/api/resources/events/client/Client.ts">listEvents</a>({ ...params }) -> BridgeApi.EventsListV1Response</code></summary>
@@ -543,7 +425,7 @@ await client.patientToken.createPatientToken({
 
 ## Patients
 
-<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">streamPatient</a>(id) -> core.Stream<BridgeApi.PatientStreamV1Response></code></summary>
+<details><summary><code>client.patients.<a href="/src/api/resources/patients/client/Client.ts">streamPatient</a>(id) -> core.Stream&lt;BridgeApi.PatientStreamV1Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -746,6 +628,124 @@ await client.patients.revalidatePatient("id");
 </dl>
 </details>
 
+## Patients Consent
+
+<details><summary><code>client.patients.consent.<a href="/src/api/resources/patients/resources/consent/client/Client.ts">listPatientConsents</a>(id, { ...params }) -> BridgeApi.PatientConsentsListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.patients.consent.listPatientConsents("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.patients.PatientConsentsListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Consent.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.patients.consent.<a href="/src/api/resources/patients/resources/consent/client/Client.ts">createPatientConsent</a>(id, { ...params }) -> BridgeApi.PatientConsentCreateV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.patients.consent.createPatientConsent("id", {
+    type: "ASSIGNMENT_OF_BENEFITS",
+    version: "version",
+    consentedAt: "2024-01-15T09:30:00Z",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.PatientConsentCreateV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Consent.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Patients V2
 
 <details><summary><code>client.patients.v2.<a href="/src/api/resources/patients/resources/v2/client/Client.ts">createPatient</a>({ ...params }) -> BridgeApi.PatientCreateV2Response</code></summary>
@@ -864,6 +864,162 @@ await client.patients.v2.getPatient("id");
 </dl>
 </details>
 
+## PayerGroups
+
+<details><summary><code>client.payerGroups.<a href="/src/api/resources/payerGroups/client/Client.ts">listPayerGroups</a>({ ...params }) -> BridgeApi.PayerGroupsListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.listPayerGroups();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.PayerGroupsListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PayerGroups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.payerGroups.<a href="/src/api/resources/payerGroups/client/Client.ts">getPayerGroup</a>(id) -> BridgeApi.PayerGroupGetV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.getPayerGroup("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Payer group ID or slug (both are supported)
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `PayerGroups.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## PayerGroups Health
+
+<details><summary><code>client.payerGroups.health.<a href="/src/api/resources/payerGroups/resources/health/client/Client.ts">listHealthEvents</a>(id, { ...params }) -> BridgeApi.HealthEventsListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.payerGroups.health.listHealthEvents("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string` — Payer group ID or slug (both are supported)
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.payerGroups.HealthEventsListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Health.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Payers
 
 <details><summary><code>client.payers.<a href="/src/api/resources/payers/client/Client.ts">getPayer</a>(id) -> BridgeApi.PayerGetV1Response</code></summary>
@@ -915,62 +1071,6 @@ await client.payers.getPayer("id");
 </details>
 
 ## Payments
-
-<details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">listServicePayments</a>(id, { ...params }) -> BridgeApi.ServicePaymentsListV1Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.payments.listServicePayments("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.ServicePaymentsListV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Payments.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
 
 <details><summary><code>client.payments.<a href="/src/api/resources/payments/client/Client.ts">listPayments</a>({ ...params }) -> BridgeApi.PaymentsListV1Response</code></summary>
 <dl>
@@ -1220,7 +1320,7 @@ await client.policies.revalidatePolicy("id");
 </dl>
 </details>
 
-<details><summary><code>client.policies.<a href="/src/api/resources/policies/client/Client.ts">streamPolicy</a>(id) -> core.Stream<BridgeApi.PolicyStreamV1Response></code></summary>
+<details><summary><code>client.policies.<a href="/src/api/resources/policies/client/Client.ts">streamPolicy</a>(id) -> core.Stream&lt;BridgeApi.PolicyStreamV1Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1603,6 +1703,71 @@ await client.providers.updateProvider("id", {});
 </dl>
 </details>
 
+## Providers Enrollment
+
+<details><summary><code>client.providers.enrollment.<a href="/src/api/resources/providers/resources/enrollment/client/Client.ts">getProviderEnrollmentStatus</a>(id) -> BridgeApi.ProviderEnrollmentStatusGetV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the high-level enrollment status of a provider
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.enrollment.getProviderEnrollmentStatus("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Enrollment.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Search
 
 <details><summary><code>client.search.<a href="/src/api/resources/search/client/Client.ts">payerSearch</a>({ ...params }) -> BridgeApi.SearchPayerV1Response</code></summary>
@@ -1658,7 +1823,7 @@ await client.search.payerSearch({
 
 ## ServiceEligibility
 
-<details><summary><code>client.serviceEligibility.<a href="/src/api/resources/serviceEligibility/client/Client.ts">streamServiceEligibility</a>(id) -> core.Stream<BridgeApi.ServiceEligibilityStreamV1Response></code></summary>
+<details><summary><code>client.serviceEligibility.<a href="/src/api/resources/serviceEligibility/client/Client.ts">streamServiceEligibility</a>(id) -> core.Stream&lt;BridgeApi.ServiceEligibilityStreamV1Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -1927,7 +2092,7 @@ await client.serviceTypes.getServiceType("id");
 
 ## Services
 
-<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">streamService</a>(id) -> core.Stream<BridgeApi.ServiceStreamV1Response></code></summary>
+<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">streamService</a>(id) -> core.Stream&lt;BridgeApi.ServiceStreamV1Response&gt;</code></summary>
 <dl>
 <dd>
 
@@ -2383,6 +2548,64 @@ await client.services.deleteServiceNote("id");
 <dd>
 
 **requestOptions:** `Services.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Services Payments
+
+<details><summary><code>client.services.payments.<a href="/src/api/resources/services/resources/payments/client/Client.ts">listServicePayments</a>(id, { ...params }) -> BridgeApi.ServicePaymentsListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.services.payments.listServicePayments("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.services.ServicePaymentsListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Payments.RequestOptions`
 
 </dd>
 </dl>

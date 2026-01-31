@@ -14,6 +14,7 @@ export const ServiceEligibilityStreamV1ResponseProvidersElementType = {
     Cm: "CM",
     Pa: "PA",
     Rdn: "RDN",
+    Pt: "PT",
 } as const;
 export type ServiceEligibilityStreamV1ResponseProvidersElementType =
     (typeof ServiceEligibilityStreamV1ResponseProvidersElementType)[keyof typeof ServiceEligibilityStreamV1ResponseProvidersElementType];

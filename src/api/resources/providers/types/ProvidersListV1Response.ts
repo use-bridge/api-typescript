@@ -3,11 +3,8 @@
 import * as BridgeApi from "../../../index.js";
 
 export interface ProvidersListV1Response {
-    id: string;
-    name: string;
-    externalId?: string;
-    type: BridgeApi.ProvidersListV1ResponseType;
-    providerEligibilityEnabled: boolean;
-    serviceEligibilityEnabled: boolean;
-    npi: string;
+    /** List results */
+    items: BridgeApi.ProvidersListV1ResponseItem[];
+    /** Total count (if available) */
+    count?: number;
 }

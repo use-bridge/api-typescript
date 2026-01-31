@@ -40,6 +40,7 @@ describe("Notes", () => {
                     { date: "date", values: ["values", "values"] },
                     { date: "date", values: ["values", "values"] },
                 ],
+                INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
@@ -81,6 +82,7 @@ describe("Notes", () => {
                             { date: "date", values: ["values", "values"] },
                             { date: "date", values: ["values", "values"] },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -122,6 +124,7 @@ describe("Notes", () => {
                             { date: "date", values: ["values", "values"] },
                             { date: "date", values: ["values", "values"] },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -189,6 +192,7 @@ describe("Notes", () => {
                         values: ["values", "values"],
                     },
                 ],
+                INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
@@ -236,6 +240,7 @@ describe("Notes", () => {
                                 values: ["values", "values"],
                             },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -283,6 +288,7 @@ describe("Notes", () => {
                                 values: ["values", "values"],
                             },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -333,6 +339,7 @@ describe("Notes", () => {
                     { date: "date", values: ["values", "values"] },
                     { date: "date", values: ["values", "values"] },
                 ],
+                INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
@@ -374,6 +381,7 @@ describe("Notes", () => {
                             { date: "date", values: ["values", "values"] },
                             { date: "date", values: ["values", "values"] },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -415,6 +423,7 @@ describe("Notes", () => {
                             { date: "date", values: ["values", "values"] },
                             { date: "date", values: ["values", "values"] },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -468,6 +477,7 @@ describe("Notes", () => {
                         values: ["values", "values"],
                     },
                 ],
+                INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
@@ -515,6 +525,7 @@ describe("Notes", () => {
                                 values: ["values", "values"],
                             },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -562,6 +573,7 @@ describe("Notes", () => {
                                 values: ["values", "values"],
                             },
                         ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
                         timestamp: "2024-01-15T09:30:00Z",
@@ -580,50 +592,98 @@ describe("Notes", () => {
         });
     });
 
-    test("listNoteAddenda", async () => {
+    test("listNote Addenda", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
 
         const rawResponseBody = {
-            id: "id",
-            createdAt: "2024-01-15T09:30:00Z",
-            externalId: "externalId",
-            data: {
-                PATIENT_NAME: "PATIENT_NAME",
-                ICD10: ["ICD10", "ICD10"],
-                SUBJECTIVE: "SUBJECTIVE",
-                OBJECTIVE: "OBJECTIVE",
-                ASSESSMENT: "ASSESSMENT",
-                TEXT: "TEXT",
-                PLAN: "PLAN",
-                DIAGNOSIS: "DIAGNOSIS",
-                INTERVENTION: "INTERVENTION",
-                MONITORING_AND_EVALUATION: "MONITORING_AND_EVALUATION",
-                TELEHEALTH_DISCLAIMER: "TELEHEALTH_DISCLAIMER",
-                TOTAL_TIME_SPENT: "TOTAL_TIME_SPENT",
-                TIME_SPENT_MINUTES: 1,
-                THERAPY_TIME_SPENT_MINUTES: 1,
-                PRESCRIPTION_WRITTEN: true,
-                MEDICATION_MANAGED: true,
-                DATE_RANGE_START: "DATE_RANGE_START",
-                DATE_RANGE_END: "DATE_RANGE_END",
-                MONITORING_DATA: [
-                    { date: "date", values: ["values", "values"] },
-                    { date: "date", values: ["values", "values"] },
-                ],
-            },
-            signature: {
-                timestamp: "2024-01-15T09:30:00Z",
-                provider: {
+            items: [
+                {
                     id: "id",
-                    name: "name",
+                    createdAt: "2024-01-15T09:30:00Z",
                     externalId: "externalId",
-                    type: "MD",
-                    providerEligibilityEnabled: true,
-                    serviceEligibilityEnabled: true,
-                    npi: "npi",
+                    data: {
+                        PATIENT_NAME: "PATIENT_NAME",
+                        ICD10: ["ICD10", "ICD10"],
+                        SUBJECTIVE: "SUBJECTIVE",
+                        OBJECTIVE: "OBJECTIVE",
+                        ASSESSMENT: "ASSESSMENT",
+                        TEXT: "TEXT",
+                        PLAN: "PLAN",
+                        DIAGNOSIS: "DIAGNOSIS",
+                        INTERVENTION: "INTERVENTION",
+                        MONITORING_AND_EVALUATION: "MONITORING_AND_EVALUATION",
+                        TELEHEALTH_DISCLAIMER: "TELEHEALTH_DISCLAIMER",
+                        TOTAL_TIME_SPENT: "TOTAL_TIME_SPENT",
+                        TIME_SPENT_MINUTES: 1,
+                        THERAPY_TIME_SPENT_MINUTES: 1,
+                        PRESCRIPTION_WRITTEN: true,
+                        MEDICATION_MANAGED: true,
+                        DATE_RANGE_START: "DATE_RANGE_START",
+                        DATE_RANGE_END: "DATE_RANGE_END",
+                        MONITORING_DATA: [
+                            { date: "date", values: ["values", "values"] },
+                            { date: "date", values: ["values", "values"] },
+                        ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
+                    },
+                    signature: {
+                        timestamp: "2024-01-15T09:30:00Z",
+                        provider: {
+                            id: "id",
+                            name: "name",
+                            externalId: "externalId",
+                            type: "MD",
+                            providerEligibilityEnabled: true,
+                            serviceEligibilityEnabled: true,
+                            npi: "npi",
+                        },
+                    },
                 },
-            },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    data: {
+                        PATIENT_NAME: "PATIENT_NAME",
+                        ICD10: ["ICD10", "ICD10"],
+                        SUBJECTIVE: "SUBJECTIVE",
+                        OBJECTIVE: "OBJECTIVE",
+                        ASSESSMENT: "ASSESSMENT",
+                        TEXT: "TEXT",
+                        PLAN: "PLAN",
+                        DIAGNOSIS: "DIAGNOSIS",
+                        INTERVENTION: "INTERVENTION",
+                        MONITORING_AND_EVALUATION: "MONITORING_AND_EVALUATION",
+                        TELEHEALTH_DISCLAIMER: "TELEHEALTH_DISCLAIMER",
+                        TOTAL_TIME_SPENT: "TOTAL_TIME_SPENT",
+                        TIME_SPENT_MINUTES: 1,
+                        THERAPY_TIME_SPENT_MINUTES: 1,
+                        PRESCRIPTION_WRITTEN: true,
+                        MEDICATION_MANAGED: true,
+                        DATE_RANGE_START: "DATE_RANGE_START",
+                        DATE_RANGE_END: "DATE_RANGE_END",
+                        MONITORING_DATA: [
+                            { date: "date", values: ["values", "values"] },
+                            { date: "date", values: ["values", "values"] },
+                        ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
+                    },
+                    signature: {
+                        timestamp: "2024-01-15T09:30:00Z",
+                        provider: {
+                            id: "id",
+                            name: "name",
+                            externalId: "externalId",
+                            type: "MD",
+                            providerEligibilityEnabled: true,
+                            serviceEligibilityEnabled: true,
+                            npi: "npi",
+                        },
+                    },
+                },
+            ],
+            count: 1,
         };
         server
             .mockEndpoint()
@@ -635,55 +695,109 @@ describe("Notes", () => {
 
         const response = await client.notes.listNoteAddenda("id");
         expect(response).toEqual({
-            id: "id",
-            createdAt: "2024-01-15T09:30:00Z",
-            externalId: "externalId",
-            data: {
-                PATIENT_NAME: "PATIENT_NAME",
-                ICD10: ["ICD10", "ICD10"],
-                SUBJECTIVE: "SUBJECTIVE",
-                OBJECTIVE: "OBJECTIVE",
-                ASSESSMENT: "ASSESSMENT",
-                TEXT: "TEXT",
-                PLAN: "PLAN",
-                DIAGNOSIS: "DIAGNOSIS",
-                INTERVENTION: "INTERVENTION",
-                MONITORING_AND_EVALUATION: "MONITORING_AND_EVALUATION",
-                TELEHEALTH_DISCLAIMER: "TELEHEALTH_DISCLAIMER",
-                TOTAL_TIME_SPENT: "TOTAL_TIME_SPENT",
-                TIME_SPENT_MINUTES: 1,
-                THERAPY_TIME_SPENT_MINUTES: 1,
-                PRESCRIPTION_WRITTEN: true,
-                MEDICATION_MANAGED: true,
-                DATE_RANGE_START: "DATE_RANGE_START",
-                DATE_RANGE_END: "DATE_RANGE_END",
-                MONITORING_DATA: [
-                    {
-                        date: "date",
-                        values: ["values", "values"],
-                    },
-                    {
-                        date: "date",
-                        values: ["values", "values"],
-                    },
-                ],
-            },
-            signature: {
-                timestamp: "2024-01-15T09:30:00Z",
-                provider: {
+            items: [
+                {
                     id: "id",
-                    name: "name",
+                    createdAt: "2024-01-15T09:30:00Z",
                     externalId: "externalId",
-                    type: "MD",
-                    providerEligibilityEnabled: true,
-                    serviceEligibilityEnabled: true,
-                    npi: "npi",
+                    data: {
+                        PATIENT_NAME: "PATIENT_NAME",
+                        ICD10: ["ICD10", "ICD10"],
+                        SUBJECTIVE: "SUBJECTIVE",
+                        OBJECTIVE: "OBJECTIVE",
+                        ASSESSMENT: "ASSESSMENT",
+                        TEXT: "TEXT",
+                        PLAN: "PLAN",
+                        DIAGNOSIS: "DIAGNOSIS",
+                        INTERVENTION: "INTERVENTION",
+                        MONITORING_AND_EVALUATION: "MONITORING_AND_EVALUATION",
+                        TELEHEALTH_DISCLAIMER: "TELEHEALTH_DISCLAIMER",
+                        TOTAL_TIME_SPENT: "TOTAL_TIME_SPENT",
+                        TIME_SPENT_MINUTES: 1,
+                        THERAPY_TIME_SPENT_MINUTES: 1,
+                        PRESCRIPTION_WRITTEN: true,
+                        MEDICATION_MANAGED: true,
+                        DATE_RANGE_START: "DATE_RANGE_START",
+                        DATE_RANGE_END: "DATE_RANGE_END",
+                        MONITORING_DATA: [
+                            {
+                                date: "date",
+                                values: ["values", "values"],
+                            },
+                            {
+                                date: "date",
+                                values: ["values", "values"],
+                            },
+                        ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
+                    },
+                    signature: {
+                        timestamp: "2024-01-15T09:30:00Z",
+                        provider: {
+                            id: "id",
+                            name: "name",
+                            externalId: "externalId",
+                            type: "MD",
+                            providerEligibilityEnabled: true,
+                            serviceEligibilityEnabled: true,
+                            npi: "npi",
+                        },
+                    },
                 },
-            },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    data: {
+                        PATIENT_NAME: "PATIENT_NAME",
+                        ICD10: ["ICD10", "ICD10"],
+                        SUBJECTIVE: "SUBJECTIVE",
+                        OBJECTIVE: "OBJECTIVE",
+                        ASSESSMENT: "ASSESSMENT",
+                        TEXT: "TEXT",
+                        PLAN: "PLAN",
+                        DIAGNOSIS: "DIAGNOSIS",
+                        INTERVENTION: "INTERVENTION",
+                        MONITORING_AND_EVALUATION: "MONITORING_AND_EVALUATION",
+                        TELEHEALTH_DISCLAIMER: "TELEHEALTH_DISCLAIMER",
+                        TOTAL_TIME_SPENT: "TOTAL_TIME_SPENT",
+                        TIME_SPENT_MINUTES: 1,
+                        THERAPY_TIME_SPENT_MINUTES: 1,
+                        PRESCRIPTION_WRITTEN: true,
+                        MEDICATION_MANAGED: true,
+                        DATE_RANGE_START: "DATE_RANGE_START",
+                        DATE_RANGE_END: "DATE_RANGE_END",
+                        MONITORING_DATA: [
+                            {
+                                date: "date",
+                                values: ["values", "values"],
+                            },
+                            {
+                                date: "date",
+                                values: ["values", "values"],
+                            },
+                        ],
+                        INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
+                    },
+                    signature: {
+                        timestamp: "2024-01-15T09:30:00Z",
+                        provider: {
+                            id: "id",
+                            name: "name",
+                            externalId: "externalId",
+                            type: "MD",
+                            providerEligibilityEnabled: true,
+                            serviceEligibilityEnabled: true,
+                            npi: "npi",
+                        },
+                    },
+                },
+            ],
+            count: 1,
         });
     });
 
-    test("createNoteAddendum", async () => {
+    test("createNote Addendum", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = { data: {}, signature: { timestamp: "2024-01-15T09:30:00Z", providerId: "providerId" } };
@@ -714,6 +828,7 @@ describe("Notes", () => {
                     { date: "date", values: ["values", "values"] },
                     { date: "date", values: ["values", "values"] },
                 ],
+                INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",
@@ -777,6 +892,7 @@ describe("Notes", () => {
                         values: ["values", "values"],
                     },
                 ],
+                INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
                 timestamp: "2024-01-15T09:30:00Z",

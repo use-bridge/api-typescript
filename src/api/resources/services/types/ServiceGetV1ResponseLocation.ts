@@ -6,6 +6,7 @@ export interface ServiceGetV1ResponseLocation {
     line1?: string;
     line2?: string;
     city?: string;
+    /** 2 letter US state code */
     state: BridgeApi.ServiceGetV1ResponseLocationFieldState;
     postalCode?: string;
     country?: BridgeApi.ServiceGetV1ResponseLocationFieldCountry;

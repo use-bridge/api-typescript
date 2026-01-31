@@ -10,9 +10,11 @@ export interface ServiceEligibilityGetV1Response {
     serviceTypeId: string;
     dateOfService: string;
     status: BridgeApi.ServiceEligibilityGetV1ResponseStatus;
+    /** Describes the Patient Responsibility. All dollar values are in USD cents ($15 = 1500). The 'total' is the amount that the patient owes. The breakdown are in non-oop fields. The oop fields apply when the patient has hit (or will hit) their OOP limits. */
     patientResponsibility?: BridgeApi.ServiceEligibilityGetV1ResponsePatientResponsibility;
     providers: BridgeApi.ServiceEligibilityGetV1ResponseProvider[];
     policyIds: BridgeApi.ServiceEligibilityGetV1ResponsePolicyId[];
+    /** 2 letter US state code */
     state: BridgeApi.ServiceEligibilityGetV1ResponseState;
     messages?: BridgeApi.ServiceEligibilityGetV1ResponseMessage[];
     clinicalInfo?: BridgeApi.ServiceEligibilityGetV1ResponseClinicalInfo;

@@ -7,7 +7,7 @@ export interface ServiceEligibilityCreateV2ResponseProvider {
     name: string;
     externalId?: string;
     type: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2ResponseProvidersElementType;
-    providerEligibilityEnabled: boolean;
-    serviceEligibilityEnabled: boolean;
+    providerEligibilityEnabled?: boolean;
+    serviceEligibilityEnabled?: boolean;
     npi: string;
 }

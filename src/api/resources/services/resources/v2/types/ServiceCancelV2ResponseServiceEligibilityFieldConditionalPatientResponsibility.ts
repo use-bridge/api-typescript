@@ -5,5 +5,6 @@ import * as BridgeApi from "../../../../../index.js";
 export interface ServiceCancelV2ResponseServiceEligibilityFieldConditionalPatientResponsibility {
     conditions: BridgeApi.services.ServiceCancelV2ResponseServiceEligibilityFieldConditionalPatientResponsibilitiesElementCondition[];
     limit: BridgeApi.services.ServiceCancelV2ResponseServiceEligibilityFieldConditionalPatientResponsibilitiesElementLimit;
+    /** Describes the Patient Responsibility. All dollar values are in USD cents ($15 = 1500). The 'total' is the amount that the patient owes. The breakdown are in non-oop fields. The oop fields apply when the patient has hit (or will hit) their OOP limits. */
     patientResponsibility: BridgeApi.services.ServiceCancelV2ResponseServiceEligibilityFieldConditionalPatientResponsibilitiesElementPatientResponsibility;
 }
