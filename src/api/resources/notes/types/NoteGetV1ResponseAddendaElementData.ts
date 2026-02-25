@@ -5,6 +5,10 @@ import * as BridgeApi from "../../../index.js";
 export interface NoteGetV1ResponseAddendaElementData {
     PATIENT_NAME?: string;
     ICD10?: BridgeApi.NoteGetV1ResponseAddendaElementDataFieldIcd10[];
+    /** Array of medication names (e.g., ['Metformin 500mg', 'Lisinopril 10mg']) */
+    MEDICATIONS?: BridgeApi.NoteGetV1ResponseAddendaElementDataFieldMedication[];
+    /** Array of allergies (e.g., ['Penicillin', 'Peanuts']) */
+    ALLERGIES?: BridgeApi.NoteGetV1ResponseAddendaElementDataFieldAllergy[];
     SUBJECTIVE?: string;
     OBJECTIVE?: string;
     ASSESSMENT?: string;
@@ -23,5 +27,6 @@ export interface NoteGetV1ResponseAddendaElementData {
     DATE_RANGE_START?: string;
     DATE_RANGE_END?: string;
     MONITORING_DATA?: BridgeApi.NoteGetV1ResponseAddendaElementDataFieldMonitoringDatum[];
+    SCORED_ASSESSMENTS?: BridgeApi.NoteGetV1ResponseAddendaElementDataFieldScoredAssessment[];
     INITIATING_VISIT_DATE?: string;
 }

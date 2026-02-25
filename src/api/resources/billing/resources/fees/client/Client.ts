@@ -6,7 +6,7 @@ import * as BridgeApi from "../../../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../../../core/headers.js";
 import * as errors from "../../../../../../errors/index.js";
 
-export declare namespace Consent {
+export declare namespace Fees {
     export interface Options {
         environment?: core.Supplier<environments.BridgeApiEnvironment | string>;
         /** Specify a custom URL to connect the client to. */
@@ -34,44 +34,36 @@ export declare namespace Consent {
     }
 }
 
-export class Consent {
-    protected readonly _options: Consent.Options;
+export class Fees {
+    protected readonly _options: Fees.Options;
 
-    constructor(_options: Consent.Options = {}) {
+    constructor(_options: Fees.Options = {}) {
         this._options = _options;
     }
 
     /**
-     * @param {string} id
-     * @param {BridgeApi.patients.PatientConsentsListV1Request} request
-     * @param {Consent.RequestOptions} requestOptions - Request-specific configuration.
+     * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
+     *
+     * @param {BridgeApi.billing.FeeCreateV1Request} request
+     * @param {Fees.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.patients.consent.listPatientConsents("id")
+     *     await client.billing.fees.createFee({
+     *         patientId: "patientId",
+     *         type: "LATE_CANCELLATION"
+     *     })
      */
-    public listPatientConsents(
-        id: string,
-        request: BridgeApi.patients.PatientConsentsListV1Request = {},
-        requestOptions?: Consent.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.patients.PatientConsentsListV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__listPatientConsents(id, request, requestOptions));
+    public createFee(
+        request: BridgeApi.billing.FeeCreateV1Request,
+        requestOptions?: Fees.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.billing.FeeCreateV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__createFee(request, requestOptions));
     }
 
-    private async __listPatientConsents(
-        id: string,
-        request: BridgeApi.patients.PatientConsentsListV1Request = {},
-        requestOptions?: Consent.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.patients.PatientConsentsListV1Response>> {
-        const { page, limit } = request;
-        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
-        if (page != null) {
-            _queryParams["page"] = page.toString();
-        }
-
-        if (limit != null) {
-            _queryParams["limit"] = limit.toString();
-        }
-
+    private async __createFee(
+        request: BridgeApi.billing.FeeCreateV1Request,
+        requestOptions?: Fees.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.billing.FeeCreateV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
@@ -82,18 +74,21 @@ export class Consent {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BridgeApiEnvironment.Production,
-                `/api/patients/${encodeURIComponent(id)}/consent`,
+                "/api/fees/v2",
             ),
-            method: "GET",
+            method: "POST",
             headers: _headers,
-            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                data: _response.body as BridgeApi.patients.PatientConsentsListV1Response,
+                data: _response.body as BridgeApi.billing.FeeCreateV1Response,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -114,7 +109,7 @@ export class Consent {
                     rawResponse: _response.rawResponse,
                 });
             case "timeout":
-                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling GET /api/patients/{id}/consent.");
+                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/fees/v2.");
             case "unknown":
                 throw new errors.BridgeApiError({
                     message: _response.error.errorMessage,
@@ -124,30 +119,25 @@ export class Consent {
     }
 
     /**
+     * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
+     *
      * @param {string} id
-     * @param {BridgeApi.patients.PatientConsentCreateV1Request} request
-     * @param {Consent.RequestOptions} requestOptions - Request-specific configuration.
+     * @param {Fees.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.patients.consent.createPatientConsent("id", {
-     *         type: "ASSIGNMENT_OF_BENEFITS",
-     *         version: "version",
-     *         consentedAt: "2024-01-15T09:30:00Z"
-     *     })
+     *     await client.billing.fees.captureStripeFee("id")
      */
-    public createPatientConsent(
+    public captureStripeFee(
         id: string,
-        request: BridgeApi.patients.PatientConsentCreateV1Request,
-        requestOptions?: Consent.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.patients.PatientConsentCreateV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__createPatientConsent(id, request, requestOptions));
+        requestOptions?: Fees.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.billing.FeeCaptureStripeV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__captureStripeFee(id, requestOptions));
     }
 
-    private async __createPatientConsent(
+    private async __captureStripeFee(
         id: string,
-        request: BridgeApi.patients.PatientConsentCreateV1Request,
-        requestOptions?: Consent.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.patients.PatientConsentCreateV1Response>> {
+        requestOptions?: Fees.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.billing.FeeCaptureStripeV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
@@ -158,21 +148,18 @@ export class Consent {
                 (await core.Supplier.get(this._options.baseUrl)) ??
                     (await core.Supplier.get(this._options.environment)) ??
                     environments.BridgeApiEnvironment.Production,
-                `/api/patients/${encodeURIComponent(id)}/consent`,
+                `/api/fees/v2/${encodeURIComponent(id)}/capture/stripe`,
             ),
             method: "POST",
             headers: _headers,
-            contentType: "application/json",
             queryParameters: requestOptions?.queryParams,
-            requestType: "json",
-            body: request,
             timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
             maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
             return {
-                data: _response.body as BridgeApi.patients.PatientConsentCreateV1Response,
+                data: _response.body as BridgeApi.billing.FeeCaptureStripeV1Response,
                 rawResponse: _response.rawResponse,
             };
         }
@@ -194,7 +181,80 @@ export class Consent {
                 });
             case "timeout":
                 throw new errors.BridgeApiTimeoutError(
-                    "Timeout exceeded when calling POST /api/patients/{id}/consent.",
+                    "Timeout exceeded when calling POST /api/fees/v2/{id}/capture/stripe.",
+                );
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
+     *
+     * @param {string} id
+     * @param {Fees.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.billing.fees.refundStripeFee("id")
+     */
+    public refundStripeFee(
+        id: string,
+        requestOptions?: Fees.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.billing.FeeRefundStripeV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__refundStripeFee(id, requestOptions));
+    }
+
+    private async __refundStripeFee(
+        id: string,
+        requestOptions?: Fees.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.billing.FeeRefundStripeV1Response>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/fees/v2/${encodeURIComponent(id)}/refund/stripe`,
+            ),
+            method: "POST",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as BridgeApi.billing.FeeRefundStripeV1Response,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError(
+                    "Timeout exceeded when calling POST /api/fees/v2/{id}/refund/stripe.",
                 );
             case "unknown":
                 throw new errors.BridgeApiError({

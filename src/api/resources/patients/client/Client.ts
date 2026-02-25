@@ -5,7 +5,6 @@ import * as core from "../../../../core/index.js";
 import * as BridgeApi from "../../../index.js";
 import { mergeHeaders, mergeOnlyDefinedHeaders } from "../../../../core/headers.js";
 import * as errors from "../../../../errors/index.js";
-import { Consent } from "../resources/consent/client/Client.js";
 import { V2 } from "../resources/v2/client/Client.js";
 
 export declare namespace Patients {
@@ -38,15 +37,10 @@ export declare namespace Patients {
 
 export class Patients {
     protected readonly _options: Patients.Options;
-    protected _consent: Consent | undefined;
     protected _v2: V2 | undefined;
 
     constructor(_options: Patients.Options = {}) {
         this._options = _options;
-    }
-
-    public get consent(): Consent {
-        return (this._consent ??= new Consent(this._options));
     }
 
     public get v2(): V2 {

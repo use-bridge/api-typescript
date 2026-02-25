@@ -1,5 +1,8 @@
+export * as billing from "./billing/index.js";
 export * as consentVersions from "./consentVersions/index.js";
 export * from "./consentVersions/types/index.js";
+export * as consent from "./consent/index.js";
+export * from "./consent/types/index.js";
 export * as events from "./events/index.js";
 export * from "./events/types/index.js";
 export * as notes from "./notes/index.js";
@@ -29,6 +32,7 @@ export * from "./serviceTypes/types/index.js";
 export * as services from "./services/index.js";
 export * from "./services/types/index.js";
 export * from "./consentVersions/client/requests/index.js";
+export * from "./consent/client/requests/index.js";
 export * from "./events/client/requests/index.js";
 export * from "./notes/client/requests/index.js";
 export * from "./patients/client/requests/index.js";

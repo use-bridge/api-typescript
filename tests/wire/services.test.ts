@@ -2109,6 +2109,8 @@ describe("Services", () => {
             data: {
                 PATIENT_NAME: "PATIENT_NAME",
                 ICD10: ["ICD10", "ICD10"],
+                MEDICATIONS: ["MEDICATIONS", "MEDICATIONS"],
+                ALLERGIES: ["ALLERGIES", "ALLERGIES"],
                 SUBJECTIVE: "SUBJECTIVE",
                 OBJECTIVE: "OBJECTIVE",
                 ASSESSMENT: "ASSESSMENT",
@@ -2128,6 +2130,10 @@ describe("Services", () => {
                 MONITORING_DATA: [
                     { date: "date", values: ["values", "values"] },
                     { date: "date", values: ["values", "values"] },
+                ],
+                SCORED_ASSESSMENTS: [
+                    { score: "score", type: "PHQ-9" },
+                    { score: "score", type: "PHQ-9" },
                 ],
                 INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
@@ -2151,6 +2157,8 @@ describe("Services", () => {
                     data: {
                         PATIENT_NAME: "PATIENT_NAME",
                         ICD10: ["ICD10", "ICD10"],
+                        MEDICATIONS: ["MEDICATIONS", "MEDICATIONS"],
+                        ALLERGIES: ["ALLERGIES", "ALLERGIES"],
                         SUBJECTIVE: "SUBJECTIVE",
                         OBJECTIVE: "OBJECTIVE",
                         ASSESSMENT: "ASSESSMENT",
@@ -2170,6 +2178,10 @@ describe("Services", () => {
                         MONITORING_DATA: [
                             { date: "date", values: ["values", "values"] },
                             { date: "date", values: ["values", "values"] },
+                        ],
+                        SCORED_ASSESSMENTS: [
+                            { score: "score", type: "PHQ-9" },
+                            { score: "score", type: "PHQ-9" },
                         ],
                         INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
@@ -2193,6 +2205,8 @@ describe("Services", () => {
                     data: {
                         PATIENT_NAME: "PATIENT_NAME",
                         ICD10: ["ICD10", "ICD10"],
+                        MEDICATIONS: ["MEDICATIONS", "MEDICATIONS"],
+                        ALLERGIES: ["ALLERGIES", "ALLERGIES"],
                         SUBJECTIVE: "SUBJECTIVE",
                         OBJECTIVE: "OBJECTIVE",
                         ASSESSMENT: "ASSESSMENT",
@@ -2212,6 +2226,10 @@ describe("Services", () => {
                         MONITORING_DATA: [
                             { date: "date", values: ["values", "values"] },
                             { date: "date", values: ["values", "values"] },
+                        ],
+                        SCORED_ASSESSMENTS: [
+                            { score: "score", type: "PHQ-9" },
+                            { score: "score", type: "PHQ-9" },
                         ],
                         INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
@@ -2247,6 +2265,8 @@ describe("Services", () => {
             data: {
                 PATIENT_NAME: "PATIENT_NAME",
                 ICD10: ["ICD10", "ICD10"],
+                MEDICATIONS: ["MEDICATIONS", "MEDICATIONS"],
+                ALLERGIES: ["ALLERGIES", "ALLERGIES"],
                 SUBJECTIVE: "SUBJECTIVE",
                 OBJECTIVE: "OBJECTIVE",
                 ASSESSMENT: "ASSESSMENT",
@@ -2273,6 +2293,16 @@ describe("Services", () => {
                         values: ["values", "values"],
                     },
                 ],
+                SCORED_ASSESSMENTS: [
+                    {
+                        score: "score",
+                        type: "PHQ-9",
+                    },
+                    {
+                        score: "score",
+                        type: "PHQ-9",
+                    },
+                ],
                 INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
             },
             signature: {
@@ -2295,6 +2325,8 @@ describe("Services", () => {
                     data: {
                         PATIENT_NAME: "PATIENT_NAME",
                         ICD10: ["ICD10", "ICD10"],
+                        MEDICATIONS: ["MEDICATIONS", "MEDICATIONS"],
+                        ALLERGIES: ["ALLERGIES", "ALLERGIES"],
                         SUBJECTIVE: "SUBJECTIVE",
                         OBJECTIVE: "OBJECTIVE",
                         ASSESSMENT: "ASSESSMENT",
@@ -2321,6 +2353,16 @@ describe("Services", () => {
                                 values: ["values", "values"],
                             },
                         ],
+                        SCORED_ASSESSMENTS: [
+                            {
+                                score: "score",
+                                type: "PHQ-9",
+                            },
+                            {
+                                score: "score",
+                                type: "PHQ-9",
+                            },
+                        ],
                         INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
                     },
                     signature: {
@@ -2343,6 +2385,8 @@ describe("Services", () => {
                     data: {
                         PATIENT_NAME: "PATIENT_NAME",
                         ICD10: ["ICD10", "ICD10"],
+                        MEDICATIONS: ["MEDICATIONS", "MEDICATIONS"],
+                        ALLERGIES: ["ALLERGIES", "ALLERGIES"],
                         SUBJECTIVE: "SUBJECTIVE",
                         OBJECTIVE: "OBJECTIVE",
                         ASSESSMENT: "ASSESSMENT",
@@ -2367,6 +2411,16 @@ describe("Services", () => {
                             {
                                 date: "date",
                                 values: ["values", "values"],
+                            },
+                        ],
+                        SCORED_ASSESSMENTS: [
+                            {
+                                score: "score",
+                                type: "PHQ-9",
+                            },
+                            {
+                                score: "score",
+                                type: "PHQ-9",
                             },
                         ],
                         INITIATING_VISIT_DATE: "INITIATING_VISIT_DATE",
