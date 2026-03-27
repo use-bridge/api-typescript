@@ -3,6 +3,10 @@
 export const ServiceNoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType = {
     Phq9: "PHQ-9",
     Gad7: "GAD-7",
+    SdohPrapare: "SDOH-PRAPARE",
+    SdohAhcHrsn: "SDOH-AHC-HRSN",
+    SdohViSpdat: "SDOH-VI-SPDAT",
+    SdohCore5Sdh: "SDOH-CORE-5-SDH",
 } as const;
 export type ServiceNoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType =
     (typeof ServiceNoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType)[keyof typeof ServiceNoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType];

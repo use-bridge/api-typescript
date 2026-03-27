@@ -22,6 +22,10 @@ export interface ServiceNoteGetV1ResponseAddendaElementData {
     TOTAL_TIME_SPENT?: string;
     TIME_SPENT_MINUTES?: number;
     THERAPY_TIME_SPENT_MINUTES?: number;
+    /** Patient height in inches (in) */
+    HEIGHT?: number;
+    /** Patient weight in pounds (lb) */
+    WEIGHT?: number;
     PRESCRIPTION_WRITTEN?: boolean;
     MEDICATION_MANAGED?: boolean;
     DATE_RANGE_START?: string;

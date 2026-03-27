@@ -3,6 +3,10 @@
 export const NoteCreateV1RequestDataFieldScoredAssessmentsElementType = {
     Phq9: "PHQ-9",
     Gad7: "GAD-7",
+    SdohPrapare: "SDOH-PRAPARE",
+    SdohAhcHrsn: "SDOH-AHC-HRSN",
+    SdohViSpdat: "SDOH-VI-SPDAT",
+    SdohCore5Sdh: "SDOH-CORE-5-SDH",
 } as const;
 export type NoteCreateV1RequestDataFieldScoredAssessmentsElementType =
     (typeof NoteCreateV1RequestDataFieldScoredAssessmentsElementType)[keyof typeof NoteCreateV1RequestDataFieldScoredAssessmentsElementType];

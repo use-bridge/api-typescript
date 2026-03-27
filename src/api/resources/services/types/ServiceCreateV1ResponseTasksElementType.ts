@@ -4,6 +4,7 @@ export const ServiceCreateV1ResponseTasksElementType = {
     PatientConsent: "PATIENT_CONSENT",
     PatientInsurance: "PATIENT_INSURANCE",
     PatientAddress: "PATIENT_ADDRESS",
+    ServiceLocation: "SERVICE_LOCATION",
     DateOfService: "DATE_OF_SERVICE",
     DuplicateServiceType: "DUPLICATE_SERVICE_TYPE",
     InvalidInitialServiceType: "INVALID_INITIAL_SERVICE_TYPE",
@@ -17,10 +18,15 @@ export const ServiceCreateV1ResponseTasksElementType = {
     TherapyDuration: "THERAPY_DURATION",
     MinimumDuration: "MINIMUM_DURATION",
     MissingInitiatingVisit: "MISSING_INITIATING_VISIT",
+    MissingAssessment: "MISSING_ASSESSMENT",
     MissingTimeSpentMinutes: "MISSING_TIME_SPENT_MINUTES",
     PatientConsentExpired: "PATIENT_CONSENT_EXPIRED",
     InvalidDateRange: "INVALID_DATE_RANGE",
     InsufficientMonitoringData: "INSUFFICIENT_MONITORING_DATA",
+    MismatchedIcd10: "MISMATCHED_ICD10",
+    BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
+    PatientReconsent: "PATIENT_RECONSENT",
+    ProviderChanged: "PROVIDER_CHANGED",
 } as const;
 export type ServiceCreateV1ResponseTasksElementType =
     (typeof ServiceCreateV1ResponseTasksElementType)[keyof typeof ServiceCreateV1ResponseTasksElementType];
