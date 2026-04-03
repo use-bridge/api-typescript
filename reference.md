@@ -2891,62 +2891,6 @@ await client.services.getService("id");
 </dl>
 </details>
 
-<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">updateService</a>(id, { ...params }) -> BridgeApi.ServiceUpdateV1Response</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.services.updateService("id", {});
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**request:** `BridgeApi.ServiceUpdateV1Request`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Services.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 <details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">revalidateService</a>(id) -> void</code></summary>
 <dl>
 <dd>
@@ -3308,6 +3252,77 @@ await client.services.v2.cancelService("id", {});
 <dd>
 
 **request:** `BridgeApi.ServiceCancelV2Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `V2.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.services.v2.<a href="/src/api/resources/services/resources/v2/client/Client.ts">updateService</a>(id, { ...params }) -> BridgeApi.ServiceUpdateV2Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Updates an existing `Service`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.services.v2.updateService("id", {});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.ServiceUpdateV2Request`
 
 </dd>
 </dl>
