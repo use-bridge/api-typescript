@@ -7,12 +7,7 @@ describe("V2", () => {
     test("createServiceEligibility", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            serviceTypeId: "serviceTypeId",
-            dateOfService: "2024-01-15T09:30:00Z",
-            policyIds: ["policyIds", "policyIds"],
-            state: "AL",
-        };
+        const rawRequestBody = { serviceTypeId: "serviceTypeId", dateOfService: "2024-01-15T09:30:00Z", state: "AL" };
         const rawResponseBody = {
             id: "id",
             organizationId: "organizationId",
@@ -119,7 +114,6 @@ describe("V2", () => {
         const response = await client.serviceEligibility.v2.createServiceEligibility({
             serviceTypeId: "serviceTypeId",
             dateOfService: "2024-01-15T09:30:00Z",
-            policyIds: ["policyIds", "policyIds"],
             state: "AL",
         });
         expect(response).toEqual({

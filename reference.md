@@ -2536,7 +2536,6 @@ Creates a ServiceEligibility, returns immediately in the `PENDING` status.
 await client.serviceEligibility.v2.createServiceEligibility({
     serviceTypeId: "serviceTypeId",
     dateOfService: "2024-01-15T09:30:00Z",
-    policyIds: ["policyIds", "policyIds"],
     state: "AL",
 });
 ```

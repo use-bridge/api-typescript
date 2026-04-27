@@ -6,7 +6,8 @@ export interface ServiceEligibilityCreateV2Request {
     serviceTypeId: string;
     /** Full ISO8601 timestamp, including timezone */
     dateOfService: string;
-    policyIds: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2RequestPolicyId[];
+    /** Optional for cash-pay ServiceTypes; omit or pass [] when no policy is available */
+    policyIds?: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2RequestPolicyId[];
     /** 2 letter US state code */
     state: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2RequestState;
     clinicalInfo?: BridgeApi.serviceEligibility.ServiceEligibilityCreateV2RequestClinicalInfo;
