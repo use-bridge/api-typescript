@@ -44,6 +44,8 @@ export class Enrollment {
     /**
      * Returns the high-level enrollment status of a provider
      *
+     * **Production only:** This endpoint is only available in Production and will not work in Sandbox.
+     *
      * @param {string} id
      * @param {Enrollment.RequestOptions} requestOptions - Request-specific configuration.
      *

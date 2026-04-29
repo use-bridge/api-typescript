@@ -2300,6 +2300,8 @@ await client.providers.updateProvider("id", {});
 
 Returns the high-level enrollment status of a provider
 
+**Production only:** This endpoint is only available in Production and will not work in Sandbox.
+
 </dd>
 </dl>
 </dd>
