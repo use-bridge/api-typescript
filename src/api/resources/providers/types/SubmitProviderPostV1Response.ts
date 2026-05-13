@@ -4,5 +4,5 @@ import * as BridgeApi from "../../../index.js";
 
 export interface SubmitProviderPostV1Response {
     failed: BridgeApi.SubmitProviderPostV1ResponseFailed[];
-    submit: BridgeApi.SubmitProviderPostV1ResponseSubmit[];
+    successful: BridgeApi.SubmitProviderPostV1ResponseSuccessful[];
 }

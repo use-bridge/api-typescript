@@ -51,7 +51,7 @@ describe("Providers", () => {
                     providerType: "MD",
                 },
             ],
-            submit: [
+            successful: [
                 {
                     caqhId: "caqhId",
                     credential: "credential",
@@ -128,7 +128,7 @@ describe("Providers", () => {
                     providerType: "MD",
                 },
             ],
-            submit: [
+            successful: [
                 {
                     caqhId: "caqhId",
                     credential: "credential",
