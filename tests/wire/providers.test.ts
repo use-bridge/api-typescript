@@ -5,6 +5,156 @@ import { BridgeApiClient } from "../../src/Client";
 import * as BridgeApi from "../../src/api/index";
 
 describe("Providers", () => {
+    test("postSubmit Provider", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
+        const rawRequestBody = {
+            providers: [
+                {
+                    npi: "npi",
+                    email: "email",
+                    caqhId: "caqhId",
+                    caqhUsername: "caqhUsername",
+                    caqhPassword: "caqhPassword",
+                },
+                {
+                    npi: "npi",
+                    email: "email",
+                    caqhId: "caqhId",
+                    caqhUsername: "caqhUsername",
+                    caqhPassword: "caqhPassword",
+                },
+            ],
+        };
+        const rawResponseBody = {
+            failed: [
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    error: "error",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerType: "MD",
+                },
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    error: "error",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerType: "MD",
+                },
+            ],
+            submit: [
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerId: "providerId",
+                    providerType: "MD",
+                },
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerId: "providerId",
+                    providerType: "MD",
+                },
+            ],
+        };
+        server
+            .mockEndpoint()
+            .post("/api/providers/submit")
+            .jsonBody(rawRequestBody)
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.providers.postSubmitProvider({
+            providers: [
+                {
+                    npi: "npi",
+                    email: "email",
+                    caqhId: "caqhId",
+                    caqhUsername: "caqhUsername",
+                    caqhPassword: "caqhPassword",
+                },
+                {
+                    npi: "npi",
+                    email: "email",
+                    caqhId: "caqhId",
+                    caqhUsername: "caqhUsername",
+                    caqhPassword: "caqhPassword",
+                },
+            ],
+        });
+        expect(response).toEqual({
+            failed: [
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    error: "error",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerType: "MD",
+                },
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    error: "error",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerType: "MD",
+                },
+            ],
+            submit: [
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerId: "providerId",
+                    providerType: "MD",
+                },
+                {
+                    caqhId: "caqhId",
+                    credential: "credential",
+                    email: "email",
+                    externalId: "externalId",
+                    firstName: "firstName",
+                    lastName: "lastName",
+                    npi: "npi",
+                    providerId: "providerId",
+                    providerType: "MD",
+                },
+            ],
+        });
+    });
+
     test("listProviders", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });

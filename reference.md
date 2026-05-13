@@ -2132,6 +2132,71 @@ await client.providerEligibility.getProviderEligibility("id");
 
 ## Providers
 
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">postSubmitProvider</a>({ ...params }) -> BridgeApi.SubmitProviderPostV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.providers.postSubmitProvider({
+    providers: [
+        {
+            npi: "npi",
+            email: "email",
+            caqhId: "caqhId",
+            caqhUsername: "caqhUsername",
+            caqhPassword: "caqhPassword",
+        },
+        {
+            npi: "npi",
+            email: "email",
+            caqhId: "caqhId",
+            caqhUsername: "caqhUsername",
+            caqhPassword: "caqhPassword",
+        },
+    ],
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.SubmitProviderPostV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Providers.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">listProviders</a>({ ...params }) -> BridgeApi.ProvidersListV1Response</code></summary>
 <dl>
 <dd>

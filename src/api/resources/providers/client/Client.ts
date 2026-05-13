@@ -48,6 +48,92 @@ export class Providers {
     }
 
     /**
+     * @param {BridgeApi.SubmitProviderPostV1Request} request
+     * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.providers.postSubmitProvider({
+     *         providers: [{
+     *                 npi: "npi",
+     *                 email: "email",
+     *                 caqhId: "caqhId",
+     *                 caqhUsername: "caqhUsername",
+     *                 caqhPassword: "caqhPassword"
+     *             }, {
+     *                 npi: "npi",
+     *                 email: "email",
+     *                 caqhId: "caqhId",
+     *                 caqhUsername: "caqhUsername",
+     *                 caqhPassword: "caqhPassword"
+     *             }]
+     *     })
+     */
+    public postSubmitProvider(
+        request: BridgeApi.SubmitProviderPostV1Request,
+        requestOptions?: Providers.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.SubmitProviderPostV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__postSubmitProvider(request, requestOptions));
+    }
+
+    private async __postSubmitProvider(
+        request: BridgeApi.SubmitProviderPostV1Request,
+        requestOptions?: Providers.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.SubmitProviderPostV1Response>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                "/api/providers/submit",
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as BridgeApi.SubmitProviderPostV1Response,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling POST /api/providers/submit.");
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
      * @param {BridgeApi.ProvidersListV1Request} request
      * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
