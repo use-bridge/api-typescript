@@ -2132,7 +2132,7 @@ await client.providerEligibility.getProviderEligibility("id");
 
 ## Providers
 
-<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">postSubmitProvider</a>({ ...params }) -> BridgeApi.SubmitProviderPostV1Response</code></summary>
+<details><summary><code>client.providers.<a href="/src/api/resources/providers/client/Client.ts">submitProvider</a>({ ...params }) -> BridgeApi.ProviderSubmitV1Response</code></summary>
 <dl>
 <dd>
 
@@ -2145,7 +2145,7 @@ await client.providerEligibility.getProviderEligibility("id");
 <dd>
 
 ```typescript
-await client.providers.postSubmitProvider({
+await client.providers.submitProvider({
     providers: [
         {
             npi: "npi",
@@ -2178,7 +2178,7 @@ await client.providers.postSubmitProvider({
 <dl>
 <dd>
 
-**request:** `BridgeApi.SubmitProviderPostV1Request`
+**request:** `BridgeApi.ProviderSubmitV1Request`
 
 </dd>
 </dl>

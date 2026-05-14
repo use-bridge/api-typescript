@@ -2,14 +2,14 @@
 
 import * as BridgeApi from "../../../index.js";
 
-export interface SubmitProviderPostV1ResponseSuccessful {
+export interface ProviderSubmitV1ResponseFailed {
     caqhId: string;
     credential?: string;
     email: string;
+    error?: string;
     externalId?: string;
-    firstName: string;
-    lastName: string;
+    firstName?: string;
+    lastName?: string;
     npi: string;
-    providerId: string;
-    providerType: BridgeApi.SubmitProviderPostV1ResponseSuccessfulElementProviderType;
+    providerType?: BridgeApi.ProviderSubmitV1ResponseFailedElementProviderType;
 }

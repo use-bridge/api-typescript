@@ -2,6 +2,6 @@
 
 import * as BridgeApi from "../../../index.js";
 
-export interface SubmitProviderPostV1Request {
-    providers: BridgeApi.SubmitProviderPostV1RequestProvider[];
+export interface ProviderSubmitV1Request {
+    providers: BridgeApi.ProviderSubmitV1RequestProvider[];
 }

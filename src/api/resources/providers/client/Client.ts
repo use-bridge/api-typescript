@@ -48,11 +48,11 @@ export class Providers {
     }
 
     /**
-     * @param {BridgeApi.SubmitProviderPostV1Request} request
+     * @param {BridgeApi.ProviderSubmitV1Request} request
      * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example
-     *     await client.providers.postSubmitProvider({
+     *     await client.providers.submitProvider({
      *         providers: [{
      *                 npi: "npi",
      *                 email: "email",
@@ -68,17 +68,17 @@ export class Providers {
      *             }]
      *     })
      */
-    public postSubmitProvider(
-        request: BridgeApi.SubmitProviderPostV1Request,
+    public submitProvider(
+        request: BridgeApi.ProviderSubmitV1Request,
         requestOptions?: Providers.RequestOptions,
-    ): core.HttpResponsePromise<BridgeApi.SubmitProviderPostV1Response> {
-        return core.HttpResponsePromise.fromPromise(this.__postSubmitProvider(request, requestOptions));
+    ): core.HttpResponsePromise<BridgeApi.ProviderSubmitV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__submitProvider(request, requestOptions));
     }
 
-    private async __postSubmitProvider(
-        request: BridgeApi.SubmitProviderPostV1Request,
+    private async __submitProvider(
+        request: BridgeApi.ProviderSubmitV1Request,
         requestOptions?: Providers.RequestOptions,
-    ): Promise<core.WithRawResponse<BridgeApi.SubmitProviderPostV1Response>> {
+    ): Promise<core.WithRawResponse<BridgeApi.ProviderSubmitV1Response>> {
         let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
             this._options?.headers,
             mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
@@ -102,10 +102,7 @@ export class Providers {
             abortSignal: requestOptions?.abortSignal,
         });
         if (_response.ok) {
-            return {
-                data: _response.body as BridgeApi.SubmitProviderPostV1Response,
-                rawResponse: _response.rawResponse,
-            };
+            return { data: _response.body as BridgeApi.ProviderSubmitV1Response, rawResponse: _response.rawResponse };
         }
 
         if (_response.error.reason === "status-code") {

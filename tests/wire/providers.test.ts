@@ -5,7 +5,7 @@ import { BridgeApiClient } from "../../src/Client";
 import * as BridgeApi from "../../src/api/index";
 
 describe("Providers", () => {
-    test("postSubmit Provider", async () => {
+    test("submitProvider", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
         const rawRequestBody = {
@@ -85,7 +85,7 @@ describe("Providers", () => {
             .jsonBody(rawResponseBody)
             .build();
 
-        const response = await client.providers.postSubmitProvider({
+        const response = await client.providers.submitProvider({
             providers: [
                 {
                     npi: "npi",
