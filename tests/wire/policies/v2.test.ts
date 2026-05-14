@@ -14,6 +14,7 @@ describe("V2", () => {
         };
         const rawResponseBody = {
             id: "id",
+            externalId: "externalId",
             payerId: "payerId",
             planName: "planName",
             payer: { id: "id", code: "code", name: "name", memberId: true, hint: "hint" },
@@ -67,6 +68,7 @@ describe("V2", () => {
         });
         expect(response).toEqual({
             id: "id",
+            externalId: "externalId",
             payerId: "payerId",
             planName: "planName",
             payer: {

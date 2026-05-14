@@ -10,6 +10,7 @@ describe("Policies", () => {
 
         const rawResponseBody = {
             id: "id",
+            externalId: "externalId",
             payerId: "payerId",
             planName: "planName",
             payer: { id: "id", code: "code", name: "name", memberId: true, hint: "hint" },
@@ -47,6 +48,7 @@ describe("Policies", () => {
         const response = await client.policies.getPolicy("id");
         expect(response).toEqual({
             id: "id",
+            externalId: "externalId",
             payerId: "payerId",
             planName: "planName",
             payer: {

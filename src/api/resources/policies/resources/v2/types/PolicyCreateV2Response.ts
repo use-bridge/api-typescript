@@ -4,6 +4,7 @@ import * as BridgeApi from "../../../../../index.js";
 
 export interface PolicyCreateV2Response {
     id: string;
+    externalId?: string;
     payerId: string;
     planName?: string;
     payer: BridgeApi.policies.PolicyCreateV2ResponsePayer;

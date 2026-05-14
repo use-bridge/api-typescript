@@ -4,6 +4,7 @@ import * as BridgeApi from "../../../index.js";
 
 export interface PolicyGetV1Response {
     id: string;
+    externalId?: string;
     payerId: string;
     planName?: string;
     payer: BridgeApi.PolicyGetV1ResponsePayer;

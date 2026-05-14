@@ -3,6 +3,8 @@
 import * as BridgeApi from "../../../../../index.js";
 
 export interface PolicyCreateV2Request {
+    /** Optional unique identifier */
+    externalId?: string;
     person: BridgeApi.policies.PolicyCreateV2RequestPerson;
     /** 2 letter US state code */
     state: BridgeApi.policies.PolicyCreateV2RequestState;
