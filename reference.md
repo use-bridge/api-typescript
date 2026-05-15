@@ -2136,6 +2136,21 @@ await client.providerEligibility.getProviderEligibility("id");
 <dl>
 <dd>
 
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**Production only:** This endpoint is only available in Production and will not work in Sandbox.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
 #### 🔌 Usage
 
 <dl>

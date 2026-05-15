@@ -48,6 +48,8 @@ export class Providers {
     }
 
     /**
+     * **Production only:** This endpoint is only available in Production and will not work in Sandbox.
+     *
      * @param {BridgeApi.ProviderPostV1Request} request
      * @param {Providers.RequestOptions} requestOptions - Request-specific configuration.
      *
