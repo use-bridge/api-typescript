@@ -2,6 +2,54 @@
 
 ## Billing EstimateCharges
 
+<details><summary><code>client.billing.estimateCharges.<a href="/src/api/resources/billing/resources/estimateCharges/client/Client.ts">listEstimateCharges</a>({ ...params }) -> BridgeApi.EstimateChargesListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.billing.estimateCharges.listEstimateCharges();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.billing.EstimateChargesListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `EstimateCharges.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.billing.estimateCharges.<a href="/src/api/resources/billing/resources/estimateCharges/client/Client.ts">createEstimateCharge</a>({ ...params }) -> BridgeApi.EstimateChargeCreateV1Response</code></summary>
 <dl>
 <dd>
@@ -321,6 +369,54 @@ await client.billing.estimateCharges.cancelStripeEstimateCharge("id");
 </details>
 
 ## Billing Fees
+
+<details><summary><code>client.billing.fees.<a href="/src/api/resources/billing/resources/fees/client/Client.ts">listFees</a>({ ...params }) -> BridgeApi.FeesListV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.billing.fees.listFees();
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.billing.FeesListV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Fees.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
 
 <details><summary><code>client.billing.fees.<a href="/src/api/resources/billing/resources/fees/client/Client.ts">createFee</a>({ ...params }) -> BridgeApi.FeeCreateV1Response</code></summary>
 <dl>

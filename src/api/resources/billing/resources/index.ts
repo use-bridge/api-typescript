@@ -4,3 +4,5 @@ export * as fees from "./fees/index.js";
 export * from "./fees/types/index.js";
 export * as setupIntent from "./setupIntent/index.js";
 export * from "./setupIntent/types/index.js";
+export * from "./estimateCharges/client/requests/index.js";
+export * from "./fees/client/requests/index.js";

@@ -4,6 +4,69 @@ import { mockServerPool } from "../../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../../src/Client";
 
 describe("Fees", () => {
+    test("listFees", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            items: [
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    type: "LATE_CANCELLATION",
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceId: "serviceId",
+                },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    type: "LATE_CANCELLATION",
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceId: "serviceId",
+                },
+            ],
+            count: 1,
+        };
+        server.mockEndpoint().get("/api/fees/v2").respondWith().statusCode(200).jsonBody(rawResponseBody).build();
+
+        const response = await client.billing.fees.listFees();
+        expect(response).toEqual({
+            items: [
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    type: "LATE_CANCELLATION",
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceId: "serviceId",
+                },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    type: "LATE_CANCELLATION",
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceId: "serviceId",
+                },
+            ],
+            count: 1,
+        });
+    });
+
     test("createFee", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });

@@ -42,6 +42,105 @@ export class Fees {
     }
 
     /**
+     * @param {BridgeApi.billing.FeesListV1Request} request
+     * @param {Fees.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.billing.fees.listFees()
+     */
+    public listFees(
+        request: BridgeApi.billing.FeesListV1Request = {},
+        requestOptions?: Fees.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.billing.FeesListV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__listFees(request, requestOptions));
+    }
+
+    private async __listFees(
+        request: BridgeApi.billing.FeesListV1Request = {},
+        requestOptions?: Fees.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.billing.FeesListV1Response>> {
+        const {
+            "filter.patientId": filterPatientId,
+            "filter.serviceId": filterServiceId,
+            "filter.serviceEligibilityId": filterServiceEligibilityId,
+            "filter.status": filterStatus,
+            page,
+            limit,
+        } = request;
+        const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (filterPatientId != null) {
+            _queryParams["filter.patientId"] = filterPatientId;
+        }
+
+        if (filterServiceId != null) {
+            _queryParams["filter.serviceId"] = filterServiceId;
+        }
+
+        if (filterServiceEligibilityId != null) {
+            _queryParams["filter.serviceEligibilityId"] = filterServiceEligibilityId;
+        }
+
+        if (filterStatus != null) {
+            _queryParams["filter.status"] = filterStatus;
+        }
+
+        if (page != null) {
+            _queryParams["page"] = page.toString();
+        }
+
+        if (limit != null) {
+            _queryParams["limit"] = limit.toString();
+        }
+
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                "/api/fees/v2",
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: { ..._queryParams, ...requestOptions?.queryParams },
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return { data: _response.body as BridgeApi.billing.FeesListV1Response, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError("Timeout exceeded when calling GET /api/fees/v2.");
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
      * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
      *
      * @param {BridgeApi.billing.FeeCreateV1Request} request

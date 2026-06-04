@@ -4,6 +4,83 @@ import { mockServerPool } from "../../mock-server/MockServerPool";
 import { BridgeApiClient } from "../../../src/Client";
 
 describe("EstimateCharges", () => {
+    test("listEstimate Charges", async () => {
+        const server = mockServerPool.createServer();
+        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
+
+        const rawResponseBody = {
+            items: [
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceEligibilityId: "serviceEligibilityId",
+                    authorizedAmount: 1,
+                    capturedAmount: 1,
+                    refundedAmount: 1,
+                },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceEligibilityId: "serviceEligibilityId",
+                    authorizedAmount: 1,
+                    capturedAmount: 1,
+                    refundedAmount: 1,
+                },
+            ],
+            count: 1,
+        };
+        server
+            .mockEndpoint()
+            .get("/api/estimate-charges")
+            .respondWith()
+            .statusCode(200)
+            .jsonBody(rawResponseBody)
+            .build();
+
+        const response = await client.billing.estimateCharges.listEstimateCharges();
+        expect(response).toEqual({
+            items: [
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceEligibilityId: "serviceEligibilityId",
+                    authorizedAmount: 1,
+                    capturedAmount: 1,
+                    refundedAmount: 1,
+                },
+                {
+                    id: "id",
+                    createdAt: "2024-01-15T09:30:00Z",
+                    updatedAt: "2024-01-15T09:30:00Z",
+                    externalId: "externalId",
+                    amount: 1,
+                    status: "PENDING",
+                    patientId: "patientId",
+                    serviceEligibilityId: "serviceEligibilityId",
+                    authorizedAmount: 1,
+                    capturedAmount: 1,
+                    refundedAmount: 1,
+                },
+            ],
+            count: 1,
+        });
+    });
+
     test("createEstimate Charge", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
