@@ -146,6 +146,10 @@ export class EstimateCharges {
     /**
      * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
      *
+     * This endpoint may return a `409` error response with one of these public `message` values:
+     * - `Conflicting EstimateCharge exists`
+     * - `Missing Service Eligibility Amount`
+     *
      * @param {BridgeApi.billing.EstimateChargeCreateV1Request} request
      * @param {EstimateCharges.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -223,6 +227,13 @@ export class EstimateCharges {
     /**
      * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
      *
+     * This endpoint may return a `409` error response with one of these public `message` values:
+     * - `Invalid Estimate Charge Status`
+     * - `Missing Customer`
+     * - `Missing Customer Payment Method`
+     * - `Payment Already Captured`
+     * - `Payment has been Voided`
+     *
      * @param {string} id
      * @param {EstimateCharges.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -295,6 +306,13 @@ export class EstimateCharges {
 
     /**
      * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
+     *
+     * This endpoint may return a `409` error response with one of these public `message` values:
+     * - `Invalid Estimate Charge Status`
+     * - `Missing Customer`
+     * - `Missing Customer Payment Method`
+     * - `Payment Already Captured`
+     * - `Payment has been Voided`
      *
      * @param {string} id
      * @param {EstimateCharges.RequestOptions} requestOptions - Request-specific configuration.
@@ -369,6 +387,12 @@ export class EstimateCharges {
     /**
      * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
      *
+     * This endpoint may return a `409` error response with one of these public `message` values:
+     * - `Invalid Estimate Charge Status`
+     * - `Missing Captured Transaction`
+     * - `Missing Customer`
+     * - `Missing Payment Intent`
+     *
      * @param {string} id
      * @param {EstimateCharges.RequestOptions} requestOptions - Request-specific configuration.
      *
@@ -441,6 +465,13 @@ export class EstimateCharges {
 
     /**
      * This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
+     *
+     * This endpoint may return a `409` error response with one of these public `message` values:
+     * - `Invalid Estimate Charge Status`
+     * - `Missing Authorized Transaction`
+     * - `Missing Customer`
+     * - `Missing Payment Intent`
+     * - `Payment Already Captured`
      *
      * @param {string} id
      * @param {EstimateCharges.RequestOptions} requestOptions - Request-specific configuration.

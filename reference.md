@@ -64,10 +64,14 @@ await client.billing.estimateCharges.listEstimateCharges();
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Conflicting EstimateCharge exists`
+- `Missing Service Eligibility Amount`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -130,10 +134,17 @@ await client.billing.estimateCharges.createEstimateCharge({
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Invalid Estimate Charge Status`
+- `Missing Customer`
+- `Missing Customer Payment Method`
+- `Payment Already Captured`
+- `Payment has been Voided`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -193,10 +204,17 @@ await client.billing.estimateCharges.authorizeStripeEstimateCharge("id");
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Invalid Estimate Charge Status`
+- `Missing Customer`
+- `Missing Customer Payment Method`
+- `Payment Already Captured`
+- `Payment has been Voided`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -256,10 +274,16 @@ await client.billing.estimateCharges.captureStripeEstimateCharge("id");
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Invalid Estimate Charge Status`
+- `Missing Captured Transaction`
+- `Missing Customer`
+- `Missing Payment Intent`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -319,10 +343,17 @@ await client.billing.estimateCharges.refundStripeEstimateCharge("id");
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Invalid Estimate Charge Status`
+- `Missing Authorized Transaction`
+- `Missing Customer`
+- `Missing Payment Intent`
+- `Payment Already Captured`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -432,10 +463,13 @@ await client.billing.fees.listFees();
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Conflicting Fee exists`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -498,10 +532,17 @@ await client.billing.fees.createFee({
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Invalid Fee Status`
+- `Missing Customer`
+- `Missing Customer Payment Method`
+- `Payment Already Captured`
+- `Payment has been Voided`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
@@ -561,10 +602,16 @@ await client.billing.fees.captureStripeFee("id");
 
 This endpoint can only be used after setting up the billing integration. Refer to the [billing integration documentation](/documentation/integrations/billing/overview) for more details.
 
-</dd>
-</dl>
-</dd>
-</dl>
+This endpoint may return a `409` error response with one of these public `message` values:
+
+- `Invalid Fee Status`
+- `Missing Captured Transaction`
+- `Missing Customer`
+- `Missing Payment Intent`
+  </dd>
+  </dl>
+  </dd>
+  </dl>
 
 #### 🔌 Usage
 
