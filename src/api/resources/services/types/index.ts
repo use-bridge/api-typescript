@@ -48,6 +48,7 @@ export * from "./ServicesListV1FilterStatusElement.js";
 export * from "./ServicesListV1FilterStatus.js";
 export * from "./ServicesListV1FilterProviderId.js";
 export * from "./ServicesListV1OrderCreatedAt.js";
+export * from "./ServicesListV1OrderDateOfService.js";
 export * from "./ServicesListV1ResponseItemStatus.js";
 export * from "./ServicesListV1ResponseItemServiceTypeFieldPlaceOfService.js";
 export * from "./ServicesListV1ResponseItemServiceTypeFieldProviderType.js";

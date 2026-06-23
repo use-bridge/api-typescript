@@ -15,7 +15,8 @@ export interface ServicesListV1Request {
     "filter.status"?: BridgeApi.ServicesListV1FilterStatus[];
     /** should be JSON-encoded array, for example filter.providerId=["prv_xxx", "prv_yyy"] */
     "filter.providerId"?: BridgeApi.ServicesListV1FilterProviderId[];
-    "order.createdAt"?: BridgeApi.ServicesListV1OrderCreatedAt;
+    "order.createdAt"?: BridgeApi.ServicesListV1OrderCreatedAt | undefined;
+    "order.dateOfService"?: BridgeApi.ServicesListV1OrderDateOfService | undefined;
     page?: number;
     limit?: number;
 }

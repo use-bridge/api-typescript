@@ -149,6 +149,7 @@ export class Services {
             "filter.status": filterStatus,
             "filter.providerId": filterProviderId,
             "order.createdAt": orderCreatedAt,
+            "order.dateOfService": orderDateOfService,
             page,
             limit,
         } = request;
@@ -171,6 +172,10 @@ export class Services {
 
         if (orderCreatedAt != null) {
             _queryParams["order.createdAt"] = orderCreatedAt;
+        }
+
+        if (orderDateOfService != null) {
+            _queryParams["order.dateOfService"] = orderDateOfService;
         }
 
         if (page != null) {
