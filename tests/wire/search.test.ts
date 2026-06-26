@@ -13,7 +13,7 @@ describe("Search", () => {
                 { id: "id", code: "code", name: "name", memberId: true, hint: "hint" },
                 { id: "id", code: "code", name: "name", memberId: true, hint: "hint" },
             ],
-            _time: 1,
+            _time: 1.1,
         };
         server
             .mockEndpoint()
@@ -45,7 +45,7 @@ describe("Search", () => {
                     hint: "hint",
                 },
             ],
-            _time: 1,
+            _time: 1.1,
         });
     });
 });
