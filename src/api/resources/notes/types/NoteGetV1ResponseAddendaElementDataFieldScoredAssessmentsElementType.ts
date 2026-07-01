@@ -7,6 +7,16 @@ export const NoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementTyp
     SdohAhcHrsn: "SDOH-AHC-HRSN",
     SdohViSpdat: "SDOH-VI-SPDAT",
     SdohCore5Sdh: "SDOH-CORE-5-SDH",
+    Fast: "FAST",
+    Cdr: "CDR",
+    Gds: "GDS",
+    Moca: "MoCA",
+    Slums: "SLUMS",
+    Epworth: "Epworth",
+    Mmse: "MMSE",
+    NpiQ: "NPI-Q",
+    Bhev5Plus: "BHEV5+",
+    Phq2: "PHQ-2",
 } as const;
 export type NoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType =
     (typeof NoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType)[keyof typeof NoteGetV1ResponseAddendaElementDataFieldScoredAssessmentsElementType];
