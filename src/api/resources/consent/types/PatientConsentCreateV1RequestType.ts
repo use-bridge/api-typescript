@@ -4,6 +4,7 @@ export const PatientConsentCreateV1RequestType = {
     AssignmentOfBenefits: "ASSIGNMENT_OF_BENEFITS",
     ConsentToTreat: "CONSENT_TO_TREAT",
     PrivacyNotice: "PRIVACY_NOTICE",
+    SmaGroupConfidentialityAgreement: "SMA_GROUP_CONFIDENTIALITY_AGREEMENT",
 } as const;
 export type PatientConsentCreateV1RequestType =
     (typeof PatientConsentCreateV1RequestType)[keyof typeof PatientConsentCreateV1RequestType];

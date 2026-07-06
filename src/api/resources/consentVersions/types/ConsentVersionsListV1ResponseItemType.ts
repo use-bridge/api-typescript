@@ -4,6 +4,7 @@ export const ConsentVersionsListV1ResponseItemType = {
     AssignmentOfBenefits: "ASSIGNMENT_OF_BENEFITS",
     ConsentToTreat: "CONSENT_TO_TREAT",
     PrivacyNotice: "PRIVACY_NOTICE",
+    SmaGroupConfidentialityAgreement: "SMA_GROUP_CONFIDENTIALITY_AGREEMENT",
 } as const;
 export type ConsentVersionsListV1ResponseItemType =
     (typeof ConsentVersionsListV1ResponseItemType)[keyof typeof ConsentVersionsListV1ResponseItemType];
