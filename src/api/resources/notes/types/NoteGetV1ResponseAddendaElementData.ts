@@ -20,8 +20,10 @@ export interface NoteGetV1ResponseAddendaElementData {
     TELEHEALTH_DISCLAIMER?: string;
     /** Written description of time spent. Example: '10min spent preparing, 20min spent in visit, 5min spent documenting' */
     TOTAL_TIME_SPENT?: string;
+    INDIVIDUAL_TIME_SPENT_MINUTES?: number;
     TIME_SPENT_MINUTES?: number;
     THERAPY_TIME_SPENT_MINUTES?: number;
+    SMA_GROUP_SIZE?: number;
     /** Patient height in inches (in) */
     HEIGHT?: number;
     /** Patient weight in pounds (lb) */

@@ -2287,7 +2287,7 @@ await client.providerEligibility.getProviderEligibility("id");
 <dl>
 <dd>
 
-**Production only:** This endpoint is only available in Production and will not work in Sandbox.
+Submits one or more providers for credentialing intake. In live environments, this starts the provider submission workflow and resolves provider names from the CMS NPI Registry. In sandbox, the endpoint is available with the same request and response shape, but providers are created immediately without an external NPI registry lookup; created providers use firstName `Sandbox` and lastName set to the submitted NPI.
 
 </dd>
 </dl>
