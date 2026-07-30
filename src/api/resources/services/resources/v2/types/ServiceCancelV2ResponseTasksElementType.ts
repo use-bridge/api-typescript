@@ -15,6 +15,7 @@ export const ServiceCancelV2ResponseTasksElementType = {
     PriorAuthorization: "PRIOR_AUTHORIZATION",
     BillingTimeLimit: "BILLING_TIME_LIMIT",
     ProviderNotEnrolled: "PROVIDER_NOT_ENROLLED",
+    NoteSigningProviderMismatch: "NOTE_SIGNING_PROVIDER_MISMATCH",
     TherapyDuration: "THERAPY_DURATION",
     MinimumDuration: "MINIMUM_DURATION",
     MissingInitiatingVisit: "MISSING_INITIATING_VISIT",
