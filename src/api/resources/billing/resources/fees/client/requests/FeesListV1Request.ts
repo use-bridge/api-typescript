@@ -7,6 +7,8 @@ import * as BridgeApi from "../../../../../../index.js";
  *     {}
  */
 export interface FeesListV1Request {
+    /** should be JSON-encoded, for example filter.externalId="external_xxx" */
+    "filter.externalId"?: string;
     /** should be JSON-encoded, for example filter.patientId="pat_xxx" */
     "filter.patientId"?: string;
     /** should be JSON-encoded, for example filter.serviceId="svc_xxx" */

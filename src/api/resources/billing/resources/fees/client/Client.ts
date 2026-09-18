@@ -60,6 +60,7 @@ export class Fees {
         requestOptions?: Fees.RequestOptions,
     ): Promise<core.WithRawResponse<BridgeApi.billing.FeesListV1Response>> {
         const {
+            "filter.externalId": filterExternalId,
             "filter.patientId": filterPatientId,
             "filter.serviceId": filterServiceId,
             "filter.serviceEligibilityId": filterServiceEligibilityId,
@@ -68,6 +69,10 @@ export class Fees {
             limit,
         } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
+        if (filterExternalId != null) {
+            _queryParams["filter.externalId"] = filterExternalId;
+        }
+
         if (filterPatientId != null) {
             _queryParams["filter.patientId"] = filterPatientId;
         }
