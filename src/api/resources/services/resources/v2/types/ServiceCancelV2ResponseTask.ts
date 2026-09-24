@@ -3,6 +3,8 @@
 import * as BridgeApi from "../../../../../index.js";
 
 export interface ServiceCancelV2ResponseTask {
+    inReviewAt?: string;
+    ready?: boolean;
     type: BridgeApi.services.ServiceCancelV2ResponseTasksElementType;
     memo?: string;
 }

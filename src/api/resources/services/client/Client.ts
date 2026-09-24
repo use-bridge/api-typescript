@@ -509,6 +509,85 @@ export class Services {
 
     /**
      * @param {string} id
+     * @param {BridgeApi.ServiceSetReadyV1ParametersType} type_
+     * @param {BridgeApi.ServiceSetReadyV1Request} request
+     * @param {Services.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.services.setReadyService("id", "PATIENT_CONSENT", {
+     *         ready: true
+     *     })
+     */
+    public setReadyService(
+        id: string,
+        type_: BridgeApi.ServiceSetReadyV1ParametersType,
+        request: BridgeApi.ServiceSetReadyV1Request,
+        requestOptions?: Services.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.ServiceSetReadyV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__setReadyService(id, type_, request, requestOptions));
+    }
+
+    private async __setReadyService(
+        id: string,
+        type_: BridgeApi.ServiceSetReadyV1ParametersType,
+        request: BridgeApi.ServiceSetReadyV1Request,
+        requestOptions?: Services.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.ServiceSetReadyV1Response>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/services/${encodeURIComponent(id)}/tasks/${encodeURIComponent(type_)}`,
+            ),
+            method: "POST",
+            headers: _headers,
+            contentType: "application/json",
+            queryParameters: requestOptions?.queryParams,
+            requestType: "json",
+            body: request,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return { data: _response.body as BridgeApi.ServiceSetReadyV1Response, rawResponse: _response.rawResponse };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError(
+                    "Timeout exceeded when calling POST /api/services/{id}/tasks/{type}.",
+                );
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
+    /**
+     * @param {string} id
      * @param {Services.RequestOptions} requestOptions - Request-specific configuration.
      *
      * @example

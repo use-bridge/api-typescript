@@ -3211,6 +3211,72 @@ await client.services.billService("id");
 </dl>
 </details>
 
+<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">setReadyService</a>(id, type_, { ...params }) -> BridgeApi.ServiceSetReadyV1Response</code></summary>
+<dl>
+<dd>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.services.setReadyService("id", "PATIENT_CONSENT", {
+    ready: true,
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**type\_:** `BridgeApi.ServiceSetReadyV1ParametersType`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.ServiceSetReadyV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `Services.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 <details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">getServiceNote</a>(id) -> BridgeApi.ServiceNoteGetV1Response</code></summary>
 <dl>
 <dd>

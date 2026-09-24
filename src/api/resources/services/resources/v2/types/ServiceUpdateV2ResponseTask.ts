@@ -3,6 +3,8 @@
 import * as BridgeApi from "../../../../../index.js";
 
 export interface ServiceUpdateV2ResponseTask {
+    inReviewAt?: string;
+    ready?: boolean;
     type: BridgeApi.services.ServiceUpdateV2ResponseTasksElementType;
     memo?: string;
 }

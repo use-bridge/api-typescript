@@ -195,8 +195,8 @@ describe("V2", () => {
                 paid: 1,
             },
             tasks: [
-                { type: "PATIENT_CONSENT", memo: "memo" },
-                { type: "PATIENT_CONSENT", memo: "memo" },
+                { inReviewAt: "2024-01-15T09:30:00Z", ready: true, type: "PATIENT_CONSENT", memo: "memo" },
+                { inReviewAt: "2024-01-15T09:30:00Z", ready: true, type: "PATIENT_CONSENT", memo: "memo" },
             ],
             claimStatus: "CREATED",
             priorAuthorizationNumber: "priorAuthorizationNumber",
@@ -420,10 +420,14 @@ describe("V2", () => {
             },
             tasks: [
                 {
+                    inReviewAt: "2024-01-15T09:30:00Z",
+                    ready: true,
                     type: "PATIENT_CONSENT",
                     memo: "memo",
                 },
                 {
+                    inReviewAt: "2024-01-15T09:30:00Z",
+                    ready: true,
                     type: "PATIENT_CONSENT",
                     memo: "memo",
                 },
@@ -621,8 +625,8 @@ describe("V2", () => {
                 paid: 1,
             },
             tasks: [
-                { type: "PATIENT_CONSENT", memo: "memo" },
-                { type: "PATIENT_CONSENT", memo: "memo" },
+                { inReviewAt: "2024-01-15T09:30:00Z", ready: true, type: "PATIENT_CONSENT", memo: "memo" },
+                { inReviewAt: "2024-01-15T09:30:00Z", ready: true, type: "PATIENT_CONSENT", memo: "memo" },
             ],
             claimStatus: "CREATED",
             priorAuthorizationNumber: "priorAuthorizationNumber",
@@ -838,10 +842,14 @@ describe("V2", () => {
             },
             tasks: [
                 {
+                    inReviewAt: "2024-01-15T09:30:00Z",
+                    ready: true,
                     type: "PATIENT_CONSENT",
                     memo: "memo",
                 },
                 {
+                    inReviewAt: "2024-01-15T09:30:00Z",
+                    ready: true,
                     type: "PATIENT_CONSENT",
                     memo: "memo",
                 },
@@ -1039,8 +1047,8 @@ describe("V2", () => {
                 paid: 1,
             },
             tasks: [
-                { type: "PATIENT_CONSENT", memo: "memo" },
-                { type: "PATIENT_CONSENT", memo: "memo" },
+                { inReviewAt: "2024-01-15T09:30:00Z", ready: true, type: "PATIENT_CONSENT", memo: "memo" },
+                { inReviewAt: "2024-01-15T09:30:00Z", ready: true, type: "PATIENT_CONSENT", memo: "memo" },
             ],
             claimStatus: "CREATED",
             priorAuthorizationNumber: "priorAuthorizationNumber",
@@ -1256,10 +1264,14 @@ describe("V2", () => {
             },
             tasks: [
                 {
+                    inReviewAt: "2024-01-15T09:30:00Z",
+                    ready: true,
                     type: "PATIENT_CONSENT",
                     memo: "memo",
                 },
                 {
+                    inReviewAt: "2024-01-15T09:30:00Z",
+                    ready: true,
                     type: "PATIENT_CONSENT",
                     memo: "memo",
                 },
