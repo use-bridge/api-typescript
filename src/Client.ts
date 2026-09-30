@@ -7,6 +7,7 @@ import { Billing } from "./api/resources/billing/client/Client.js";
 import { ConsentVersions } from "./api/resources/consentVersions/client/Client.js";
 import { Consent } from "./api/resources/consent/client/Client.js";
 import { Events } from "./api/resources/events/client/Client.js";
+import { Integrations } from "./api/resources/integrations/client/Client.js";
 import { Notes } from "./api/resources/notes/client/Client.js";
 import { PatientToken } from "./api/resources/patientToken/client/Client.js";
 import { Patients } from "./api/resources/patients/client/Client.js";
@@ -55,6 +56,7 @@ export class BridgeApiClient {
     protected _consentVersions: ConsentVersions | undefined;
     protected _consent: Consent | undefined;
     protected _events: Events | undefined;
+    protected _integrations: Integrations | undefined;
     protected _notes: Notes | undefined;
     protected _patientToken: PatientToken | undefined;
     protected _patients: Patients | undefined;
@@ -76,8 +78,8 @@ export class BridgeApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@usebridge/api",
-                    "X-Fern-SDK-Version": "1.2.23",
-                    "User-Agent": "@usebridge/api/1.2.23",
+                    "X-Fern-SDK-Version": "1.2.24",
+                    "User-Agent": "@usebridge/api/1.2.24",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },
@@ -100,6 +102,10 @@ export class BridgeApiClient {
 
     public get events(): Events {
         return (this._events ??= new Events(this._options));
+    }
+
+    public get integrations(): Integrations {
+        return (this._integrations ??= new Integrations(this._options));
     }
 
     public get notes(): Notes {

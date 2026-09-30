@@ -5,6 +5,7 @@ export * as consent from "./consent/index.js";
 export * from "./consent/types/index.js";
 export * as events from "./events/index.js";
 export * from "./events/types/index.js";
+export * as integrations from "./integrations/index.js";
 export * as notes from "./notes/index.js";
 export * from "./notes/types/index.js";
 export * as patientToken from "./patientToken/index.js";

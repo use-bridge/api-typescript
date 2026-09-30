@@ -990,6 +990,138 @@ await client.events.getEvent("id");
 </dl>
 </details>
 
+## Integrations HealthiePatient
+
+<details><summary><code>client.integrations.healthiePatient.<a href="/src/api/resources/integrations/resources/healthiePatient/client/Client.ts">getHealthieClientHealthiePatient</a>(id) -> BridgeApi.HealthiePatientGetHealthieClientV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the linked Bridge Patient for a Healthie client id.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.healthiePatient.getHealthieClientHealthiePatient("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `HealthiePatient.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Integrations HealthiePatients
+
+<details><summary><code>client.integrations.healthiePatients.<a href="/src/api/resources/integrations/resources/healthiePatients/client/Client.ts">ensureHealthieClientHealthiePatient</a>({ ...params }) -> BridgeApi.HealthiePatientEnsureHealthieClientV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resolves or syncs a Bridge Patient for a Healthie client id. Returns the same shape as Patient create (including a fresh patient token).
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.healthiePatients.ensureHealthieClientHealthiePatient({
+    healthieClientId: "healthieClientId",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.HealthiePatientEnsureHealthieClientV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `HealthiePatients.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Notes
 
 <details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">createNote</a>({ ...params }) -> BridgeApi.NoteCreateV1Response</code></summary>
