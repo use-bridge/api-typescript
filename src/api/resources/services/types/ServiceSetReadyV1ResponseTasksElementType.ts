@@ -24,6 +24,7 @@ export const ServiceSetReadyV1ResponseTasksElementType = {
     PatientConsentExpired: "PATIENT_CONSENT_EXPIRED",
     InvalidDateRange: "INVALID_DATE_RANGE",
     InsufficientMonitoringData: "INSUFFICIENT_MONITORING_DATA",
+    InvalidMonitoringData: "INVALID_MONITORING_DATA",
     MismatchedIcd10: "MISMATCHED_ICD10",
     BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
     PatientReconsent: "PATIENT_RECONSENT",
