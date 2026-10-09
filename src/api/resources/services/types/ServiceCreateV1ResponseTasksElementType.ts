@@ -29,6 +29,7 @@ export const ServiceCreateV1ResponseTasksElementType = {
     BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
     PatientReconsent: "PATIENT_RECONSENT",
     ProviderChanged: "PROVIDER_CHANGED",
+    PatientDob: "PATIENT_DOB",
 } as const;
 export type ServiceCreateV1ResponseTasksElementType =
     (typeof ServiceCreateV1ResponseTasksElementType)[keyof typeof ServiceCreateV1ResponseTasksElementType];

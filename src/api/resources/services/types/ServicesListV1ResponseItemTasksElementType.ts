@@ -29,6 +29,7 @@ export const ServicesListV1ResponseItemTasksElementType = {
     BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
     PatientReconsent: "PATIENT_RECONSENT",
     ProviderChanged: "PROVIDER_CHANGED",
+    PatientDob: "PATIENT_DOB",
 } as const;
 export type ServicesListV1ResponseItemTasksElementType =
     (typeof ServicesListV1ResponseItemTasksElementType)[keyof typeof ServicesListV1ResponseItemTasksElementType];

@@ -29,6 +29,7 @@ export const ServiceSetReadyV1ParametersType = {
     BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
     PatientReconsent: "PATIENT_RECONSENT",
     ProviderChanged: "PROVIDER_CHANGED",
+    PatientDob: "PATIENT_DOB",
 } as const;
 export type ServiceSetReadyV1ParametersType =
     (typeof ServiceSetReadyV1ParametersType)[keyof typeof ServiceSetReadyV1ParametersType];

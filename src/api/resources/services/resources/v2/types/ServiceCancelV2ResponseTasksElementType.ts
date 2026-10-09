@@ -29,6 +29,7 @@ export const ServiceCancelV2ResponseTasksElementType = {
     BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
     PatientReconsent: "PATIENT_RECONSENT",
     ProviderChanged: "PROVIDER_CHANGED",
+    PatientDob: "PATIENT_DOB",
 } as const;
 export type ServiceCancelV2ResponseTasksElementType =
     (typeof ServiceCancelV2ResponseTasksElementType)[keyof typeof ServiceCancelV2ResponseTasksElementType];

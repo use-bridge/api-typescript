@@ -29,6 +29,7 @@ export const ServiceStreamV1ResponseTasksElementType = {
     BillingFrequencyLimit: "BILLING_FREQUENCY_LIMIT",
     PatientReconsent: "PATIENT_RECONSENT",
     ProviderChanged: "PROVIDER_CHANGED",
+    PatientDob: "PATIENT_DOB",
 } as const;
 export type ServiceStreamV1ResponseTasksElementType =
     (typeof ServiceStreamV1ResponseTasksElementType)[keyof typeof ServiceStreamV1ResponseTasksElementType];
