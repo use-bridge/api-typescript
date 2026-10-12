@@ -4,6 +4,8 @@ import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
 import { HealthiePatient } from "../resources/healthiePatient/client/Client.js";
 import { HealthiePatients } from "../resources/healthiePatients/client/Client.js";
+import { HealthieService } from "../resources/healthieService/client/Client.js";
+import { HealthieServices } from "../resources/healthieServices/client/Client.js";
 
 export declare namespace Integrations {
     export interface Options {
@@ -24,6 +26,8 @@ export class Integrations {
     protected readonly _options: Integrations.Options;
     protected _healthiePatient: HealthiePatient | undefined;
     protected _healthiePatients: HealthiePatients | undefined;
+    protected _healthieService: HealthieService | undefined;
+    protected _healthieServices: HealthieServices | undefined;
 
     constructor(_options: Integrations.Options = {}) {
         this._options = _options;
@@ -35,5 +39,13 @@ export class Integrations {
 
     public get healthiePatients(): HealthiePatients {
         return (this._healthiePatients ??= new HealthiePatients(this._options));
+    }
+
+    public get healthieService(): HealthieService {
+        return (this._healthieService ??= new HealthieService(this._options));
+    }
+
+    public get healthieServices(): HealthieServices {
+        return (this._healthieServices ??= new HealthieServices(this._options));
     }
 }

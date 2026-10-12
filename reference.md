@@ -1122,6 +1122,138 @@ await client.integrations.healthiePatients.ensureHealthieClientHealthiePatient({
 </dl>
 </details>
 
+## Integrations HealthieService
+
+<details><summary><code>client.integrations.healthieService.<a href="/src/api/resources/integrations/resources/healthieService/client/Client.ts">getHealthieAppointmentHealthieService</a>(id) -> BridgeApi.HealthieServiceGetHealthieAppointmentV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the linked Bridge Service for a Healthie appointment id.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.healthieService.getHealthieAppointmentHealthieService("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `HealthieService.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Integrations HealthieServices
+
+<details><summary><code>client.integrations.healthieServices.<a href="/src/api/resources/integrations/resources/healthieServices/client/Client.ts">ensureHealthieAppointmentHealthieService</a>({ ...params }) -> BridgeApi.HealthieServiceEnsureHealthieAppointmentV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resolves or syncs a Bridge Service and its parent Patient for a Healthie appointment id. Returns the same shape as Service create.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.healthieServices.ensureHealthieAppointmentHealthieService({
+    healthieAppointmentId: "healthieAppointmentId",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.HealthieServiceEnsureHealthieAppointmentV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `HealthieServices.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Notes
 
 <details><summary><code>client.notes.<a href="/src/api/resources/notes/client/Client.ts">createNote</a>({ ...params }) -> BridgeApi.NoteCreateV1Response</code></summary>
