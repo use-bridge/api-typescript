@@ -990,6 +990,138 @@ await client.events.getEvent("id");
 </dl>
 </details>
 
+## Integrations CanvasPatient
+
+<details><summary><code>client.integrations.canvasPatient.<a href="/src/api/resources/integrations/resources/canvasPatient/client/Client.ts">getCanvasPatientCanvasPatient</a>(id) -> BridgeApi.CanvasPatientGetCanvasPatientV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the linked Bridge Patient for a Canvas Patient ID.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.canvasPatient.getCanvasPatientCanvasPatient("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CanvasPatient.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Integrations CanvasPatients
+
+<details><summary><code>client.integrations.canvasPatients.<a href="/src/api/resources/integrations/resources/canvasPatients/client/Client.ts">ensureCanvasPatientCanvasPatient</a>({ ...params }) -> BridgeApi.CanvasPatientEnsureCanvasPatientV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resolves or syncs a Bridge Patient for a Canvas Patient ID. Returns the same shape as Patient create, including a fresh patient token.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.canvasPatients.ensureCanvasPatientCanvasPatient({
+    canvasPatientId: "canvasPatientId",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.CanvasPatientEnsureCanvasPatientV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CanvasPatients.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Integrations HealthiePatient
 
 <details><summary><code>client.integrations.healthiePatient.<a href="/src/api/resources/integrations/resources/healthiePatient/client/Client.ts">getHealthieClientHealthiePatient</a>(id) -> BridgeApi.HealthiePatientGetHealthieClientV1Response</code></summary>

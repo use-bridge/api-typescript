@@ -1,6 +1,6 @@
 {
     "name": "@usebridge/api",
-    "version": "1.2.27",
+    "version": "1.2.28",
     "private": false,
     "repository": "github:use-bridge/api-typescript",
     "type": "commonjs",

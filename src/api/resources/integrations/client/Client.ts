@@ -2,6 +2,8 @@
 
 import * as environments from "../../../../environments.js";
 import * as core from "../../../../core/index.js";
+import { CanvasPatient } from "../resources/canvasPatient/client/Client.js";
+import { CanvasPatients } from "../resources/canvasPatients/client/Client.js";
 import { HealthiePatient } from "../resources/healthiePatient/client/Client.js";
 import { HealthiePatients } from "../resources/healthiePatients/client/Client.js";
 import { HealthieService } from "../resources/healthieService/client/Client.js";
@@ -24,6 +26,8 @@ export declare namespace Integrations {
 
 export class Integrations {
     protected readonly _options: Integrations.Options;
+    protected _canvasPatient: CanvasPatient | undefined;
+    protected _canvasPatients: CanvasPatients | undefined;
     protected _healthiePatient: HealthiePatient | undefined;
     protected _healthiePatients: HealthiePatients | undefined;
     protected _healthieService: HealthieService | undefined;
@@ -31,6 +35,14 @@ export class Integrations {
 
     constructor(_options: Integrations.Options = {}) {
         this._options = _options;
+    }
+
+    public get canvasPatient(): CanvasPatient {
+        return (this._canvasPatient ??= new CanvasPatient(this._options));
+    }
+
+    public get canvasPatients(): CanvasPatients {
+        return (this._canvasPatients ??= new CanvasPatients(this._options));
     }
 
     public get healthiePatient(): HealthiePatient {

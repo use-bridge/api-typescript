@@ -1,3 +1,7 @@
+export * as canvasPatient from "./canvasPatient/index.js";
+export * from "./canvasPatient/types/index.js";
+export * as canvasPatients from "./canvasPatients/index.js";
+export * from "./canvasPatients/types/index.js";
 export * as healthiePatient from "./healthiePatient/index.js";
 export * from "./healthiePatient/types/index.js";
 export * as healthiePatients from "./healthiePatients/index.js";
