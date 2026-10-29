@@ -2,6 +2,7 @@
 
 export const ServiceCreateV2ResponseCancellationReason = {
     NoShow: "NO_SHOW",
+    Void: "VOID",
 } as const;
 export type ServiceCreateV2ResponseCancellationReason =
     (typeof ServiceCreateV2ResponseCancellationReason)[keyof typeof ServiceCreateV2ResponseCancellationReason];

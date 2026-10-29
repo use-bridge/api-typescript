@@ -2,6 +2,7 @@
 
 export const HealthieServiceEnsureHealthieAppointmentV1ResponseCancellationReason = {
     NoShow: "NO_SHOW",
+    Void: "VOID",
 } as const;
 export type HealthieServiceEnsureHealthieAppointmentV1ResponseCancellationReason =
     (typeof HealthieServiceEnsureHealthieAppointmentV1ResponseCancellationReason)[keyof typeof HealthieServiceEnsureHealthieAppointmentV1ResponseCancellationReason];

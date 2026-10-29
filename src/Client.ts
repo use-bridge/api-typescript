@@ -78,8 +78,8 @@ export class BridgeApiClient {
                 {
                     "X-Fern-Language": "JavaScript",
                     "X-Fern-SDK-Name": "@usebridge/api",
-                    "X-Fern-SDK-Version": "1.2.28",
-                    "User-Agent": "@usebridge/api/1.2.28",
+                    "X-Fern-SDK-Version": "1.2.29",
+                    "User-Agent": "@usebridge/api/1.2.29",
                     "X-Fern-Runtime": core.RUNTIME.type,
                     "X-Fern-Runtime-Version": core.RUNTIME.version,
                 },

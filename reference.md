@@ -990,6 +990,138 @@ await client.events.getEvent("id");
 </dl>
 </details>
 
+## Integrations CanvasEncounter
+
+<details><summary><code>client.integrations.canvasEncounter.<a href="/src/api/resources/integrations/resources/canvasEncounter/client/Client.ts">getCanvasEncounterCanvasEncounter</a>(id) -> BridgeApi.CanvasEncounterGetCanvasEncounterV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the linked Bridge Service for a Canvas Encounter ID. This lookup never calls Canvas.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.canvasEncounter.getCanvasEncounterCanvasEncounter("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CanvasEncounter.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+## Integrations CanvasEncounters
+
+<details><summary><code>client.integrations.canvasEncounters.<a href="/src/api/resources/integrations/resources/canvasEncounters/client/Client.ts">ensureCanvasEncounterCanvasEncounter</a>({ ...params }) -> BridgeApi.CanvasEncounterEnsureCanvasEncounterV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Resolves or syncs a Bridge Service for a Canvas Encounter ID. One Encounter is one Service.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.canvasEncounters.ensureCanvasEncounterCanvasEncounter({
+    canvasEncounterId: "canvasEncounterId",
+});
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**request:** `BridgeApi.CanvasEncounterEnsureCanvasEncounterV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `CanvasEncounters.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
 ## Integrations CanvasPatient
 
 <details><summary><code>client.integrations.canvasPatient.<a href="/src/api/resources/integrations/resources/canvasPatient/client/Client.ts">getCanvasPatientCanvasPatient</a>(id) -> BridgeApi.CanvasPatientGetCanvasPatientV1Response</code></summary>

@@ -1,3 +1,7 @@
+export * as canvasEncounter from "./canvasEncounter/index.js";
+export * from "./canvasEncounter/types/index.js";
+export * as canvasEncounters from "./canvasEncounters/index.js";
+export * from "./canvasEncounters/types/index.js";
 export * as canvasPatient from "./canvasPatient/index.js";
 export * from "./canvasPatient/types/index.js";
 export * as canvasPatients from "./canvasPatients/index.js";
