@@ -10,8 +10,8 @@ export interface CanvasPatientEnsureCanvasPatientV1Response {
     coverage: BridgeApi.integrations.CanvasPatientEnsureCanvasPatientV1ResponseCoverage[];
     firstName: string;
     lastName: string;
-    dateOfBirth: string;
-    email: string;
+    dateOfBirth?: string;
+    email?: string;
     phone?: string;
     address?: BridgeApi.integrations.CanvasPatientEnsureCanvasPatientV1ResponseAddress;
     /** Customizable object of string to string key-value data */

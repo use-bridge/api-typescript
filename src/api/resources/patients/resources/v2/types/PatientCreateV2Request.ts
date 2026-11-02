@@ -6,8 +6,8 @@ export interface PatientCreateV2Request {
     externalId?: string;
     firstName: string;
     lastName: string;
-    email: string;
-    dateOfBirth: string;
+    email?: string;
+    dateOfBirth?: string;
     phone?: string;
     address?: BridgeApi.patients.PatientCreateV2RequestAddress;
     /** Sets the active Policies to use for this Patient, applied to un-billed Services. In all cases, maximum of 1 element, secondary insurance does not need to be collected. For uninsured/cash-pay patients, set to an empty array. */

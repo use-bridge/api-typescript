@@ -7,12 +7,7 @@ describe("V2", () => {
     test("createPatient", async () => {
         const server = mockServerPool.createServer();
         const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
-        const rawRequestBody = {
-            firstName: "firstName",
-            lastName: "lastName",
-            email: "email",
-            dateOfBirth: "2024-01-15T09:30:00Z",
-        };
+        const rawRequestBody = { firstName: "firstName", lastName: "lastName" };
         const rawResponseBody = {
             id: "id",
             patientToken: "patientToken",
@@ -50,8 +45,6 @@ describe("V2", () => {
         const response = await client.patients.v2.createPatient({
             firstName: "firstName",
             lastName: "lastName",
-            email: "email",
-            dateOfBirth: "2024-01-15T09:30:00Z",
         });
         expect(response).toEqual({
             id: "id",

@@ -10,8 +10,8 @@ export interface HealthiePatientGetHealthieClientV1Response {
     coverage: BridgeApi.integrations.HealthiePatientGetHealthieClientV1ResponseCoverage[];
     firstName: string;
     lastName: string;
-    dateOfBirth: string;
-    email: string;
+    dateOfBirth?: string;
+    email?: string;
     phone?: string;
     address?: BridgeApi.integrations.HealthiePatientGetHealthieClientV1ResponseAddress;
     /** Customizable object of string to string key-value data */

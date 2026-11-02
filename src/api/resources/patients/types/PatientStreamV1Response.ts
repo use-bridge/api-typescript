@@ -10,8 +10,8 @@ export interface PatientStreamV1Response {
     coverage: BridgeApi.PatientStreamV1ResponseCoverage[];
     firstName: string;
     lastName: string;
-    dateOfBirth: string;
-    email: string;
+    dateOfBirth?: string;
+    email?: string;
     phone?: string;
     address?: BridgeApi.PatientStreamV1ResponseAddress;
     /** Customizable object of string to string key-value data */

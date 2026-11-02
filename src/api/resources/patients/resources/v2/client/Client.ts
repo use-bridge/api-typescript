@@ -48,9 +48,7 @@ export class V2 {
      * @example
      *     await client.patients.v2.createPatient({
      *         firstName: "firstName",
-     *         lastName: "lastName",
-     *         email: "email",
-     *         dateOfBirth: "2024-01-15T09:30:00Z"
+     *         lastName: "lastName"
      *     })
      */
     public createPatient(

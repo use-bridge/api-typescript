@@ -10,8 +10,8 @@ export interface PatientsListV1ResponseItem {
     coverage: BridgeApi.PatientsListV1ResponseItemCoverage[];
     firstName: string;
     lastName: string;
-    dateOfBirth: string;
-    email: string;
+    dateOfBirth?: string;
+    email?: string;
     phone?: string;
     address?: BridgeApi.PatientsListV1ResponseItemAddress;
     /** Customizable object of string to string key-value data */

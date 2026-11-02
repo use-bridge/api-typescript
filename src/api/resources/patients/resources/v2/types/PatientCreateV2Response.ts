@@ -10,8 +10,8 @@ export interface PatientCreateV2Response {
     coverage: BridgeApi.patients.PatientCreateV2ResponseCoverage[];
     firstName: string;
     lastName: string;
-    dateOfBirth: string;
-    email: string;
+    dateOfBirth?: string;
+    email?: string;
     phone?: string;
     address?: BridgeApi.patients.PatientCreateV2ResponseAddress;
     /** Customizable object of string to string key-value data */
