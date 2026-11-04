@@ -990,71 +990,6 @@ await client.events.getEvent("id");
 </dl>
 </details>
 
-## Integrations CanvasEncounter
-
-<details><summary><code>client.integrations.canvasEncounter.<a href="/src/api/resources/integrations/resources/canvasEncounter/client/Client.ts">getCanvasEncounterCanvasEncounter</a>(id) -> BridgeApi.CanvasEncounterGetCanvasEncounterV1Response</code></summary>
-<dl>
-<dd>
-
-#### 📝 Description
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-Returns the linked Bridge Service for a Canvas Encounter ID. This lookup never calls Canvas.
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.integrations.canvasEncounter.getCanvasEncounterCanvasEncounter("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `CanvasEncounter.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## Integrations CanvasEncounters
 
 <details><summary><code>client.integrations.canvasEncounters.<a href="/src/api/resources/integrations/resources/canvasEncounters/client/Client.ts">ensureCanvasEncounterCanvasEncounter</a>({ ...params }) -> BridgeApi.CanvasEncounterEnsureCanvasEncounterV1Response</code></summary>
@@ -1122,9 +1057,7 @@ await client.integrations.canvasEncounters.ensureCanvasEncounterCanvasEncounter(
 </dl>
 </details>
 
-## Integrations CanvasPatient
-
-<details><summary><code>client.integrations.canvasPatient.<a href="/src/api/resources/integrations/resources/canvasPatient/client/Client.ts">getCanvasPatientCanvasPatient</a>(id) -> BridgeApi.CanvasPatientGetCanvasPatientV1Response</code></summary>
+<details><summary><code>client.integrations.canvasEncounters.<a href="/src/api/resources/integrations/resources/canvasEncounters/client/Client.ts">getCanvasEncounterCanvasEncounter</a>(id) -> BridgeApi.CanvasEncounterGetCanvasEncounterV1Response</code></summary>
 <dl>
 <dd>
 
@@ -1136,7 +1069,7 @@ await client.integrations.canvasEncounters.ensureCanvasEncounterCanvasEncounter(
 <dl>
 <dd>
 
-Returns the linked Bridge Patient for a Canvas Patient ID.
+Returns the linked Bridge Service for a Canvas Encounter ID. This lookup never calls Canvas.
 
 </dd>
 </dl>
@@ -1152,7 +1085,7 @@ Returns the linked Bridge Patient for a Canvas Patient ID.
 <dd>
 
 ```typescript
-await client.integrations.canvasPatient.getCanvasPatientCanvasPatient("id");
+await client.integrations.canvasEncounters.getCanvasEncounterCanvasEncounter("id");
 ```
 
 </dd>
@@ -1176,7 +1109,7 @@ await client.integrations.canvasPatient.getCanvasPatientCanvasPatient("id");
 <dl>
 <dd>
 
-**requestOptions:** `CanvasPatient.RequestOptions`
+**requestOptions:** `CanvasEncounters.RequestOptions`
 
 </dd>
 </dl>
@@ -1254,9 +1187,7 @@ await client.integrations.canvasPatients.ensureCanvasPatientCanvasPatient({
 </dl>
 </details>
 
-## Integrations HealthiePatient
-
-<details><summary><code>client.integrations.healthiePatient.<a href="/src/api/resources/integrations/resources/healthiePatient/client/Client.ts">getHealthieClientHealthiePatient</a>(id) -> BridgeApi.HealthiePatientGetHealthieClientV1Response</code></summary>
+<details><summary><code>client.integrations.canvasPatients.<a href="/src/api/resources/integrations/resources/canvasPatients/client/Client.ts">getCanvasPatientCanvasPatient</a>(id) -> BridgeApi.CanvasPatientGetCanvasPatientV1Response</code></summary>
 <dl>
 <dd>
 
@@ -1268,7 +1199,7 @@ await client.integrations.canvasPatients.ensureCanvasPatientCanvasPatient({
 <dl>
 <dd>
 
-Returns the linked Bridge Patient for a Healthie client id.
+Returns the linked Bridge Patient for a Canvas Patient ID.
 
 </dd>
 </dl>
@@ -1284,7 +1215,7 @@ Returns the linked Bridge Patient for a Healthie client id.
 <dd>
 
 ```typescript
-await client.integrations.healthiePatient.getHealthieClientHealthiePatient("id");
+await client.integrations.canvasPatients.getCanvasPatientCanvasPatient("id");
 ```
 
 </dd>
@@ -1308,7 +1239,7 @@ await client.integrations.healthiePatient.getHealthieClientHealthiePatient("id")
 <dl>
 <dd>
 
-**requestOptions:** `HealthiePatient.RequestOptions`
+**requestOptions:** `CanvasPatients.RequestOptions`
 
 </dd>
 </dl>
@@ -1386,9 +1317,7 @@ await client.integrations.healthiePatients.ensureHealthieClientHealthiePatient({
 </dl>
 </details>
 
-## Integrations HealthieService
-
-<details><summary><code>client.integrations.healthieService.<a href="/src/api/resources/integrations/resources/healthieService/client/Client.ts">getHealthieAppointmentHealthieService</a>(id) -> BridgeApi.HealthieServiceGetHealthieAppointmentV1Response</code></summary>
+<details><summary><code>client.integrations.healthiePatients.<a href="/src/api/resources/integrations/resources/healthiePatients/client/Client.ts">getHealthieClientHealthiePatient</a>(id) -> BridgeApi.HealthiePatientGetHealthieClientV1Response</code></summary>
 <dl>
 <dd>
 
@@ -1400,7 +1329,7 @@ await client.integrations.healthiePatients.ensureHealthieClientHealthiePatient({
 <dl>
 <dd>
 
-Returns the linked Bridge Service for a Healthie appointment id.
+Returns the linked Bridge Patient for a Healthie client id.
 
 </dd>
 </dl>
@@ -1416,7 +1345,7 @@ Returns the linked Bridge Service for a Healthie appointment id.
 <dd>
 
 ```typescript
-await client.integrations.healthieService.getHealthieAppointmentHealthieService("id");
+await client.integrations.healthiePatients.getHealthieClientHealthiePatient("id");
 ```
 
 </dd>
@@ -1440,7 +1369,7 @@ await client.integrations.healthieService.getHealthieAppointmentHealthieService(
 <dl>
 <dd>
 
-**requestOptions:** `HealthieService.RequestOptions`
+**requestOptions:** `HealthiePatients.RequestOptions`
 
 </dd>
 </dl>
@@ -1500,6 +1429,69 @@ await client.integrations.healthieServices.ensureHealthieAppointmentHealthieServ
 <dd>
 
 **request:** `BridgeApi.HealthieServiceEnsureHealthieAppointmentV1Request`
+
+</dd>
+</dl>
+
+<dl>
+<dd>
+
+**requestOptions:** `HealthieServices.RequestOptions`
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+</dd>
+</dl>
+</details>
+
+<details><summary><code>client.integrations.healthieServices.<a href="/src/api/resources/integrations/resources/healthieServices/client/Client.ts">getHealthieAppointmentHealthieService</a>(id) -> BridgeApi.HealthieServiceGetHealthieAppointmentV1Response</code></summary>
+<dl>
+<dd>
+
+#### 📝 Description
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+Returns the linked Bridge Service for a Healthie appointment id.
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### 🔌 Usage
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+```typescript
+await client.integrations.healthieServices.getHealthieAppointmentHealthieService("id");
+```
+
+</dd>
+</dl>
+</dd>
+</dl>
+
+#### ⚙️ Parameters
+
+<dl>
+<dd>
+
+<dl>
+<dd>
+
+**id:** `string`
 
 </dd>
 </dl>

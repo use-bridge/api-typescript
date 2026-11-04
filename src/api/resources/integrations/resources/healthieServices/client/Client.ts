@@ -121,6 +121,79 @@ export class HealthieServices {
         }
     }
 
+    /**
+     * Returns the linked Bridge Service for a Healthie appointment id.
+     *
+     * @param {string} id
+     * @param {HealthieServices.RequestOptions} requestOptions - Request-specific configuration.
+     *
+     * @example
+     *     await client.integrations.healthieServices.getHealthieAppointmentHealthieService("id")
+     */
+    public getHealthieAppointmentHealthieService(
+        id: string,
+        requestOptions?: HealthieServices.RequestOptions,
+    ): core.HttpResponsePromise<BridgeApi.integrations.HealthieServiceGetHealthieAppointmentV1Response> {
+        return core.HttpResponsePromise.fromPromise(this.__getHealthieAppointmentHealthieService(id, requestOptions));
+    }
+
+    private async __getHealthieAppointmentHealthieService(
+        id: string,
+        requestOptions?: HealthieServices.RequestOptions,
+    ): Promise<core.WithRawResponse<BridgeApi.integrations.HealthieServiceGetHealthieAppointmentV1Response>> {
+        let _headers: core.Fetcher.Args["headers"] = mergeHeaders(
+            this._options?.headers,
+            mergeOnlyDefinedHeaders({ ...(await this._getCustomAuthorizationHeaders()) }),
+            requestOptions?.headers,
+        );
+        const _response = await core.fetcher({
+            url: core.url.join(
+                (await core.Supplier.get(this._options.baseUrl)) ??
+                    (await core.Supplier.get(this._options.environment)) ??
+                    environments.BridgeApiEnvironment.Production,
+                `/api/integrations/healthie/services/${encodeURIComponent(id)}`,
+            ),
+            method: "GET",
+            headers: _headers,
+            queryParameters: requestOptions?.queryParams,
+            timeoutMs: (requestOptions?.timeoutInSeconds ?? this._options?.timeoutInSeconds ?? 60) * 1000,
+            maxRetries: requestOptions?.maxRetries ?? this._options?.maxRetries,
+            abortSignal: requestOptions?.abortSignal,
+        });
+        if (_response.ok) {
+            return {
+                data: _response.body as BridgeApi.integrations.HealthieServiceGetHealthieAppointmentV1Response,
+                rawResponse: _response.rawResponse,
+            };
+        }
+
+        if (_response.error.reason === "status-code") {
+            throw new errors.BridgeApiError({
+                statusCode: _response.error.statusCode,
+                body: _response.error.body,
+                rawResponse: _response.rawResponse,
+            });
+        }
+
+        switch (_response.error.reason) {
+            case "non-json":
+                throw new errors.BridgeApiError({
+                    statusCode: _response.error.statusCode,
+                    body: _response.error.rawBody,
+                    rawResponse: _response.rawResponse,
+                });
+            case "timeout":
+                throw new errors.BridgeApiTimeoutError(
+                    "Timeout exceeded when calling GET /api/integrations/healthie/services/{id}.",
+                );
+            case "unknown":
+                throw new errors.BridgeApiError({
+                    message: _response.error.errorMessage,
+                    rawResponse: _response.rawResponse,
+                });
+        }
+    }
+
     protected async _getCustomAuthorizationHeaders(): Promise<Record<string, string | undefined>> {
         const apiKeyValue = (await core.Supplier.get(this._options.apiKey)) ?? process?.env["BRIDGE_API_KEY"];
         return { "X-API-Key": apiKeyValue };
