@@ -150,10 +150,14 @@ export class Providers {
         request: BridgeApi.ProvidersListV1Request = {},
         requestOptions?: Providers.RequestOptions,
     ): Promise<core.WithRawResponse<BridgeApi.ProvidersListV1Response>> {
-        const { "filter.active": filterActive, page, limit } = request;
+        const { "filter.active": filterActive, "filter.name": filterName, page, limit } = request;
         const _queryParams: Record<string, string | string[] | object | object[] | null> = {};
         if (filterActive != null) {
             _queryParams["filter.active"] = filterActive.toString();
+        }
+
+        if (filterName != null) {
+            _queryParams["filter.name"] = filterName;
         }
 
         if (page != null) {

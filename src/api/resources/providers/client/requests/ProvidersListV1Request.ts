@@ -7,6 +7,8 @@
 export interface ProvidersListV1Request {
     /** Value is a raw boolean, example filter.active=true */
     "filter.active"?: boolean;
+    /** Value should be JSON-encoded, for example filter.name="Ada" */
+    "filter.name"?: string;
     page?: number;
     limit?: number;
 }
