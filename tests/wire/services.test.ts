@@ -2486,14 +2486,4 @@ describe("Services", () => {
             ],
         });
     });
-
-    test("deleteService Note", async () => {
-        const server = mockServerPool.createServer();
-        const client = new BridgeApiClient({ apiKey: "test", environment: server.baseUrl });
-
-        server.mockEndpoint().delete("/api/services/id/note").respondWith().statusCode(200).build();
-
-        const response = await client.services.deleteServiceNote("id");
-        expect(response).toEqual(undefined);
-    });
 });

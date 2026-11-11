@@ -3843,54 +3843,6 @@ await client.services.getServiceNote("id");
 </dl>
 </details>
 
-<details><summary><code>client.services.<a href="/src/api/resources/services/client/Client.ts">deleteServiceNote</a>(id) -> void</code></summary>
-<dl>
-<dd>
-
-#### 🔌 Usage
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-```typescript
-await client.services.deleteServiceNote("id");
-```
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-#### ⚙️ Parameters
-
-<dl>
-<dd>
-
-<dl>
-<dd>
-
-**id:** `string`
-
-</dd>
-</dl>
-
-<dl>
-<dd>
-
-**requestOptions:** `Services.RequestOptions`
-
-</dd>
-</dl>
-</dd>
-</dl>
-
-</dd>
-</dl>
-</details>
-
 ## Services Payments
 
 <details><summary><code>client.services.payments.<a href="/src/api/resources/services/resources/payments/client/Client.ts">listServicePayments</a>(id, { ...params }) -> BridgeApi.ServicePaymentsListV1Response</code></summary>
